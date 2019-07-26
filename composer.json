@@ -1,0 +1,28 @@
+{
+  "require": {
+    "aelvan/imager": "v2.1.10",
+    "craftcms/cms": "^3.0.0",
+    "craftcms/redactor": "2.3.3.2",
+    "doublesecretagency/craft-cpjs": "2.2.0",
+    "misterbk/mix": "1.5.2",
+    "nystudio107/craft-typogrify": "1.1.18",
+    "vlucas/phpdotenv": "^2.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "modules\\": "modules/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.0"
+    }
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ]
+  }
+}

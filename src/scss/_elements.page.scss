@@ -1,0 +1,40 @@
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    position: relative;
+    @include font-regular;
+    @include font-size(15);
+    line-height: 1.5;
+    color: $black;
+    margin: 0;
+    padding: 0;
+    background-color: $white;
+    text-rendering: auto; // https://www.viget.com/articles/css-typography-kerning-ligatures-swashes-small-caps
+    font-feature-settings: "kern" 1, "liga" 1;
+}
+
+// responsive images
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+li {
+    margin-bottom: 1em;
+}

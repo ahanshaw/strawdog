@@ -1,0 +1,7 @@
+{
+  "buttons": ["formatting", "bold", "italic", "unorderedlist", "orderedlist", "link"],
+  "plugins": ["limiter", "counter"],
+  "limiter": "120",
+  "linkNewTab": true,
+  "toolbarFixed": true
+}

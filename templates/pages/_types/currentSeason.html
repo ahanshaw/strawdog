@@ -1,0 +1,21 @@
+{% extends "_layout" %}
+{% block content %}
+    <h1>Current Season</h1>
+
+    <div>
+        {% set cat = craft.categories().group('seasons').one() %}
+        {% set filter = craft.categories.slug(cat.title) %}
+
+        {% set shows = craft.entries.section('shows').relatedTo(filter).all() %}
+        {% for show in shows %}
+            {% set showMainImage = show.showMainImage.one() %}
+            {% if showMainImage | length %}
+                <div>
+                    <img src="{{ showMainImage.url }}" alt="{{ showMainImage.title }}" />
+                </div>
+            {% endif %}
+            <a href="{{ show.url }}">{{ show.title }}</a>
+            {{ show.showSummary }}
+        {% endfor %}
+    </div>
+{% endblock %}

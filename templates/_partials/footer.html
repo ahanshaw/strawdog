@@ -1,0 +1,23 @@
+{% set entries = craft.entries.section('footerPages').all() %}
+
+<footer class="c-footer">
+    <div class="c-footer__container">
+        <div class="c-footer__copyright">
+            <p>&copy;{{ now|date('Y') }} Strawdog Theatre</p>    
+        </div>
+        <div class="c-footer__nav">
+            <ul id="nav">
+                {% nav entry in entries %}
+                    <li>
+                        <a href="{{ entry.url }}">{{ entry.title }}</a>
+                        {% ifchildren %}
+                            <ul>
+                                {% children %}
+                            </ul>
+                        {% endifchildren %}
+                    </li>
+                {% endnav %}
+            </ul>
+        </div>
+    </div>
+</footer>

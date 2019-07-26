@@ -1,0 +1,43 @@
+{% extends "_layout" %}
+{% block content %}
+    <h1>Our Company</h1>
+    {{ entry.companyIntro }}
+    <div>
+        <h2>Company</h2>
+        {% set entries = craft.entries.section('company').all() %}
+        {% for entry in entries %}
+            {% if entry.companyEnsembleMember %}
+                {% set headshot = entry.companyHeadshot.one() %}
+                {% if headshot | length %}
+                    <div>
+                        <img src="{{ headshot.url }}" alt="{{ headshot.title }}" />
+                    </div>
+                {% endif %}
+                <h2>{{ entry.title }}</h2>
+                {{ entry.companyBio }}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div>
+        <h2>Board of Directors</h2>
+        <div style="columns: 4;">
+            {{ entry.companyBoard }}
+        </div>
+    </div>
+    <div>
+        <h2>Staff</h2>
+        <div style="columns: 4;">
+            {{ entry.companyStaff }}
+        </div>
+    </div>
+    <div>
+        <h2>Artistic Associates</h2>
+        {{ entry.companyArtisticAssociates }}
+    </div>
+    <div>
+        <h2>Emeritus Members</h2>
+        <div style="columns: 5;">
+            {{ entry.companyEmeritusMembers }}
+        </div>
+    </div>
+{% endblock %}

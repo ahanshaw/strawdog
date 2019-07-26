@@ -1,0 +1,53 @@
+.c-header {
+    background-color: $black;
+    padding: 1em 0;
+
+    &__container {
+        @include container(1100);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        flex: 1;
+
+        img {
+            width: 100%;
+            max-width: 150px;
+        }
+    }
+
+    &__nav {
+        flex: 4;
+        text-align: right;
+
+        ul {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            list-style: none;
+            margin: 0 0 0 2em;
+
+            a {
+                @include font-bold;
+                @include font-size(11);
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: .025em;
+                color: $white;
+            }
+
+            ul {
+
+                li {
+                    display: none;
+                }
+            }
+        }
+    }
+}

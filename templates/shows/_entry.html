@@ -1,0 +1,42 @@
+{% extends "_layout" %}
+{% block content %}
+
+    {% set showMainImage = entry.showMainImage.one() %}
+    {% if showMainImage | length %}
+        <div>
+            <img src="{{ showMainImage.url }}" alt="{{ showMainImage.title }}" />
+        </div>
+    {% endif %}
+
+    {% set season = entry.showSeason.one() %}
+    <p><a href="{{ season.url }}">Season {{ season.title }}</a></p>
+
+    <h1>{{ entry.title }}</h1>
+    {{ entry.showBy }}
+
+    {{ entry.showStartDate|date }} &ndash; {{ entry.showEndDate|date }}
+    <p>{{ entry.showTimes }}</p>
+    <p>{{ entry.showTicketPrices }}</p>
+    <a href="{{ entry.showTicketsUrl }}">Buy Tickets</a>
+
+    {{ entry.showDescription }}
+
+    <h2>Cast</h2>
+    {% for block in entry.showCast.all() %}
+        {% set castMember = block.castMember.one() %}
+        {% set headshot = castMember.companyHeadshot.one() %}
+        {% if headshot | length %}
+            <div>
+                <img src="{{ headshot.url }}" alt="{{ headshot.title }}" />
+            </div>
+        {% endif %}
+        <p>{{ block.characterName }}: {{ castMember.title }}{% if castMember.companyEnsembleMember %}*{% endif %}</p>
+    {% endfor %}
+
+    <h2>Crew</h2>
+    {% for block in entry.showCrew.all() %}
+        {% set crewMember = block.crewName.one() %}
+        <p>{{ block.crewTitle }}: {{ crewMember.title }}{% if crewMember.companyEnsembleMember %}*{% endif %}</p>
+    {% endfor %}
+
+{% endblock %}

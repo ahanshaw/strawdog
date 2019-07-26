@@ -1,0 +1,38 @@
+{% extends "_layout" %}
+{% block content %}
+
+    {% set headshot = entry.companyHeadshot.one() %}
+    {% if headshot | length %}
+        <div>
+            <img src="{{ headshot.url }}" alt="{{ headshot.title }}" />
+        </div>
+    {% endif %}
+
+    <h1>{{ entry.title }}</h1>
+    {{ entry.companyBio }}
+
+    <h2>Strawdog Cast</h2>
+    {% set shows = craft.entries().section('shows').all %}
+    {% for show in shows %}
+        {% set season = show.showSeason.one() %}
+        {% for cast in show.showCast %}
+            {% set castMember = cast.castMember.one() %}
+            {% if castMember.title == entry.title %}
+                <p>{{ cast.characterName }} in <a href="{{ show.url }}">{{ show.title }}</a> (Season {{ season.title }})</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    <h2>Strawdog Crew</h2>
+    {% set shows = craft.entries().section('shows').all %}
+    {% for show in shows %}
+        {% set season = show.showSeason.one() %}
+        {% for crew in show.showCrew %}
+            {% set crewName = crew.crewName.one() %}
+            {% if crewName.title == entry.title %}
+                <p>{{ crew.crewTitle }} in <a href="{{ show.url }}">{{ show.title }}</a> (Season {{ season.title }})</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}

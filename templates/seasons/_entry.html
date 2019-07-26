@@ -1,0 +1,21 @@
+{% extends "_layout" %}
+{% block content %}
+
+    <h1>Season {{ category.title }}</h1>
+
+    {% set filterSlug = craft.app.request.getSegment(2) %}
+    {% set filter = craft.categories.slug(filterSlug) %}
+
+    {% set shows = craft.entries.section('shows').relatedTo(filter).all() %}
+    {% for show in shows %}
+        {% set showMainImage = show.showMainImage.one() %}
+        {% if showMainImage | length %}
+            <div>
+                <img src="{{ showMainImage.url }}" alt="{{ showMainImage.title }}" />
+            </div>
+        {% endif %}
+        <a href="{{ show.url }}">{{ show.title }}</a>
+        {{ show.showSummary }}
+    {% endfor %}
+
+{% endblock %}

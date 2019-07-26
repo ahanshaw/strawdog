@@ -1,0 +1,7 @@
+// to hide elements needed for accessbility only, such as <h1> tags
+
+.accessibility-only {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
