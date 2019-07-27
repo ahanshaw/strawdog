@@ -9,8 +9,13 @@
     },
     "author": "",
     "license": "ISC",
-    "dependencies": {},
+    "dependencies": {
+        "jquery": "^3.4.1",
+        "slick-carousel": "^1.8.1"
+    },
     "devDependencies": {
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^5.2.0",
         "laravel-mix": "^4.1.2",
         "resolve-url-loader": "3.1.0",

@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
         <meta name="referrer" content="origin-when-cross-origin" />
         <link href="https://fonts.googleapis.com/css?family=Crimson+Text:700|Lato:300,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ mix('css/styles.css') }}">
         <title>Strawdog Theatre</title>
     </head>
@@ -17,5 +18,12 @@
             {% endblock %}
             {% include '_partials/footer' %}
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha256-NXRS8qVcmZ3dOv3LziwznUHPegFhPZ1F/4inU7uC8h0=" crossorigin="anonymous"></script>
+        <script src="{{ mix('js/jquery-3.4.1.min.js') }}"></script>
+        <script src="{{ mix('js/jquery-accessibleMegaMenu.js') }}"></script>
+        <script src="{{ mix('js/slick.min.js') }}"></script>
+        <script src="{{ mix('js/scripts.js') }}"></script>
     </body>
 </html>

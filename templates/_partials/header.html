@@ -5,24 +5,28 @@
         </div>
         <div class="c-header__nav">
             {% set entries = craft.entries.section('pages').all() %}
-            <ul id="nav">
-                {% nav entry in entries %}
-                    <li>
-                        <a href="{{ entry.url }}">{{ entry.title }}</a>
-                        {% ifchildren %}
-                            <ul>
-                                {% children %}
-                            </ul>
-                        {% endifchildren %}
-                    </li>
-                {% endnav %}
-            </ul>
-            <ul>
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    {% nav entry in entries %}
+                        <li class="nav-item">
+                            <a href="{{ entry.url }}">{{ entry.title }}</a>
+                            {% ifchildren %}
+                                 <div class="sub-nav">
+                                    <ul class="sub-nav-group">
+                                        {% children %}
+                                    </ul>
+                                </div>
+                            {% endifchildren %}
+                        </li>
+                    {% endnav %}
+                </ul>
+            </nav>
+            <ul class="c-header__nav__ctas">
                 <li>
-                    <a class="btn btn--gold" href="#">Donate</a>
+                    <a class="btn btn--gold" href="/support-us">Donate</a>
                 </li>
                 <li>
-                    <a class="btn btn--white" href="#">Buy Tickets</a>
+                    <a class="btn btn--white" target="_blank" noopener noreferrer href="https://red.vendini.com/ticket-software.html?t=tix&w=419335c6ab7a2ea55ebc2cb30c396d54">Buy Tickets</a>
                 </li>
             </ul>
         </div>

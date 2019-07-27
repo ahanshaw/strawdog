@@ -1,27 +1,14 @@
 .c-footer {
     background-color: $black;
-    padding: 1em 0;
 
     &__container {
         @include container(1100);
         display: flex;
         justify-content: space-between;
-        align-items: center;
-    }
-
-    &__copyright {
-        flex: 1;
-
-        p {
-            @include font-size(12);
-            color: $white;
-            margin: 0;
-        }
+        padding: 2em 0;
     }
 
     &__nav {
-        flex: 4;
-        text-align: right;
 
         ul {
             margin: 0;
@@ -29,21 +16,108 @@
         }
 
         li {
-            display: inline-block;
+            display: block;
             list-style: none;
-            margin: 0 0 0 1.5em;
+            margin: 0 0 .5em 0;
 
             a {
-                @include font-size(11);
+                @include font-bold;
+                @include font-size(14);
                 text-decoration: none;
                 text-transform: uppercase;
                 color: $white;
+
+                &:hover {
+
+                    &::after {
+                        background-color: $gold;
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    display: block;
+                    height: 2px;
+                    margin-top: 1px;
+                    background-color: transparent;
+                    transition: background-color .3s ease;
+                }
             }
 
             ul {
 
                 li {
                     display: none;
+                }
+            }
+        }
+    }
+
+    &__info {
+
+        p {
+            @include font-size(14);
+            color: $white;
+            margin: 0;
+        }
+
+        a {
+            color: $white;
+            text-decoration: none;
+        }
+
+        ul {
+            margin: 1em 0 0 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            list-style: none;
+            margin-right: 1em;
+
+            &:hover {
+
+                svg {
+
+                    &:hover {
+                        fill: $black-60;
+                    }
+                }
+            }
+
+            svg {
+                fill: $white;
+                transition: fill .3s ease;
+            }
+        }
+
+        .name {
+            @include font-bold;
+            text-transform: uppercase;
+        }
+    }
+
+    &__small {
+        background-color: $white;
+
+        &__container {
+            @include container(1100);
+            text-align: center;
+
+            p {
+                display: inline-block;
+                @include font-size(13);
+                text-align: right;
+                margin: .5em 1em;
+            }
+
+            a {
+                text-decoration: underline;
+                color: $black;
+
+                &:hover {
+                    text-decoration: none;
                 }
             }
         }

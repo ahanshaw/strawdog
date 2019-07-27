@@ -12,11 +12,14 @@ let mix = require('laravel-mix');
  */
 
 mix.setPublicPath('./web/dist')
+    .js('src/js/jquery-3.4.1.min.js', 'web/dist/js')
+    .js('src/js/jquery-accessibleMegaMenu.js', 'web/dist/js')
+    .js('src/js/slick.min.js', 'web/dist/js')
     .js('src/js/scripts.js', 'web/dist/js')
     .sass('src/scss/styles.scss', 'web/dist/css')
+    .browserSync('https://strawdog.ddev.site/')
     .sourceMaps()
     .version();
-
 
 // Full API
 // mix.js(src, output);
@@ -29,7 +32,6 @@ mix.setPublicPath('./web/dist')
 // mix.less(src, output);
 // mix.stylus(src, output);
 // mix.postCss(src, output, [require('postcss-some-plugin')()]);
-// mix.browserSync('my-site.test');
 // mix.combine(files, destination);
 // mix.babel(files, destination); <-- Identical to mix.combine(), but also includes Babel compilation.
 // mix.copy(from, to);
