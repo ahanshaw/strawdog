@@ -34,6 +34,10 @@
     margin: 0 0 -1px 0;
     border: 1px solid transparent;
 
+    @include breakpoint('laptop') {
+        padding: 0.5em .5em;
+    }
+
     &:hover {
 
         &::after {
@@ -71,6 +75,7 @@
     top: 2.2em;
     width: 200px;
     text-align: left;
+    margin-left: -1em;
     padding: 1em;
     background-color: $black;
 }

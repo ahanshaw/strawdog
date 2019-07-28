@@ -101,6 +101,10 @@
     &__small {
         background-color: $white;
 
+        @include breakpoint('mobile') {
+            padding: .5em 0;
+        }
+
         &__container {
             @include container(1100);
             text-align: center;
@@ -110,6 +114,10 @@
                 @include font-size(13);
                 text-align: right;
                 margin: .5em 1em;
+
+                @include breakpoint('mobile') {
+                    margin: 0;
+                }
             }
 
             a {

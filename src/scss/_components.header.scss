@@ -14,16 +14,41 @@
         img {
             width: 100%;
             max-width: 175px;
+
+            @include breakpoint('laptop') {
+                max-width: 200px;
+            }
+        }
+    }
+
+    &__links {
+        display: flex;
+        align-items: center;
+
+        @include breakpoint('laptop') {
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
     }
 
     &__nav {
         text-align: right;
 
+        @include breakpoint('laptop') {
+            flex: 0 0 100%;
+            order: 2;
+        }
+
         &__ctas {
             display: inline-block;
             margin: 0;
             padding: 0;
+
+            @include breakpoint('laptop') {
+                flex: 0 0 100%;
+                order: 1;
+                text-align: right;
+            }
 
             a {
                 text-decoration: none;

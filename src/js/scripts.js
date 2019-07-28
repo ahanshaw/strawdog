@@ -21,5 +21,25 @@ $(document).ready(function() {
         autoplaySpeed: 2000,
         prevArrow: '<button type="button" class="slick-prev">&#8249;</button>',
         nextArrow: '<button type="button" class="slick-next">&#8250;</button>',
+        responsive: [
+            {
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 4
+                }
+            },
+            {
+                breakpoint: 769,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 641,
+                settings: {
+                    slidesToShow: 2
+                }
+            }
+        ]
     });
 });
