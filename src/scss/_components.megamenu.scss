@@ -32,6 +32,7 @@
     color: $white;
     padding: 0.5em 1em;
     margin: 0 0 -1px 0;
+    white-space: nowrap;
     border: 1px solid transparent;
 
     @include breakpoint('laptop') {
@@ -73,11 +74,11 @@
     position: absolute;
     display: none;
     top: 2.2em;
-    width: 200px;
     text-align: left;
     margin-left: -1em;
     padding: 1em;
     background-color: $black;
+    border-bottom: 2px solid $gold;
 }
 
 /* sub-navigation panel open state */

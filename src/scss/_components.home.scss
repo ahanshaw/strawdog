@@ -144,6 +144,10 @@
                     border-left: 15px solid transparent;
                     border-right: 15px solid transparent;
                     border-top: 15px solid $white;
+
+                    @include breakpoint('tablet') {
+                        display: none;
+                    }
                 }
             }
 
