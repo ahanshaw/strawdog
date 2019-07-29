@@ -1,42 +1,103 @@
 {% extends "_layout" %}
 {% block content %}
 
-    {% set showMainImage = entry.showMainImage.one() %}
-    {% if showMainImage | length %}
-        <div>
-            <img src="{{ showMainImage.url }}" alt="{{ showMainImage.title }}" />
+    <main id="main" class="c-show">
+        <div class="c-hero">
+            <div class="c-hero__container">
+                <div class="c-hero__image">
+                    {% set showMainImage = entry.showMainImage.one() %}
+                    {% set imageSizesShow = [{ width: 1200, height: 400, mode: 'crop', position: showMainImage.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: showMainImage.getFocalPoint() }] %}
+                    {% if entry.showMainImage | length %}
+                        {% set transformedShowMainImage = craft.imager.transformImage(showMainImage, imageSizesShow) %}
+                        {% if craft.imager.serverSupportsWebp() %}
+                            {% set transformedShowMainImageWebp = craft.imager.transformImage(transformedShowMainImage, imageSizesShow, { format: 'webp' }) %}
+                        {% endif %}
+                        <picture>
+                            {% if craft.imager.serverSupportsWebp() %}
+                                <source srcset="{{ craft.imager.srcset(transformedShowMainImageWebp) }}" type="image/webp">
+                            {% endif %}
+                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedShowMainImage) }}" alt="{{ showMainImage.title }}">
+                        </picture>
+                    {% endif %}
+                </div>
+                <div class="c-hero__copy">
+                    <h1>{{ entry.title }}</h1>
+                </div>
+            </div>
         </div>
-    {% endif %}
 
-    {% set season = entry.showSeason.one() %}
-    <p><a href="{{ season.url }}">Season {{ season.title }}</a></p>
+        <div class="c-show__detail">
+            <div class="c-show__detail__info">
+                <span class="by">{{ entry.showBy }}</span>
+                {% set season = entry.showSeason.one() %}
+                <p class="season">Season {{ season.title }}</p>
+                {{ entry.showStartDate|date }} &ndash; {{ entry.showEndDate|date }}
+                <span class="times">{{ entry.showTimes }}</span>
+                <p>{{ entry.showTicketPrices }}</p>
+                <a class="btn" href="{{ entry.showTicketsUrl }}">Buy Tickets</a>
+            </div>
+            <div class="c-show__detail__description">
+                {{ entry.showDescription | typogrify }}
+            </div>
+        </div>
 
-    <h1>{{ entry.title }}</h1>
-    {{ entry.showBy }}
-
-    {{ entry.showStartDate|date }} &ndash; {{ entry.showEndDate|date }}
-    <p>{{ entry.showTimes }}</p>
-    <p>{{ entry.showTicketPrices }}</p>
-    <a href="{{ entry.showTicketsUrl }}">Buy Tickets</a>
-
-    {{ entry.showDescription }}
-
-    <h2>Cast</h2>
-    {% for block in entry.showCast.all() %}
-        {% set castMember = block.castMember.one() %}
-        {% set headshot = castMember.companyHeadshot.one() %}
-        {% if headshot | length %}
-            <div>
-                <img src="{{ headshot.url }}" alt="{{ headshot.title }}" />
+        {% if entry.showCast | length %}
+            <div class="c-show__cast">
+                <h2>Cast</h2>
+                <div class="c-show__cast__container">
+                    {% for block in entry.showCast.all() %}
+                        {% set castMember = block.castMember.one() %}
+                        {% if castMember.companyEnsembleMember %}
+                            <a class="c-show__cast__member" href="{{ castMember.url }}">
+                        {% else %}
+                            <div class="c-show__cast__member">
+                        {% endif %}
+                            {% set castImage = castMember.companyHeadshot.one() %}
+                            {% if castImage | length %}
+                                {% set castImageSize = [{ width: 200, height: 200, mode: 'crop', position: castImage.getFocalPoint() }] %}
+                                {% set transformedCastImage = craft.imager.transformImage(castImage, castImageSize) %}
+                                {% if craft.imager.serverSupportsWebp() %}
+                                    {% set transformedCastImageWebp = craft.imager.transformImage(transformedCastImage, castImageSize, { format: 'webp' }) %}
+                                {% endif %}
+                                <picture>
+                                    {% if craft.imager.serverSupportsWebp() %}
+                                        <source srcset="{{ craft.imager.srcset(transformedCastImageWebp) }}" type="image/webp">
+                                    {% endif %}
+                                    <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedCastImage) }}" alt="{{ castImage.title }}">
+                                </picture>
+                            {% else %}
+                                <img src="/cms/images/company/user-placeholder.png" />
+                            {% endif %}
+                            <p class="cast-member {% if castMember.companyEnsembleMember %} strawdog{% endif %}">{{ castMember.title }}{% if castMember.companyEnsembleMember %}*{% endif %}</p>
+                            <p>as {{ block.characterName }}</p>
+                        {% if castMember.companyEnsembleMember %}
+                            </a>
+                        {% else %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         {% endif %}
-        <p>{{ block.characterName }}: {{ castMember.title }}{% if castMember.companyEnsembleMember %}*{% endif %}</p>
-    {% endfor %}
 
-    <h2>Crew</h2>
-    {% for block in entry.showCrew.all() %}
-        {% set crewMember = block.crewName.one() %}
-        <p>{{ block.crewTitle }}: {{ crewMember.title }}{% if crewMember.companyEnsembleMember %}*{% endif %}</p>
-    {% endfor %}
+        {% if entry.showCrew | length %}
+            <div class="c-show__crew">
+                <h2>Crew</h2>
+                <div class="c-show__crew__container">
+                    {% for block in entry.showCrew.all() %}
+                        {% set crewMember = block.crewName.one() %}
+                        <p><span class="crew-member">{% if crewMember.companyEnsembleMember %}<a href="{{ crewMember.url }}">{% endif %}{{ crewMember.title }}{% if crewMember.companyEnsembleMember %}*</a>{% endif %}</span><br />
+                        {{ block.crewTitle }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if entry.showCrew | length or entry.showCast | length %}
+            <div class="c-show__asterisk">
+                <p>* Strawdog Theatre ensemble member</p>
+            </div>
+        {% endif %}
+    </main>
 
 {% endblock %}

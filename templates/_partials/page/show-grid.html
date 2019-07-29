@@ -1,0 +1,34 @@
+<div class="c-grid">
+    <div class="c-grid__container">
+        {% for entry in entries %}
+            <a href="{{ entry.url }}" class="c-grid__event">
+                <div class="c-grid__event__image">
+                    {% set entryImage = entry.showMainImage.one() %}
+                    {% set entryImageSizes = [{ width: 200, height: 200, mode: 'crop', position: entryImage.getFocalPoint() }] %}
+                    {% if entryImage | length %}
+                    {% set transformedentryImage = craft.imager.transformImage(entryImage, entryImageSizes) %}
+                        {% if craft.imager.serverSupportsWebp() %}
+                            {% set transformedentryImageWebp = craft.imager.transformImage(transformedentryImage, entryImageSizes, { format: 'webp' }) %}
+                        {% endif %}
+                        <picture>
+                            {% if craft.imager.serverSupportsWebp() %}
+                                <source srcset="{{ craft.imager.srcset(transformedentryImageWebp) }}" type="image/webp">
+                            {% endif %}
+                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedentryImage) }}" alt="{{ entryImage.title }}">
+                        </picture>
+                    {% endif %}
+                </div>
+                <div class="c-grid__event__detail">
+                    <h3>{{ entry.title | typogrify }}</h3>
+                    {% if entry.showStartDate | length %}
+                        <p class="date">{{ entry.showStartDate | date }}&ndash;{{ entry.showEndDate | date }}</p>
+                    {% else %}
+                        <p class="date">Check back for dates!</p>
+                    {% endif %}
+                    {{ entry.showSummary | typogrify }}
+                    <p class="learn-more">Learn More</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>

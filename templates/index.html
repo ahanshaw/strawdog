@@ -4,30 +4,8 @@
         <h1 class="accessibility-only">Home</h1>
         <section class="c-home__current">
             {% set seasonsCat = craft.categories().group('seasons').limit(1).all() %}
-            <div class="c-home__current__season">
-                {% for season in seasonsCat %}
-                    <div class="c-home__current__season__image">
-                        {% set seasonImage = season.seasonImage.one() %}
-                        {% set imageSizesSeason = [{ width: 1200, height: 400, mode: 'crop', position: seasonImage.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: seasonImage.getFocalPoint() }] %}
-                        {% if season.seasonImage | length %}
-                            {% set transformedSeasonImage = craft.imager.transformImage(seasonImage, imageSizesSeason) %}
-                            {% if craft.imager.serverSupportsWebp() %}
-                                {% set transformedSeasonImageWebp = craft.imager.transformImage(transformedSeasonImage, imageSizesSeason, { format: 'webp' }) %}
-                            {% endif %}
-                            <picture>
-                                {% if craft.imager.serverSupportsWebp() %}
-                                    <source srcset="{{ craft.imager.srcset(transformedSeasonImageWebp) }}" type="image/webp">
-                                {% endif %}
-                                <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedSeasonImage) }}" alt="{{ seasonImage.title }}">
-                            </picture>
-                        {% endif %}
-                    </div>
-                    <div class="c-home__current__season__copy">
-                        <h2>Season {{ season.title }}{% if season.seasonTheme | length %}: {{ season.seasonTheme }}{% endif %}</h2>
-                        {% if season.seasonSummary | length %}{{ season.seasonSummary }}{% endif %} <a href="{{ season.url }}" title="Learn more about season {{ season.title }}">Learn More</a>
-                    </div>
-                {% endfor %}
-            </div>
+            {% include '_partials/page/season-hero' %}
+            
             <div class="c-home__current__shows">
                 {% set entries = craft.entries.relatedTo(seasonsCat).all() %}
                 {% for entry in entries %}
@@ -86,10 +64,18 @@
                         <a href="{{ entry.url }}" class="c-home__events__event">
                             <div class="c-home__events__event__image">
                                 {% set eventMainImage = entry.specialEventMainImage.one() %}
+                                {% set eventMainImageSizes = [{ width: 200, height: 200, mode: 'crop', position: eventMainImage.getFocalPoint() }] %}
                                 {% if eventMainImage | length %}
-                                    <div>
-                                        <img src="{{ eventMainImage.url }}" alt="{{ eventMainImage.title }}" />
-                                    </div>
+                                {% set transformedEventMainImage = craft.imager.transformImage(eventMainImage, eventMainImageSizes) %}
+                                    {% if craft.imager.serverSupportsWebp() %}
+                                        {% set transformedEventMainImageWebp = craft.imager.transformImage(transformedEventMainImage, eventMainImageSizes, { format: 'webp' }) %}
+                                    {% endif %}
+                                    <picture>
+                                        {% if craft.imager.serverSupportsWebp() %}
+                                            <source srcset="{{ craft.imager.srcset(transformedEventMainImageWebp) }}" type="image/webp">
+                                        {% endif %}
+                                        <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedEventMainImage) }}" alt="{{ eventMainImage.title }}">
+                                    </picture>
                                 {% endif %}
                             </div>
                             <div class="c-home__events__event__detail">
@@ -99,7 +85,7 @@
                                 {% else %}
                                     <p class="date">Date to be announced.</p>
                                 {% endif %}
-                                {{ entry.specialEventSummary }}
+                                {{ entry.specialEventSummary | typogrify }}
                                 <p class="learn-more">Learn More</p>
                             </div>
                         </a>

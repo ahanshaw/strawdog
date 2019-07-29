@@ -1,0 +1,28 @@
+{% set slug = craft.app.request.getSegment(2) %}
+
+<div class="c-hero">
+    <div class="c-hero__container">
+        {% for season in seasonsCat %}
+            <div class="c-hero__image">
+                {% set seasonImage = season.seasonImage.one() %}
+                {% set imageSizesSeason = [{ width: 1200, height: 400, mode: 'crop', position: seasonImage.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: seasonImage.getFocalPoint() }] %}
+                {% if season.seasonImage | length %}
+                    {% set transformedSeasonImage = craft.imager.transformImage(seasonImage, imageSizesSeason) %}
+                    {% if craft.imager.serverSupportsWebp() %}
+                        {% set transformedSeasonImageWebp = craft.imager.transformImage(transformedSeasonImage, imageSizesSeason, { format: 'webp' }) %}
+                    {% endif %}
+                    <picture>
+                        {% if craft.imager.serverSupportsWebp() %}
+                            <source srcset="{{ craft.imager.srcset(transformedSeasonImageWebp) }}" type="image/webp">
+                        {% endif %}
+                        <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedSeasonImage) }}" alt="{{ seasonImage.title }}">
+                    </picture>
+                {% endif %}
+            </div>
+            <div class="c-hero__copy">
+                <h2>Season {{ season.title }}{% if season.seasonTheme | length %}: {{ season.seasonTheme }}{% endif %}</h2>
+                {% if season.seasonSummary | length %}{{ season.seasonSummary }}{% endif %}{% if slug == '' %} <a href="{{ season.url }}" title="Learn more about season {{ season.title }}">Learn More</a>{% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,145 @@
+.c-show {
+    margin-bottom: 4em;
+
+    h1 {
+        margin: 0;
+    }
+
+    .c-hero__copy {
+        top: auto;
+        bottom: 2em;
+        padding: 2em;
+        transform: translateY(0);
+    }
+
+    &__detail {
+        @include container(1100);
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2em;
+        padding: 2em;
+
+        &__info {
+            flex: 0 0 33.33%;
+
+            .by {
+                display: block;
+                @include font-bold;
+                text-transform: uppercase;
+                margin-bottom: 1em;
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            .season {
+                @include font-bold;
+            }
+
+            .times {
+                display: block;
+            }
+
+            .btn {
+                @include font-size(16);
+                text-decoration: none;
+                margin-top: 1em;
+                background-color: $gold;
+                transition: background-color .3s ease;
+
+                &:hover {
+                    background-color: $black-60;
+                }
+            }
+        }
+
+        &__description {
+            flex: 0 0 66.66%;
+
+            p {
+                max-width: 600px;
+                @include font-size(18);
+                line-height: 2;
+                margin: 0 0 1em 0;
+            }
+        }
+    }
+
+    &__cast {
+        margin: 4em 0;
+
+        h2 {
+            text-align: center;
+        }
+
+        &__container {
+            @include container(1100);
+            display: flex;
+            justify-content: center;
+        }
+
+        &__member {
+            flex: 0 0 25%;
+            text-align: center;
+            text-decoration: none;
+            color: $black;
+            padding: 2em;
+
+            img {
+                border-radius: 50%;
+                margin-bottom: 1em;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            .cast-member {
+                @include font-bold;
+                text-transform: uppercase;
+            }
+
+            .strawdog {
+                color: $gold;
+            }
+        }
+    }
+
+    &__crew {
+        text-align: center;
+
+        h2 {
+            margin: 0 0 1em 0;
+        }
+
+        &__container {
+            @include container(1100);
+            display: flex;
+            flex-wrap: wrap;
+
+            p {
+                @include font-size(15);
+                flex: 0 0 20%;
+                margin: 0 0 2em 0;
+            }
+
+            a {
+                color: $gold;
+                text-decoration: none;
+            }
+
+            .crew-member {
+                @include font-bold;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &__asterisk {
+        @include container(1100);
+        @include font-size(14);
+        text-align: center;
+        margin-top: 2em;
+    }
+}
