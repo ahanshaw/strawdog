@@ -54,22 +54,23 @@
                 margin-bottom: 1em;
 
                 p {
-                    margin: 0 0 .25em 0;
+                    margin: 0 0 .125em 0;
                 }
             }
 
             .season {
-                @include font-bold;
+                @include font-medium;
             }
 
             .times {
                 display: block;
+                margin-bottom: 2.5em;
             }
 
             .btn {
                 @include font-size(16);
                 text-decoration: none;
-                margin-top: 1em;
+                margin-top: 0;
                 background-color: $gold;
                 transition: background-color .3s ease;
 
@@ -195,7 +196,7 @@
             }
 
             .cast-member {
-                @include font-bold;
+                @include font-medium;
                 text-transform: uppercase;
             }
 
@@ -242,7 +243,7 @@
             }
 
             .crew-member {
-                @include font-bold;
+                @include font-medium;
                 text-transform: uppercase;
             }
         }

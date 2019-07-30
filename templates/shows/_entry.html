@@ -58,7 +58,7 @@
         {% if entry.showReviews | length %}
             <div class="c-show__reviews">
                 <div class="c-show__reviews__container">
-                    {% for block in entry.showReviews %}
+                    {% for block in entry.showReviews.all() %}
                         <div class="c-show__reviews__item">
                             {{ block.showReview }}
                         </div>

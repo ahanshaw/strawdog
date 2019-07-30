@@ -56,7 +56,7 @@
                     {% set inCast = false %}
                     {% for show in shows %}
                         {% set season = show.showSeason.one() %}
-                        {% for cast in show.showCast %}
+                        {% for cast in show.showCast.all() %}
                             {% set castMember = cast.castMember.one() %}
                             {% if castMember.title == entry.title %}
                                 {% set inCast = true %}
@@ -80,7 +80,7 @@
                     {% set inCrew = false %}
                     {% for show in shows %}
                         {% set season = show.showSeason.one() %}
-                        {% for crew in show.showCrew %}
+                        {% for crew in show.showCrew.all() %}
                             {% set crewName = crew.crewName.one() %}
                             {% if crewName.title == entry.title %}
                                 {% set inCrew = true %}
@@ -92,7 +92,7 @@
                         <h2>Strawdog Crew</h2>
                         {% for show in shows %}
                             {% set season = show.showSeason.one() %}
-                            {% for crew in show.showCrew %}
+                            {% for crew in show.showCrew.all() %}
                                 {% set crewName = crew.crewName.one() %}
                                 {% if crewName.title == entry.title %}
                                     <p><a href="{{ show.url }}"><strong>{{ show.title }}</strong></a> (Season {{ season.title }})<br />{{ crew.crewTitle }}</p>

@@ -21,7 +21,7 @@
             </div>
             <div class="c-hero__copy">
                 <h2>Season {{ season.title }}{% if season.seasonTheme | length %}: {{ season.seasonTheme }}{% endif %}</h2>
-                {% if season.seasonSummary | length %}{{ season.seasonSummary }}{% endif %}{% if slug == '' %} <a href="{{ season.url }}" title="Learn more about season {{ season.title }}">Learn More</a>{% endif %}
+                {% if season.seasonSummary | length %}{{ season.seasonSummary }}{% endif %}{% if slug == '' %}&nbsp;<a href="{{ season.url }}" title="Learn more about season {{ season.title }}">Learn&nbsp;More</a>{% endif %}
             </div>
         {% endfor %}
     </div>
