@@ -66,6 +66,7 @@
             }
 
             .btn {
+                @include font-size(13);
 
                 &:hover {
                     background-color: $black-60;

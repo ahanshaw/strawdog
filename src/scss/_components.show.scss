@@ -97,6 +97,40 @@
                     margin-left: 0;
                 }
             }
+
+            em {
+                font-style: normal;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &__reviews {
+        background-color: $gold;
+        padding: 2em 0;
+
+        &__container {
+            @include container(1100);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        &__item {
+            flex: 0 0 50%;
+
+            @include breakpoint('mobile') {
+                flex: 0 0 100%;
+            }
+
+            p {
+                @include font-medium;
+                margin: 1em 2em;
+
+                @include breakpoint('mobile') {
+                    margin: 1em 0;
+                }
+            }
         }
     }
 
