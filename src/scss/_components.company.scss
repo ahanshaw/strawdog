@@ -1,0 +1,82 @@
+.c-company {
+
+    .c-hero__copy {
+        padding: 2em;
+    }
+
+    .c-hero__image {
+
+        img {
+
+            @include breakpoint('mobile') {
+                object-position: center;
+            }
+        }
+    }
+
+
+    &__detail {
+
+        &__container {
+            @include container(1100);
+            display: flex;
+            justify-content: space-between;
+            padding: 2em 0 3em 0;
+
+            @include breakpoint('mobile') {
+                flex-wrap: wrap;
+                padding: 1em 0;
+            }
+        }
+
+        &__bio {
+            flex: 0 0 66%;
+
+            @include breakpoint('mobile') {
+                flex: 0 0 100%;
+                margin-bottom: 1em;
+            }
+
+            p {
+                max-width: 600px;
+                margin-right: 2em;
+
+                @include breakpoint('mobile') {
+                    margin-right: 0;
+                }
+            }
+
+            em {
+                font-style: normal;
+                text-transform: uppercase;
+            }
+        }
+
+        &__shows {
+            flex: 0 0 35%;
+            padding-left: 2em;
+
+            @include breakpoint('mobile') {
+                flex: 0 0 100%;
+                padding-left: 0;
+            }
+
+            img {
+                width: 100%;
+                max-width: 200px;
+                margin-bottom: 1em;
+                border-radius: 50%;
+            }
+
+            p {
+                @include font-size(15);
+            }
+
+            strong {
+                @include font-bold;
+                @include font-size(16);
+                text-transform: uppercase;
+            }
+        }
+    }
+}

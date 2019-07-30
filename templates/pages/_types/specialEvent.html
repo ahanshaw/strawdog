@@ -1,5 +1,77 @@
 {% extends "_layout" %}
 {% block content %}
 
+    <main id="main" class="c-show">
+        <div class="c-hero">
+            <div class="c-hero__container">
+                <div class="c-hero__image">
+                    {% set specialEventMainImage = entry.specialEventMainImage.one() %}
+                    {% set imageSizesEvent = [{ width: 1200, height: 400, mode: 'crop', position: specialEventMainImage.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: specialEventMainImage.getFocalPoint() }] %}
+                    {% if entry.specialEventMainImage | length %}
+                        {% set transformedspecialEventMainImage = craft.imager.transformImage(specialEventMainImage, imageSizesEvent) %}
+                        {% if craft.imager.serverSupportsWebp() %}
+                            {% set transformedspecialEventMainImageWebp = craft.imager.transformImage(transformedspecialEventMainImage, imageSizesEvent, { format: 'webp' }) %}
+                        {% endif %}
+                        <picture>
+                            {% if craft.imager.serverSupportsWebp() %}
+                                <source srcset="{{ craft.imager.srcset(transformedspecialEventMainImageWebp) }}" type="image/webp">
+                            {% endif %}
+                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedspecialEventMainImage) }}" alt="{{ specialEventMainImage.title }}">
+                        </picture>
+                    {% endif %}
+                </div>
+                <div class="c-hero__copy">
+                    <h1>{{ entry.title }}</h1>
+                </div>
+            </div>
+        </div>
+
+        {% if entry.specialEventMainImagePhotoCredit | length %}
+            <div class="c-show__hero-credit">
+                <span class="photo-credit">Photo credit: {{ entry.specialEventMainImagePhotoCredit }}</span>
+            </div>
+        {% endif %}
+
+        <div class="c-show__detail">
+            <div class="c-show__detail__info">
+                {% if entry.specialEventDates | length %}
+                    {% for block in entry.specialEventDates %}
+                        <p>{{ block.specialEventDate|date('l, M j, Y') }}<br />{{ block.specialEventStartTime|time('short') }}&ndash;{{ block.specialEventEndTime|time('short') }}</p>
+                    {% endfor %}
+                {% else %}
+                    <p>Date to be announced.</p>
+                {% endif %}
+
+                {% for block in entry.specialEventDates.inReverse().limit(1).all() %}
+                    {% set endDate = block.specialEventDate %}
+                    {% if endDate|date('l, M j, Y') < endDate %}
+                        <p>{{ entry.specialEventPrice }}</p>
+                        {% if entry.specialEventPurchaseLink | length %}
+                            <a class="btn" target="_blank" noopener noreferrer href="{{ entry.specialEventPurchaseLink }}">Buy Tickets</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+
+                {#
+                {{ entry.specialEventDate|date('l, M j, Y') }}
+
+                {% set currentDate = "now"|date('Y-m-d') %}
+                {% set endDate = entry.specialEventDate|date('Y-m-d') %}
+
+                {% if currentDate < endDate %}
+                    <span class="times">{{ entry.specialEventStartTime|time('short') }} &ndash; {{ entry.specialEventEndTime|time('short') }}</span>
+                    <p>{{ entry.specialEventPrice }}</p>
+                    {% if entry.specialEventPurchaseLink | length %}
+                        <a class="btn" target="_blank" noopener noreferrer href="{{ entry.specialEventPurchaseLink }}">Buy Tickets</a>
+                    {% endif %}
+                {% endif %}
+                #}
+            </div>
+            <div class="c-show__detail__description">
+                {{ entry.specialEventDescription | typogrify }}
+            </div>
+        </div>
+    </main>
 
 {% endblock %}

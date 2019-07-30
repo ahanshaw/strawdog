@@ -1,38 +1,108 @@
 {% extends "_layout" %}
 {% block content %}
 
-    {% set headshot = entry.companyHeadshot.one() %}
-    {% if headshot | length %}
-        <div>
-            <img src="{{ headshot.url }}" alt="{{ headshot.title }}" />
+    <main id="main" class="c-company">
+        <div class="c-hero">
+            <div class="c-hero__container">
+                <div class="c-hero__image">
+                    {% if entry.companyHeroImage | length %}
+                        {% set heroImage = entry.companyHeroImage.one() %}
+                    {% else %}
+                        {% set heroImage = entry.companyHeadshot.one() %}
+                    {% endif %}
+                    {% set heroImageSizes = [{ width: 1200, height: 400, mode: 'crop', position: heroImage.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: heroImage.getFocalPoint() }] %}
+                    {% if heroImage | length %}
+                        {% set transformedHeroImage = craft.imager.transformImage(heroImage, heroImageSizes) %}
+                        {% if craft.imager.serverSupportsWebp() %}
+                            {% set transformedHeroImageWebp = craft.imager.transformImage(transformedHeroImage, heroImageSizes, { format: 'webp' }) %}
+                        {% endif %}
+                        <picture>
+                            {% if craft.imager.serverSupportsWebp() %}
+                                <source srcset="{{ craft.imager.srcset(transformedHeroImageWebp) }}" type="image/webp">
+                            {% endif %}
+                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedHeroImage) }}" alt="{{ heroImage.title }}">
+                        </picture>
+                    {% endif %}
+                </div>
+                <div class="c-hero__copy">
+                    <h1>{{ entry.title }}</h1>
+                </div>
+            </div>
         </div>
-    {% endif %}
 
-    <h1>{{ entry.title }}</h1>
-    {{ entry.companyBio }}
+        <div class="c-company__detail">
+            <div class="c-company__detail__container">
+                <div class="c-company__detail__bio">
+                    {{ entry.companyBio | typogrify }}
+                </div>
+                <div class="c-company__detail__shows">
+                    {% set headshot = entry.companyHeadshot.one() %}
+                    {% set headshotSizes = [{ width: 300, height: 300, mode: 'crop', position: headshot.getFocalPoint() }] %}
+                    {% if headshot | length %}
+                        {% set transformedHeadshot = craft.imager.transformImage(headshot, headshotSizes) %}
+                        {% if craft.imager.serverSupportsWebp() %}
+                            {% set transformedHeadshotWebp = craft.imager.transformImage(transformedHeadshot, headshotSizes, { format: 'webp' }) %}
+                        {% endif %}
+                        <picture>
+                            {% if craft.imager.serverSupportsWebp() %}
+                                <source srcset="{{ craft.imager.srcset(transformedHeadshotWebp) }}" type="image/webp">
+                            {% endif %}
+                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedHeadshot) }}" alt="{{ headshot.title }}">
+                        </picture>
+                    {% endif %}
 
-    <h2>Strawdog Cast</h2>
-    {% set shows = craft.entries().section('shows').all %}
-    {% for show in shows %}
-        {% set season = show.showSeason.one() %}
-        {% for cast in show.showCast %}
-            {% set castMember = cast.castMember.one() %}
-            {% if castMember.title == entry.title %}
-                <p>{{ cast.characterName }} in <a href="{{ show.url }}">{{ show.title }}</a> (Season {{ season.title }})</p>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
+                    {% set shows = craft.entries().section('shows').all %}
 
-    <h2>Strawdog Crew</h2>
-    {% set shows = craft.entries().section('shows').all %}
-    {% for show in shows %}
-        {% set season = show.showSeason.one() %}
-        {% for crew in show.showCrew %}
-            {% set crewName = crew.crewName.one() %}
-            {% if crewName.title == entry.title %}
-                <p>{{ crew.crewTitle }} in <a href="{{ show.url }}">{{ show.title }}</a> (Season {{ season.title }})</p>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
+                    {% set inCast = false %}
+                    {% for show in shows %}
+                        {% set season = show.showSeason.one() %}
+                        {% for cast in show.showCast %}
+                            {% set castMember = cast.castMember.one() %}
+                            {% if castMember.title == entry.title %}
+                                {% set inCast = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+
+                    {% if inCast %}
+                    <h2>Strawdog Cast</h2>
+                        {% for show in shows %}
+                            {% set season = show.showSeason.one() %}
+                            {% for cast in show.showCast %}
+                                {% set castMember = cast.castMember.one() %}
+                                {% if castMember.title == entry.title %}
+                                    <p><a href="{{ show.url }}"><strong>{{ show.title }}</strong></a> (Season {{ season.title }})<br />{{ cast.characterName }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+
+                    {% set inCrew = false %}
+                    {% for show in shows %}
+                        {% set season = show.showSeason.one() %}
+                        {% for crew in show.showCrew %}
+                            {% set crewName = crew.crewName.one() %}
+                            {% if crewName.title == entry.title %}
+                                {% set inCrew = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+
+                    {% if inCrew %}
+                        <h2>Strawdog Crew</h2>
+                        {% for show in shows %}
+                            {% set season = show.showSeason.one() %}
+                            {% for crew in show.showCrew %}
+                                {% set crewName = crew.crewName.one() %}
+                                {% if crewName.title == entry.title %}
+                                    <p><a href="{{ show.url }}"><strong>{{ show.title }}</strong></a> (Season {{ season.title }})<br />{{ crew.crewTitle }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
 
 {% endblock %}

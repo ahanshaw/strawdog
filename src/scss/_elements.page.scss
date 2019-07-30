@@ -29,6 +29,29 @@ body {
     font-feature-settings: "kern" 1, "liga" 1;
 }
 
+h2 {
+    @include font-size(24);
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+h3 {
+    @include font-size(15);
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $gold;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 // responsive images
 img {
     max-width: 100%;

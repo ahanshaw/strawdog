@@ -1,19 +1,5 @@
 .c-home {
 
-    h2 {
-        @include font-size(24);
-        letter-spacing: .025em;
-        text-transform: uppercase;
-        margin: 0;
-    }
-
-    h3 {
-        @include font-size(15);
-        letter-spacing: .025em;
-        text-transform: uppercase;
-        margin: 0;
-    }
-
     .c-hero {
         background-color: $black;
     }
@@ -152,7 +138,7 @@
                     transition: color .3s ease;
 
                     &:hover {
-                        color: $white;
+                        text-decoration: underline;
                     }
                 }
             }
@@ -201,6 +187,7 @@
             }
 
             &:hover {
+                text-decoration: none;
 
                 img {
                     border-color: $gold;
@@ -268,7 +255,7 @@
                     transition: color .3s ease;
 
                     &:hover {
-                        color: $black;
+                        text-decoration: underline;
                     }
                 }
             }

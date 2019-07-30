@@ -26,15 +26,29 @@
             </div>
         </div>
 
+        {% if entry.showMainImagePhotoCredit | length %}
+            <div class="c-show__hero-credit">
+                <span class="photo-credit">Photo credit: {{ entry.showMainImagePhotoCredit }}</span>
+            </div>
+        {% endif %}
+
         <div class="c-show__detail">
             <div class="c-show__detail__info">
                 <span class="by">{{ entry.showBy }}</span>
                 {% set season = entry.showSeason.one() %}
                 <p class="season">Season {{ season.title }}</p>
                 {{ entry.showStartDate|date }} &ndash; {{ entry.showEndDate|date }}
-                <span class="times">{{ entry.showTimes }}</span>
-                <p>{{ entry.showTicketPrices }}</p>
-                <a class="btn" href="{{ entry.showTicketsUrl }}">Buy Tickets</a>
+
+                {% set currentDate = "now"|date('Y-m-d') %}
+                {% set endDate = entry.showEndDate|date('Y-m-d') %}
+
+                {% if currentDate < endDate %}
+                    <span class="times">{{ entry.showTimes }}</span>
+                    <p>{{ entry.showTicketPrices }}</p>
+                    {% if entry.showTicketsUrl | length %}
+                        <a class="btn" target="_blank" noopener noreferrer href="{{ entry.showTicketsUrl }}">Buy Tickets</a>
+                    {% endif %}
+                {% endif %}
             </div>
             <div class="c-show__detail__description">
                 {{ entry.showDescription | typogrify }}
@@ -48,7 +62,7 @@
                     {% for block in entry.showCast.all() %}
                         {% set castMember = block.castMember.one() %}
                         {% if castMember.companyEnsembleMember %}
-                            <a class="c-show__cast__member" href="{{ castMember.url }}">
+                            <a class="c-show__cast__member ensemble" href="{{ castMember.url }}">
                         {% else %}
                             <div class="c-show__cast__member">
                         {% endif %}

@@ -336,7 +336,7 @@
                     transition: color .3s ease;
 
                     &:hover {
-                        color: $black;
+                        text-decoration: underline;
                     }
                 }
             }

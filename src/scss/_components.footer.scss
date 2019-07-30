@@ -22,7 +22,7 @@
 
             a {
                 @include font-bold;
-                @include font-size(14);
+                @include font-size(13);
                 text-decoration: none;
                 text-transform: uppercase;
                 color: $white;

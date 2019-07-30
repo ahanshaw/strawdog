@@ -11,6 +11,19 @@
     */
 }
 
+/* container without side padding */
+@mixin container-no-padding($max-width) {
+	width: 100%;
+	max-width: $max-width + px;
+	margin: 0 auto;
+
+    /*
+	@media $phone {
+		width: calc(100% - 32px);
+	}
+    */
+}
+
 /* container with center-, left- or right-aligned content */
 @mixin container-aligned ($max-width, $item-margin) {
 	width: calc(100% - 64px);
