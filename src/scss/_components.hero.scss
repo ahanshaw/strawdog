@@ -42,7 +42,7 @@
         position: absolute;
         bottom: 3em;
         right: 0;
-        width: 50%;
+        max-width: 50%;
         padding: 1.5em 2em 2em 2em;
         background-color: $black;
         z-index: 10;
@@ -51,6 +51,7 @@
             position: relative;
             top: 0;
             width: 100%;
+            max-width: none;
             text-align: center;
             padding: 1.5em 1em;
             transform: translateY(0);

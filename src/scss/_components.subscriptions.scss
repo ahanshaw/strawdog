@@ -1,0 +1,44 @@
+.c-subscriptions {
+
+    &__container {
+        @include container(1100);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 4em 0 0 0;
+    }
+
+    &__subscription {
+        margin-bottom: 4em;
+        flex: 0 0 calc(50% - 2em);
+
+        @include breakpoint('tablet') {
+            flex: 0 0 100%;
+        }
+
+        h2 {
+            margin: 0 0 .5em 0;
+        }
+
+        p {
+            max-width: 400px;
+            margin: 0 0 1em 0;
+        }
+
+        strong {
+            @include font-medium;
+        }
+
+        .price {
+            margin-top: 2em;
+        }
+
+        .btn {
+            @include font-size(16);
+
+            &:hover {
+                background-color: $black-60;
+            }
+        }
+    }
+}

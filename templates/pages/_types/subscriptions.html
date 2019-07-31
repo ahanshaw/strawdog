@@ -1,10 +1,38 @@
 {% extends "_layout" %}
 {% block content %}
-    <h1>Subscriptions</h1>
-    {% for block in entry.subscriptions.all() %}
-        <h2>{{ block.subscriptionTitle }}</h2>
-        <p>Price: ${{ block.subscriptionPrice }}</p>
-        {{ block.subscriptionDescription }}
-        <a href="{{ block.subscriptionLink }}">Subscribe</a>
-    {% endfor %}
+    <main id="main" class="c-subscriptions">
+        <div class="c-hero">
+            <div class="c-hero__container">
+                <div class="c-hero__image">
+                    {% set heroImage = entry.subscriptionsHeroImage.one() %}
+                    {% set heroImageSizes = [{ width: 1200, height: 400, mode: 'crop', position: heroImage.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: heroImage.getFocalPoint() }] %}
+                    {% if heroImage | length %}
+                        {% set transformedHeroImage = craft.imager.transformImage(heroImage, heroImageSizes) %}
+                        {% if craft.imager.serverSupportsWebp() %}
+                            {% set transformedHeroImageWebp = craft.imager.transformImage(transformedHeroImage, heroImageSizes, { format: 'webp' }) %}
+                        {% endif %}
+                        <picture>
+                            {% if craft.imager.serverSupportsWebp() %}
+                                <source srcset="{{ craft.imager.srcset(transformedHeroImageWebp) }}" type="image/webp">
+                            {% endif %}
+                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedHeroImage) }}" alt="{{ heroImage.title }}">
+                        </picture>
+                    {% endif %}
+                </div>
+                <div class="c-hero__copy">
+                    <h1>{{ entry.title }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="c-subscriptions__container">
+            {% for block in entry.subscriptions.all() %}
+                <div class="c-subscriptions__subscription">
+                    <h2>{{ block.subscriptionTitle }}</h2>
+                    {{ block.subscriptionDescription | typogrify }}
+                    <p class="price">Price: ${{ block.subscriptionPrice }}</p>
+                    <a class="btn btn--gold" href="{{ block.subscriptionLink }}">Subscribe</a>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
 {% endblock %}
