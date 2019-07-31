@@ -1,24 +1,64 @@
 {% extends "_layout" %}
 {% block content %}
-    <h1>Past Seasons</h1>
 
-    <div>
-        {% set cats = craft.categories().group('seasons').offset(1).all() %}
+    <main id="main" class="c-past-seasons">
+        <div class="c-hero">
+            <div class="c-hero__container">
+                <div class="c-hero__image">
+                    {% set seasonImage = entry.seasonPastSeasonHero.one() %}
+                    {% set imageSizesSeason = [{ width: 1200, height: 400, mode: 'crop', position: seasonImage.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: seasonImage.getFocalPoint() }] %}
+                    {% if seasonImage | length %}
+                        {% set transformedSeasonImage = craft.imager.transformImage(seasonImage, imageSizesSeason) %}
+                        {% if craft.imager.serverSupportsWebp() %}
+                            {% set transformedSeasonImageWebp = craft.imager.transformImage(transformedSeasonImage, imageSizesSeason, { format: 'webp' }) %}
+                        {% endif %}
+                        <picture>
+                            {% if craft.imager.serverSupportsWebp() %}
+                                <source srcset="{{ craft.imager.srcset(transformedSeasonImageWebp) }}" type="image/webp">
+                            {% endif %}
+                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedSeasonImage) }}" alt="{{ seasonImage.title }}">
+                        </picture>
+                    {% endif %}
+                </div>
+                <div class="c-hero__copy">
+                    <h1>{{ entry.title }}</h1>
+                </div>
+            </div>
+        </div>
 
-        {% for cat in cats %}
-            {% set filter = craft.categories.slug(cat.title) %}
-            <h2>Season {{ cat.title }}</h2>
-            {% set shows = craft.entries.section('shows').relatedTo(filter).all() %}
-            {% for show in shows %}
-                {% set showMainImage = show.showMainImage.one() %}
-                {% if showMainImage | length %}
-                    <div>
-                        <img src="{{ showMainImage.url }}" alt="{{ showMainImage.title }}" />
+        <div class="c-past-seasons__main">
+            {% set seasons = craft.categories().group('seasons').all() %}
+            {% for season in seasons %}
+                {% set filter = craft.categories.slug(season.title) %}
+                <div class="c-past-seasons__main__container">
+                    <div class="c-past-seasons__main__season">
+                        <h2>Season {{ season.title }}</h2>
+                        {{ season.seasonYears }}
                     </div>
-                {% endif %}
-                <a href="{{ show.url }}">{{ show.title }}</a>
-                {{ show.showSummary }}
+                    <div class="c-past-seasons__main__shows">
+                        {% set shows = craft.entries.section('shows').relatedTo(filter).all() %}
+                        {% for show in shows %}
+                            <a href="{{ show.url }}" class="c-past-seasons__main__show">
+                                {% set showImage = show.showMainImage.one() %}
+                                {% set imageSizesShow = [{ width: 200, height: 200, mode: 'crop', position: showImage.getFocalPoint() }] %}
+                                {% if showImage | length %}
+                                    {% set transformedShowImage = craft.imager.transformImage(showImage, imageSizesShow) %}
+                                    {% if craft.imager.serverSupportsWebp() %}
+                                        {% set transformedShowImageWebp = craft.imager.transformImage(transformedShowImage, imageSizesShow, { format: 'webp' }) %}
+                                    {% endif %}
+                                    <picture>
+                                        {% if craft.imager.serverSupportsWebp() %}
+                                            <source srcset="{{ craft.imager.srcset(transformedShowImageWebp) }}" type="image/webp">
+                                        {% endif %}
+                                        <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedShowImage) }}" alt="{{ showImage.title }}">
+                                    </picture>
+                                {% endif %}
+                                <h3>{{ show.title }}</h3>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
             {% endfor %}
-        {% endfor %}
-    </div>
+        </div>
+    </main>
 {% endblock %}

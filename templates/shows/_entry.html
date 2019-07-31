@@ -60,7 +60,7 @@
                 <div class="c-show__reviews__container">
                     {% for block in entry.showReviews.all() %}
                         <div class="c-show__reviews__item">
-                            {{ block.showReview }}
+                            {{ block.showReview |typogrify }}
                         </div>
                     {% endfor %}
                 </div>

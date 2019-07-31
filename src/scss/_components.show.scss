@@ -119,6 +119,7 @@
 
         &__item {
             flex: 0 0 50%;
+            margin: 1em 0;
 
             @include breakpoint('mobile') {
                 flex: 0 0 100%;
@@ -126,11 +127,7 @@
 
             p {
                 @include font-medium;
-                margin: 1em 2em;
-
-                @include breakpoint('mobile') {
-                    margin: 1em 0;
-                }
+                margin: 0 1em;
             }
         }
     }
@@ -162,10 +159,7 @@
             @include container(1100);
             display: flex;
             justify-content: center;
-
-            @include breakpoint('tablet') {
-                flex-wrap: wrap;
-            }
+            flex-wrap: wrap;
         }
 
         &__member {

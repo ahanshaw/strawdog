@@ -4,11 +4,9 @@
 	max-width: $max-width + px;
 	margin: 0 auto;
 
-    /*
-	@media $phone {
+	@include breakpoint('mobile') {
 		width: calc(100% - 32px);
 	}
-    */
 }
 
 /* container without side padding */
@@ -16,12 +14,6 @@
 	width: 100%;
 	max-width: $max-width + px;
 	margin: 0 auto;
-
-    /*
-	@media $phone {
-		width: calc(100% - 32px);
-	}
-    */
 }
 
 /* container with center-, left- or right-aligned content */
@@ -30,9 +22,7 @@
 	max-width: calc($max-width + $item-margin);
 	margin: 0 auto;
 
-    /*
-	@media $phone {
+	@include breakpoint('mobile') {
 		width: calc(100% - 32px);
 	}
-    */
 }
