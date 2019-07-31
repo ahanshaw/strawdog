@@ -29,6 +29,10 @@
             @include font-medium;
         }
 
+        a {
+            text-transform: uppercase;
+        }
+
         .price {
             margin-top: 2em;
         }

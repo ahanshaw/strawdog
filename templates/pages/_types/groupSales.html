@@ -1,5 +1,36 @@
 {% extends "_layout" %}
 {% block content %}
-    <h1>Group Sales</h1>
-    {{ entry.groupSalesCopy }}
+    <main id="main" class="c-group-sales">
+        <div class="c-hero">
+            <div class="c-hero__container">
+                <div class="c-hero__image">
+                    {% set heroImage = entry.groupSalesHeroImage.one() %}
+                    {% set heroImageSizes = [{ width: 1200, height: 400, mode: 'crop', position: heroImage.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: heroImage.getFocalPoint() }] %}
+                    {% if heroImage | length %}
+                        {% set transformedHeroImage = craft.imager.transformImage(heroImage, heroImageSizes) %}
+                        {% if craft.imager.serverSupportsWebp() %}
+                            {% set transformedHeroImageWebp = craft.imager.transformImage(transformedHeroImage, heroImageSizes, { format: 'webp' }) %}
+                        {% endif %}
+                        <picture>
+                            {% if craft.imager.serverSupportsWebp() %}
+                                <source srcset="{{ craft.imager.srcset(transformedHeroImageWebp) }}" type="image/webp">
+                            {% endif %}
+                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedHeroImage) }}" alt="{{ heroImage.title }}">
+                        </picture>
+                    {% endif %}
+                </div>
+                <div class="c-hero__copy">
+                    <h1>{{ entry.title }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="c-group-sales__container">
+            <div class="c-group-sales__why">
+                {{ entry.groupSalesWhy | typogrify }}
+            </div>
+            <div class="c-group-sales__copy">
+                {{ entry.groupSalesCopy | typogrify }}
+            </div>
+        </div>
+    </main>
 {% endblock %}
