@@ -1,0 +1,46 @@
+.c-space {
+
+    &__container {
+        @include container(1100);
+        display: flex;
+        padding: 4em 0 3em 0;
+
+        @include breakpoint('tablet') {
+            flex-wrap: wrap;
+        }
+
+        @include breakpoint('tablet') {
+            padding: 3em 0 2em 0;
+        }
+    }
+
+    &__map {
+        flex: 0 0 40%;
+
+        @include breakpoint('tablet') {
+            flex: 0 0 100%;
+            margin-bottom: 2em;
+        }
+
+        img {
+            display: block;
+            padding-right: 3em;
+
+            @include breakpoint('tablet') {
+                padding-right: 0;
+            }
+        }
+    }
+
+    &__copy {
+        flex: 0 0 60%;
+
+        @include breakpoint('tablet') {
+            flex: 0 0 100%;
+        }
+
+        p {
+            max-width: 600px;
+        }
+    }
+}
