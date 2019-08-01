@@ -3,20 +3,10 @@
         {% for entry in entries %}
             <a href="{{ entry.url }}" class="c-grid__event">
                 <div class="c-grid__event__image">
-                    {% set entryImage = entry.showMainImage.one() %}
-                    {% set entryImageSizes = [{ width: 200, height: 200, mode: 'crop', position: entryImage.getFocalPoint() }] %}
-                    {% if entryImage | length %}
-                    {% set transformedentryImage = craft.imager.transformImage(entryImage, entryImageSizes) %}
-                        {% if craft.imager.serverSupportsWebp() %}
-                            {% set transformedentryImageWebp = craft.imager.transformImage(transformedentryImage, entryImageSizes, { format: 'webp' }) %}
-                        {% endif %}
-                        <picture>
-                            {% if craft.imager.serverSupportsWebp() %}
-                                <source srcset="{{ craft.imager.srcset(transformedentryImageWebp) }}" type="image/webp">
-                            {% endif %}
-                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedentryImage) }}" alt="{{ entryImage.title }}">
-                        </picture>
-                    {% endif %}
+                    {% set image = entry.showMainImage.one() %}
+                    {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                    {% set srcSizes = '200px' %}
+                    {% include '_partials/image' %}
                 </div>
                 <div class="c-grid__event__detail">
                     <h3>{{ entry.title | typogrify }}</h3>

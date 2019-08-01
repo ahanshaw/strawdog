@@ -5,7 +5,6 @@
         <section class="c-home__current">
             {% set seasonsCat = craft.categories().group('seasons').limit(1).all() %}
             {% include '_partials/page/season-hero' %}
-            
             <div class="c-home__current__shows">
                 {% set entries = craft.entries.relatedTo(seasonsCat).all() %}
                 {% for entry in entries %}
@@ -27,21 +26,11 @@
                             </div>
                             <div class="c-home__current__show__detail">
                                 <div class="c-home__current__show__image">
-                                    {% set showImage = entry.showMainImage.one() %}
-                                    {% set imageSizesShow = [{ width: 350, height: 350, mode: 'crop', position: showImage.getFocalPoint() }] %}
-                                    {% if entry.showMainImage | length %}
-                                        {% set transformedShowImage = craft.imager.transformImage(showImage, imageSizesShow) %}
-                                        {% if craft.imager.serverSupportsWebp() %}
-                                            {% set transformedShowImageWebp = craft.imager.transformImage(transformedShowImage, imageSizesShow, { format: 'webp' }) %}
-                                        {% endif %}
-                                        <picture>
-                                            {% if craft.imager.serverSupportsWebp() %}
-                                                <source srcset="{{ craft.imager.srcset(transformedShowImageWebp) }}" type="image/webp">
-                                            {% endif %}
-                                            <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedShowImage) }}" alt="{{ showImage.title }}">
-                                        </picture>
-                                    </div>
-                                {% endif %}
+                                    {% set image = entry.showMainImage.one() %}
+                                    {% set imageResizes = [{ width: 350, height: 350, mode: 'crop', position: image.getFocalPoint() }] %}
+                                    {% set srcSizes = '350px' %}
+                                    {% include '_partials/image' %}
+                                </div>
                                 <div class="c-home__current__show__summary">
                                     <div>
                                         {{ entry.showSummary | typogrify }}
@@ -63,20 +52,10 @@
                     {% for entry in entries %}
                         <a href="{{ entry.url }}" class="c-home__events__event">
                             <div class="c-home__events__event__image">
-                                {% set eventMainImage = entry.specialEventMainImage.one() %}
-                                {% set eventMainImageSizes = [{ width: 200, height: 200, mode: 'crop', position: eventMainImage.getFocalPoint() }] %}
-                                {% if eventMainImage | length %}
-                                {% set transformedEventMainImage = craft.imager.transformImage(eventMainImage, eventMainImageSizes) %}
-                                    {% if craft.imager.serverSupportsWebp() %}
-                                        {% set transformedEventMainImageWebp = craft.imager.transformImage(transformedEventMainImage, eventMainImageSizes, { format: 'webp' }) %}
-                                    {% endif %}
-                                    <picture>
-                                        {% if craft.imager.serverSupportsWebp() %}
-                                            <source srcset="{{ craft.imager.srcset(transformedEventMainImageWebp) }}" type="image/webp">
-                                        {% endif %}
-                                        <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedEventMainImage) }}" alt="{{ eventMainImage.title }}">
-                                    </picture>
-                                {% endif %}
+                                {% set image = entry.specialEventMainImage.one() %}
+                                {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                                {% set srcSizes = '200px' %}
+                                {% include '_partials/image' %}
                             </div>
                             <div class="c-home__events__event__detail">
                                 <h3>{{ entry.title }}</h3>
@@ -99,19 +78,9 @@
                 <div class="c-home__carousel__container">
                     {% for image in entry.homeCarouselImages.all() %}
                         <div>
-                            {% set carouselImageSize = [{ width: 400, height: 400, mode: 'crop', position: image.getFocalPoint() }] %}
-                            {% if image | length %}
-                                {% set transformedCarouselImage = craft.imager.transformImage(image, carouselImageSize) %}
-                                {% if craft.imager.serverSupportsWebp() %}
-                                    {% set transformedCarouselImageWebp = craft.imager.transformImage(transformedCarouselImage, carouselImageSize, { format: 'webp' }) %}
-                                {% endif %}
-                                <picture>
-                                    {% if craft.imager.serverSupportsWebp() %}
-                                        <source srcset="{{ craft.imager.srcset(transformedCarouselImageWebp) }}" type="image/webp">
-                                    {% endif %}
-                                    <img src="{{ craft.imager.base64Pixel() }}" srcset="{{ craft.imager.srcset(transformedCarouselImage) }}" alt="{{ image.title }}">
-                                </picture>
-                            {% endif %}
+                            {% set imageResizes = [{ width: 400, height: 400, mode: 'crop', position: image.getFocalPoint() }] %}
+                            {% set srcSizes = '400px' %}
+                            {% include '_partials/image' %}
                         </div>
                     {% endfor %}
                 </div>
