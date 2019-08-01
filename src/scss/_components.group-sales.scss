@@ -4,10 +4,19 @@
         @include container(1100);
         display: flex;
         padding: 4em 0;
+
+        @include breakpoint('mobile') {
+            flex-wrap: wrap;
+            padding: 3em 0 1em 0;
+        }
     }
 
     &__why {
         flex: 0 0 30%;
+
+        @include breakpoint('mobile') {
+            flex: 0 0 100%;
+        }
 
         p {
             margin: 0 0 1em 0;
@@ -17,9 +26,14 @@
     &__copy {
         margin-left: 4em;
 
+        @include breakpoint('mobile') {
+            flex: 0 0 100%;
+            margin-left: 0;
+        }
+
         h2 {
             max-width: 600px;
-            margin: 1em 0 .5em 0;            
+            margin: 1em 0 .5em 0;
         }
 
         p {

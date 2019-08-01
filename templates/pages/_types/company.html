@@ -1,43 +1,76 @@
 {% extends "_layout" %}
 {% block content %}
-    <h1>Our Company</h1>
-    {{ entry.companyIntro }}
-    <div>
-        <h2>Company</h2>
-        {% set entries = craft.entries.section('company').all() %}
-        {% for entry in entries %}
-            {% if entry.companyEnsembleMember %}
-                {% set headshot = entry.companyHeadshot.one() %}
-                {% if headshot | length %}
-                    <div>
-                        <img src="{{ headshot.url }}" alt="{{ headshot.title }}" />
-                    </div>
-                {% endif %}
-                <h2>{{ entry.title }}</h2>
-                {{ entry.companyBio }}
-            {% endif %}
-        {% endfor %}
-    </div>
-    <div>
-        <h2>Board of Directors</h2>
-        <div style="columns: 4;">
-            {{ entry.companyBoard }}
+    <main id="main" class="c-company">
+        <div class="c-company__intro">
+            <div class="c-company__intro__container">
+                <h1>{{ entry.title }}</h1>
+                <p class="subtitle">{{ entry.companySubtitle | striptags }}</p>
+                {{ entry.companyIntro | typogrify }}
+            </div>
         </div>
-    </div>
-    <div>
-        <h2>Staff</h2>
-        <div style="columns: 4;">
-            {{ entry.companyStaff }}
+        <div class="c-company__nav">
+            <div class="c-company__nav__container">
+                <ul>
+                    <li><a href="#company">Company</a></li>
+                    {% if entry.companyBoard | length %}
+                        <li><a href="#board">Board of Directors</a></li>
+                    {% endif %}
+                    {% if entry.companyStaff | length %}
+                        <li><a href="#staff">Staff</a></li>
+                    {% endif %}
+                    {% if entry.companyArtisticAssociates | length %}
+                        <li><a href="#associates">Artistic Associates</a></li>
+                    {% endif %}
+                    {% if entry.companyEmeritusMembers | length %}
+                        <li><a href="#emeritus">Emeritus Members</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </div>
-    <div>
-        <h2>Artistic Associates</h2>
-        {{ entry.companyArtisticAssociates }}
-    </div>
-    <div>
-        <h2>Emeritus Members</h2>
-        <div style="columns: 5;">
-            {{ entry.companyEmeritusMembers }}
+        <div id="company" class="c-company__members">
+            <h2>company</h2>
+            <div class="c-company__members__container">
+                {% set entries = craft.entries.section('company').all() %}
+                {% for entry in entries %}
+                    {% if entry.companyEnsembleMember %}
+                        <a class="c-company__members__member" href="{{ entry.url }}">
+                            {% set image = entry.companyHeadshot.one() %}
+                            {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                            {% set srcSizes = '200px' %}
+                            {% include '_partials/image' %}
+                            <p>{{ entry.title }}</p>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+
+        <div id="board" class="c-company__list">
+            <h2>Board of Directors</h2>
+            <div class="c-company__list__container">
+                {{ entry.companyBoard }}
+            </div>
+        </div>
+
+        <div id="staff" class="c-company__list">
+            <h2>Staff</h2>
+            <div class="c-company__list__container">
+                {{ entry.companyStaff }}
+            </div>
+        </div>
+
+        <div id="associates" class="c-company__list">
+            <h2>Artistic Associates</h2>
+            <div class="c-company__list__container">
+                {{ entry.companyArtisticAssociates }}
+            </div>
+        </div>
+
+        <div id="emeritus" class="c-company__list">
+            <h2>Emeritus Members</h2>
+            <div class="c-company__list__container">
+                {{ entry.companyEmeritusMembers }}
+            </div>
+        </div>
+    </main>
 {% endblock %}
