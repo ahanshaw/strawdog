@@ -1,0 +1,89 @@
+.c-visit {
+
+    &__container {
+        @include container(1100);
+        display: flex;
+        padding: 4em 0 3em 0;
+
+        @include breakpoint('tablet') {
+            padding: 3em 0 2em 0;
+        }
+
+        @include breakpoint('mobile') {
+            flex-wrap: wrap;
+            padding: 2em 0 0 0;
+        }
+    }
+
+    &__nav {
+        flex: 0 0 25%;
+
+        @include breakpoint('tablet') {
+            flex: 0 0 30%;
+        }
+
+        @include breakpoint('mobile') {
+            flex: 0 0 100%;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            margin: 0 0 1em 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .sticky {
+            display: block;
+            position: sticky;
+            top: 2em;
+        }
+    }
+
+    &__details {
+        max-width: 600px;
+
+        @include breakpoint('tablet') {
+            margin-left: 2em;
+        }
+
+        @include breakpoint('mobile') {
+            flex: 0 0 100%;
+            margin-bottom: 2em;
+            margin-left: 0;
+        }
+
+        h2 {
+            margin: 1.5em 0 .25em 0;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+
+        h3 {
+            @include font-size(18);
+            margin: 1em 0 .25em 0;
+        }
+
+        p {
+            margin: 0 0 1em 0;
+        }
+
+        ul {
+            margin: 0 0 1em 0;
+        }
+
+        li {
+            margin: 0;
+        }
+    }
+}
