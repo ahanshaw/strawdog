@@ -59,6 +59,7 @@
 
             .season {
                 @include font-medium;
+                 margin-bottom: 0;
             }
 
             .times {
