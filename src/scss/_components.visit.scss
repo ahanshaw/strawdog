@@ -41,6 +41,10 @@
             list-style: none;
         }
 
+        a {
+            @include font-medium;
+        }
+
         .sticky {
             display: block;
             position: sticky;

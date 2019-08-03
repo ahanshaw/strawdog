@@ -1,5 +1,15 @@
 {% extends "_layout" %}
 {% block content %}
-    <h1>Our Supporters</h1>
-    {{ entry.supportersCopy }}
+    <main id="main" class="c-supporters">
+        <div class="c-supporters__container">
+            <div class="c-supporters__contact">
+                <div class="c-supporters__sticky">
+                    {{ entry.supportersContact }}
+                </div>
+            </div>
+            <div class="c-supporters__list">
+                {{ entry.supportersList | typogrify }}
+            </div>
+        </div>
+    </main>
 {% endblock %}

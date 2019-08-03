@@ -16,7 +16,10 @@
         </div>
         <div class="c-support__container">
             <div class="c-support__donate">
-                <a class="btn btn--gold" href="/https://tickets.vendini.com/donation-software.html?d=3c7271900fd9df34061477c9928dc99b&t=donation&vqitq=554e6b16-3fbf-4009-8432-4c39cc5a77bd&vqitp=f909b729-9e9d-4960-89c6-41904695285e&vqitts=1564703616&vqitc=vendini&vqite=itl&vqitrt=Safetynet&vqith=ac51667705649873a885e81693b31136">Donate</a>
+                <div class="c-support__sticky">
+                    <a class="btn btn--gold" href="/https://tickets.vendini.com/donation-software.html?d=3c7271900fd9df34061477c9928dc99b&t=donation&vqitq=554e6b16-3fbf-4009-8432-4c39cc5a77bd&vqitp=f909b729-9e9d-4960-89c6-41904695285e&vqitts=1564703616&vqitc=vendini&vqite=itl&vqitrt=Safetynet&vqith=ac51667705649873a885e81693b31136">Donate</a>
+                    {{ entry.donateNavigation | typogrify }}
+                </div>
             </div>
             <div class="c-support__details">
                 {{ entry.donateDetails | typogrify }}
