@@ -21,7 +21,7 @@
                     {% endif %}
                 </div>
                 <div class="c-hero__copy">
-                    <h1>{{ entry.title }}</h1>
+                    <h1>{{ entry.title | typogrify }}</h1>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
                                 <img src="/cms/images/company/user-placeholder.png" />
                             {% endif %}
                             <p class="cast-member {% if castMember.companyEnsembleMember %} strawdog{% endif %}">{{ castMember.title }}{% if castMember.companyEnsembleMember %}*{% endif %}</p>
-                            <p>as {{ block.characterName }}</p>
+                            {% if block.characterName | length %}<p>as {{ block.characterName }}</p>{% endif %}
                         {% if castMember.companyEnsembleMember %}
                             </a>
                         {% else %}

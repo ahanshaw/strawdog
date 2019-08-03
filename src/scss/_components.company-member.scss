@@ -31,6 +31,7 @@
         &__shows {
             flex: 0 0 30%;
             text-align: center;
+            padding-right: 2em;
 
             @include breakpoint('mobile') {
                 flex: 0 0 100%;

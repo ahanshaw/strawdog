@@ -48,12 +48,12 @@
 
             .by {
                 display: block;
-                @include font-bold;
+                @include font-medium;
                 text-transform: uppercase;
                 margin-bottom: 1em;
 
                 p {
-                    margin: 0 0 .125em 0;
+                    margin: 0 0 .25em 0;
                 }
             }
 
@@ -92,10 +92,6 @@
                 max-width: 600px;
                 line-height: 2;
                 margin: 0 0 1em 2em;
-
-                &:first-of-type {
-                    @include font-size(18);
-                }
 
                 @include breakpoint('mobile') {
                     margin-left: 0;
@@ -213,6 +209,7 @@
         &__container {
             @include container(1100);
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
 
             p {
