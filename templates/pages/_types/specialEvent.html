@@ -37,7 +37,7 @@
                     {% if endDate|date('l, M j, Y') < endDate %}
                         <p>{{ entry.specialEventPrice }}</p>
                         {% if entry.specialEventPurchaseLink | length %}
-                            <a class="btn" target="_blank" noopener noreferrer href="{{ entry.specialEventPurchaseLink }}">Buy Tickets</a>
+                            <a class="btn" target="_blank" rel="noopener noreferrer" href="{{ entry.specialEventPurchaseLink }}">Buy Tickets</a>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
@@ -53,7 +53,7 @@
                     <span class="times">{{ entry.specialEventStartTime|time('short') }} &ndash; {{ entry.specialEventEndTime|time('short') }}</span>
                     <p>{{ entry.specialEventPrice }}</p>
                     {% if entry.specialEventPurchaseLink | length %}
-                        <a class="btn" target="_blank" noopener noreferrer href="{{ entry.specialEventPurchaseLink }}">Buy Tickets</a>
+                        <a class="btn" target="_blank" rel="noopener noreferrer" href="{{ entry.specialEventPurchaseLink }}">Buy Tickets</a>
                     {% endif %}
                 {% endif %}
                 #}

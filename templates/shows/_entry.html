@@ -46,7 +46,7 @@
                     <span class="times">{{ entry.showTimes }}</span>
                     <p>{{ entry.showTicketPrices }}</p>
                     {% if entry.showTicketsUrl | length %}
-                        <a class="btn" target="_blank" noopener noreferrer href="{{ entry.showTicketsUrl }}">Buy Tickets</a>
+                        <a class="btn" target="_blank" rel="noopener noreferrer" href="{{ entry.showTicketsUrl }}">Buy Tickets</a>
                     {% endif %}
                 {% endif %}
             </div>
