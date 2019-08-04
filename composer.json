@@ -6,6 +6,7 @@
     "doublesecretagency/craft-cpjs": "2.2.0",
     "misterbk/mix": "1.5.2",
     "nystudio107/craft-typogrify": "1.1.18",
+    "solspace/craft-express-forms": "1.0.3",
     "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {

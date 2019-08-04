@@ -25,7 +25,7 @@
         <div class="c-show__detail">
             <div class="c-show__detail__info">
                 {% if entry.specialEventDates | length %}
-                    {% for block in entry.specialEventDates %}
+                    {% for block in entry.specialEventDates.all() %}
                         <p>{{ block.specialEventDate|date('l, M j, Y') }}<br />{{ block.specialEventStartTime|time('short') }}&ndash;{{ block.specialEventEndTime|time('short') }}</p>
                     {% endfor %}
                 {% else %}
