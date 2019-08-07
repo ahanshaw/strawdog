@@ -98,6 +98,10 @@
                     margin-bottom: 1em;
                 }
 
+                @include breakpoint('tablet') {
+                    padding: 0 2em;
+                }
+
                 @include breakpoint('mobile') {
                     padding: 0 4em;
                 }

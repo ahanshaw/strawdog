@@ -16,8 +16,9 @@
         </div>
 
         <div class="c-past-seasons__main">
-            {% set seasons = craft.categories().group('seasons').all() %}
-            {% for season in seasons %}
+            {% set seasons = craft.categories().group('seasons').limit(6) %}
+            {% paginate seasons as pageInfo, pageEntries %}
+            {% for season in pageEntries %}
                 {% set filter = craft.categories.slug(season.title) %}
                 <div class="c-past-seasons__main__container">
                     <div class="c-past-seasons__main__season">
@@ -38,6 +39,25 @@
                     </div>
                 </div>
             {% endfor %}
+            <div class="c-past-seasons__pagination">
+                <div class="c-past-seasons__pagination__container">
+                    <a class="first-page" href="{{ pageInfo.firstUrl }}">First Page</a>
+                    {% if pageInfo.prevUrl %}<a class="page-arrow prev" href="{{ pageInfo.prevUrl }}">&#8249;</a>{% endif %}
+
+                    {% for page, url in pageInfo.getPrevUrls(2) %}
+                        <a href="{{ url }}">{{ page }}</a>
+                    {% endfor %}
+
+                    <span class="current">{{ pageInfo.currentPage }}</span>
+
+                    {% for page, url in pageInfo.getNextUrls(2) %}
+                        <a href="{{ url }}">{{ page }}</a>
+                    {% endfor %}
+
+                    {% if pageInfo.nextUrl %}<a class="page-arrow next" href="{{ pageInfo.nextUrl }}">&#8250;</a>{% endif %}
+                    <a class="last-page" href="{{ pageInfo.lastUrl }}">Last Page</a>
+                </div>
+            </div>
         </div>
     </main>
 {% endblock %}
