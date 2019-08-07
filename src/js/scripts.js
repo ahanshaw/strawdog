@@ -3,6 +3,19 @@ $(document).ready(function() {
     //megamenu
     $('.main-nav').accessibleMegaMenu();
 
+    //moble Menu
+    $('.mobile-open').click(function() {
+        $('.c-header__links').animate({
+            'left': 0
+        });
+    });
+
+    $('.mobile-close').click(function() {
+        $('.c-header__links').animate({
+            'left': '-100%'
+        });
+    });
+
     //homepage carousel
     $('.c-home__carousel__container').slick({
         infinite: true,
