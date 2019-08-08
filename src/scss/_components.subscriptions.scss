@@ -41,6 +41,7 @@
             @include font-size(16);
 
             &:hover {
+                text-decoration: none;
                 background-color: $black-60;
             }
         }

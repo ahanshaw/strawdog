@@ -20,24 +20,26 @@
             {% paginate seasons as pageInfo, pageEntries %}
             {% for season in pageEntries %}
                 {% set filter = craft.categories.slug(season.title) %}
-                <div class="c-past-seasons__main__container">
-                    <div class="c-past-seasons__main__season">
-                        <h2>Season {{ season.title }}</h2>
-                        {{ season.seasonYears }}
+                {% set entries = craft.entries.section('shows').relatedTo(filter).all() %}
+                {% if entries | length %}
+                    <div class="c-past-seasons__main__container">
+                        <div class="c-past-seasons__main__season">
+                            <h2>Season {{ season.title }}</h2>
+                            {{ season.seasonYears }}
+                        </div>
+                        <div class="c-past-seasons__main__shows">
+                            {% for entry in entries %}
+                                <a href="{{ entry.url }}" class="c-past-seasons__main__show">
+                                    {% set image = entry.showMainImage.one() %}
+                                    {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                                    {% set srcSizes = '200px' %}
+                                    {% include '_partials/image' %}
+                                    <h3>{{ entry.title }}</h3>
+                                </a>
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="c-past-seasons__main__shows">
-                        {% set shows = craft.entries.section('shows').relatedTo(filter).all() %}
-                        {% for entry in shows %}
-                            <a href="{{ entry.url }}" class="c-past-seasons__main__show">
-                                {% set image = entry.showMainImage.one() %}
-                                {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
-                                {% set srcSizes = '200px' %}
-                                {% include '_partials/image' %}
-                                <h3>{{ entry.title }}</h3>
-                            </a>
-                        {% endfor %}
-                    </div>
-                </div>
+                {% endif %}
             {% endfor %}
             <div class="c-past-seasons__pagination">
                 <div class="c-past-seasons__pagination__container">

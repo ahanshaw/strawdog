@@ -34,10 +34,12 @@
                 {% for entry in entries %}
                     {% if entry.companyEnsembleMember %}
                         <a class="c-company__members__member" href="{{ entry.url }}">
-                            {% set image = entry.companyHeadshot.one() %}
-                            {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
-                            {% set srcSizes = '200px' %}
-                            {% include '_partials/image' %}
+                            <div class="c-company__members__member__image">
+                                {% set image = entry.companyHeadshot.one() %}
+                                {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                                {% set srcSizes = '200px' %}
+                                {% include '_partials/image' %}
+                            </div>
                             <p>{{ entry.title }}</p>
                         </a>
                     {% endif %}

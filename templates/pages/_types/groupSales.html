@@ -16,7 +16,9 @@
         </div>
         <div class="c-group-sales__container">
             <div class="c-group-sales__why">
-                {{ entry.groupSalesWhy | typogrify }}
+                <div class="c-group-sales__sticky">
+                    {{ entry.groupSalesWhy | typogrify }}
+                </div>
             </div>
             <div class="c-group-sales__copy">
                 {{ entry.groupSalesCopy | typogrify }}

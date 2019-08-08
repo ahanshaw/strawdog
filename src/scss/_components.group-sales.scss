@@ -23,6 +23,11 @@
         }
     }
 
+    &__sticky {
+        position: sticky;
+        top: 2em;
+    }    
+
     &__copy {
         margin-left: 4em;
 
