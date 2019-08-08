@@ -92,6 +92,11 @@
                 flex: 0 0 50%;
             }
 
+            &:hover {
+                text-decoration: none;
+                cursor: pointer;
+            }
+
             p {
                 @include font-medium;
                 @include font-size(15);
