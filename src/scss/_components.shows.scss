@@ -1,0 +1,59 @@
+.c-shows {
+
+    &__copy {
+
+        &__container {
+            @include container(1100);
+            text-align: center;
+            padding: 3em 0;
+
+            h2,
+            p {
+                max-width: 700px;
+            }
+
+            h2 {
+                margin: 0 auto .5em auto;
+            }
+
+            p {
+                margin: 0 auto 1em auto;
+            }
+        }
+    }
+
+    &__nav {
+
+        ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        li {
+            flex: 0 0 200px;
+            list-style: none;
+
+            a {
+                display: block;
+                width: 200px;
+                height: 200px;
+                @include font-bold;
+                line-height: 200px;
+                text-decoration: none;
+                text-align: center;
+                margin: 2em;
+                color: $black;
+                background-color: $gold;
+                border-radius: 50%;
+                transition: color .3s ease,
+                            background-color .3s ease;
+
+                &:hover {
+                    color: $white;
+                    background-color: $black;
+                }
+            }
+        }
+    }
+}

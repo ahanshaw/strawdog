@@ -1,0 +1,12 @@
+.c-header__container {
+  display: flex;
+}
+
+.c-header__logo {
+  flex: 1;
+}
+
+.c-header__nav {
+  flex: 4;
+}
+
