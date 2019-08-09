@@ -6,9 +6,23 @@
         display: flex;
         justify-content: space-between;
         padding: 2em 0;
+
+        @include breakpoint('tablet') {
+            flex-wrap: wrap;
+        }
     }
 
     &__nav {
+
+        @include breakpoint('tablet') {
+            flex: 0 0 50%;
+            text-align: center;
+        }
+
+        @include breakpoint('mobile') {
+            flex: 0 0 100%;
+            order: 1;
+        }
 
         ul {
             margin: 0;
@@ -53,7 +67,63 @@
         }
     }
 
+    &__newsletter {
+        flex: 0 0 500px;
+        text-align: center;
+        color: $white;
+
+        @include breakpoint('tablet') {
+            flex: 0 0 100%;
+            order: 3;
+            margin-top: 2em;
+        }
+
+        @include breakpoint('mobile') {
+            order: 2;
+            margin: 2em auto 3em auto;
+        }
+
+        .newsletter-copy {
+            max-width: 300px;
+            @include font-size(15);
+            margin: 0 auto 1em auto;
+        }
+
+        input[type="email"] {
+            display: inline-block;
+            width: 100%;
+            max-width: 250px;
+            @include font-size(15);
+            margin: 0 .5em 0 0;
+            padding: .5em 1em;
+            border: 0;
+        }
+
+        input[type="submit"] {
+            display: inline-block;
+            @include font-size(15);
+            padding: .5em 1em;
+            background-color: $gold;
+            transition: background-color .3s ease;
+
+            &:hover {
+                background-color: $black-60;
+                cursor: pointer;
+            }
+        }
+    }
+
     &__info {
+
+        @include breakpoint('tablet') {
+            flex: 0 0 50%;
+            order: 2;
+            text-align: center;
+        }
+
+        @include breakpoint('mobile') {
+            flex: 0 0 100%;
+        }
 
         p {
             @include font-size(14);
