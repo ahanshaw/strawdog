@@ -89,5 +89,9 @@
         li {
             margin: 0;
         }
+
+        strong {
+            @include font-medium;
+        }
     }
 }

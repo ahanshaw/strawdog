@@ -53,11 +53,11 @@
 
             .by {
                 display: block;
-                @include font-medium;
                 text-transform: uppercase;
                 margin-bottom: 1em;
 
                 p {
+                    @include font-medium;
                     margin: 0 0 .25em 0;
                 }
             }

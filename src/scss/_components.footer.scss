@@ -191,6 +191,7 @@
             }
 
             a {
+                @include font-regular;
                 text-decoration: underline;
                 color: $black;
 
