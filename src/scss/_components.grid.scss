@@ -88,10 +88,12 @@
             }
 
             p {
+                @include font-regular;
                 margin: 0;
             }
 
             .date {
+                @include font-medium;
                 @include font-size(15);
                 margin-bottom: .5em;
             }

@@ -17,17 +17,26 @@
 
     &__logo {
 
-        img {
-            width: 100%;
-            max-width: 175px;
+        svg {
+            width: 175px;
+
+            &:hover {
+
+                #imageGroup {
+                    transform: scale(1.08);
+                }
+
+            }
 
             @include breakpoint('laptop') {
-                max-width: 200px;
-            }
-
-            @include breakpoint('tablet') {
                 max-width: 150px;
             }
+        }
+
+        #imageGroup {
+            transform-box: fill-box;
+            transform-origin: top center;
+            transition: transform .3s ease;
         }
     }
 

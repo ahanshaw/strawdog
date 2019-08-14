@@ -17,6 +17,15 @@ mix.setPublicPath('./web/dist')
     .js('src/js/slick.min.js', 'web/dist/js')
     .js('src/js/scripts.js', 'web/dist/js')
     .sass('src/scss/styles.scss', 'web/dist/css')
+        .options({
+             autoprefixer: {
+                 options: {
+                     overrideBrowserslist: [
+                         'last 6 versions',
+                     ]
+                 }
+             }
+        })
     .browserSync('https://strawdog.ddev.site/')
     .sourceMaps()
     .version();

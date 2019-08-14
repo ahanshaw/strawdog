@@ -95,6 +95,7 @@
 
             p {
                 max-width: 600px;
+                @include font-size(17);
                 line-height: 2;
                 margin: 0 0 1em 2em;
 
