@@ -9,3 +9,7 @@ $(document).ready(function() {
     smoothScroll();
     mobileMenu();
 });
+
+$( window ).resize(function() {
+    megaMenu();
+});

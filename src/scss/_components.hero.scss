@@ -33,7 +33,7 @@
             object-position: top center;
 
             @include breakpoint('mobile') {
-                object-position: top left;
+                object-position: center;
             }
         }
     }
