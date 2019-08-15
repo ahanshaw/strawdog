@@ -15,7 +15,7 @@
     }
 
     &__info {
-        flex: 0 0 25%;
+        flex: 0 0 30%;
 
         @include breakpoint('mobile') {
             flex: 0 0 100%;
@@ -81,6 +81,7 @@
         input,
         textarea {
             width: 100%;
+            @include font-size(16);
             padding: 1em;
             border: 1px solid $black;
         }
