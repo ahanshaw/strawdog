@@ -1,0 +1,53 @@
+    {% set form = craft.expressforms.form("contact") %}
+        {# Flash Success #}
+        {% if form.submittedSuccessfully %}
+            <div class="c-contact__form__success success">
+                {{ "Thanks for getting in touch! We’ll get back to you soon."|t }}
+            </div>
+        {% else %}
+            <div class="c-contact__form__required">
+                <p>We&#8217;re always happy to hear from you!<br />Please enter all fields below to get in&nbsp;touch.</p>
+            </div>
+        {% endif %}
+
+        {# General Error Handling #}
+        {% if not form.valid %}
+            <div class="errors">
+                {{ "Looks like you missed some required fields! Please review the form and try submitting again."|t }}
+                {% if form.errors|length %}
+                    <ul>
+                        {% for error in form.errors %}
+                            <li>{{ error|t }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {# Automatically set Form tags with Return, CSRF and Honeypot (if enabled) #}
+        {{ form.openTag({
+            return: '?success=1',
+        }) }}
+        <div class="c-contact__form__field">
+            <label for="name"{{ form.fields.name.isRequired ? ' class="required"' }}>Your {{ form.fields.name.label }}</label>
+            <input id="name" type="text" name="name" value="{{ form.fields.name.value }}">
+            {% if form.fields.name.hasErrors %}
+                <span class="error">{{ "Please enter your name above."|t }}</span>
+            {% endif %}
+        </div>
+        <div class="c-contact__form__field">
+            <label for="email"{{ form.fields.email.isRequired ? ' class="required"' }}>Your {{ form.fields.email.label }}</label>
+            <input id="email" type="email" name="email" value="{{ form.fields.email.value }}">
+            {% if form.fields.email.hasErrors %}
+                <span class="error">{{ "Please enter your email address above."|t }}</span>
+            {% endif %}
+        </div>
+        <div class="c-contact__form__field">
+            <label for="message"{{ form.fields.message.isRequired ? ' class="required"' }}>Your {{ form.fields.message.label }}</label>
+            <textarea rows="10" cols="40" id="message" name="message">{{ form.fields.message.value }}</textarea>
+            {% if form.fields.message.hasErrors %}
+                <span class="error">{{ "Please enter your message."|t }}</span>
+            {% endif %}
+        </div>
+        <input class="btn btn--gold" type="submit" value="Submit">
+    {{ form.closeTag }}

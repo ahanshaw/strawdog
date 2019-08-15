@@ -37,13 +37,78 @@
     }
 
     &__form {
-        max-width: 600px;
+        flex: 0 0 50%;
         margin-left: 3em;
 
         @include breakpoint('mobile') {
             flex: 0 0 100%;
             order: 1;
             margin-bottom: 2em;
+        }
+
+        &__success {
+            margin-bottom: 2em;
+        }
+
+        &__required {
+            margin-bottom: 2em;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        &__field {
+            margin-bottom: 2em;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        label {
+            @include font-medium;
+            @include font-size(14);
+            text-transform: uppercase;
+            color: $black;
+        }
+
+        label,
+        input {
+            display: block;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 1em;
+            border: 1px solid $black;
+        }
+
+        input[type="submit"] {
+            width: auto;
+            @include font-size(16);
+            padding: .75em 2em;
+            border: 0;
+
+            &:hover {
+                background-color: $black-60;
+            }
+        }
+
+        .errors,
+        .error {
+            @include font-size(14);
+            color: red;
+        }
+
+        .errors {
+            max-width: 500px;
+            margin-bottom: 2em;
+        }
+
+        .error {
+            margin-bottom: 1em;
         }
     }
 }
