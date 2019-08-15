@@ -8,6 +8,12 @@
         border-top: 2px solid $gold;
     }
 
+    .c-hero__image img {
+        @include breakpoint('mobile') {
+            object-position: center;
+        }
+    }
+
     &__current {
         background-color: $black;
 

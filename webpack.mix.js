@@ -12,10 +12,11 @@ let mix = require('laravel-mix');
  */
 
 mix.setPublicPath('./web/dist')
-    .js('src/js/jquery-3.4.1.min.js', 'web/dist/js')
-    .js('src/js/jquery-accessibleMegaMenu.js', 'web/dist/js')
-    .js('src/js/slick.min.js', 'web/dist/js')
-    .js('src/js/scripts.js', 'web/dist/js')
+    .autoload({
+        'jquery': ['jQuery', '$'],
+    })
+    .js('src/js/home/homeCarousel.js', 'web/dist/js/home.js')
+    .js('src/js/index.js', 'web/dist/js/index.js')
     .sass('src/scss/styles.scss', 'web/dist/css')
         .options({
              autoprefixer: {
