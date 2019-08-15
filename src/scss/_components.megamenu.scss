@@ -22,6 +22,15 @@
     @include breakpoint('tablet') {
         display: block;
     }
+
+    &.mobile {
+        display: none;
+
+        @include breakpoint('tablet') {
+            display: block;
+            margin-bottom: 1em;
+        }
+    }
 }
 
 /* first descendant link within a top level navigation item */
