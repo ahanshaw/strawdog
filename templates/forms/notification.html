@@ -1,0 +1,18 @@
+---
+name: 'Contact Form Notification'
+description: 'This template is used for the contact form notification.'
+fromName: 'Strawdog Theatre'
+fromEmail: test@test.com
+replyTo: test@test.com
+cc: null
+bcc: null
+subject: 'New submission from your Strawdog Theatre contact form'
+includeAttachments: true
+---
+<p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
+
+<ul>
+  {% for field in form.fields %}
+    <li>{{ field.label }}: {{ field.valueAsString }}</li>
+  {% endfor %}
+</ul>

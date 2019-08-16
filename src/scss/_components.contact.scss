@@ -86,7 +86,7 @@
             border: 1px solid $black;
         }
 
-        input[type="submit"] {
+         button {
             width: auto;
             @include font-size(16);
             padding: .75em 2em;
