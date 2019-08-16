@@ -126,7 +126,7 @@
                 height: 100%;
                 background-color: $black;
                 opacity: 0;
-                transition: opacity .3s ease;
+                transition: opacity .6s ease;
 
                 @include breakpoint('tablet') {
                     position: relative;
