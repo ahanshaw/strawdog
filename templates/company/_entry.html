@@ -18,64 +18,66 @@
 
         <div class="c-company-member__detail">
             <div class="c-company-member__detail__container">
-                <div class="c-company-member__detail__shows">
+                <div class="c-company-member__detail__side">
                     {% set image = entry.companyHeadshot.one() %}
                     {% set imageResizes = [{ width: 300, height: 300, mode: 'crop', position: image.getFocalPoint() }] %}
                     {% set srcSizes = '300px' %}
                     {% include '_partials/image' %}
 
                     {% set shows = craft.entries().section('shows').all %}
-
-                    {% set inCast = false %}
-                    {% for show in shows %}
-                        {% set season = show.showSeason.one() %}
-                        {% for cast in show.showCast.all() %}
-                            {% set castMember = cast.castMember.one() %}
-                            {% if castMember.title == entry.title %}
-                                {% set inCast = true %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
-
-                    {% if inCast %}
-                    <h2>Strawdog Cast</h2>
-                        {% for show in shows %}
-                            {% set season = show.showSeason.one() %}
-                            {% for cast in show.showCast %}
-                                {% set castMember = cast.castMember.one() %}
-                                {% if castMember.title == entry.title %}
-                                    <p><a href="{{ show.url }}"><strong>{{ show.title }}</strong></a> (Season {{ season.title }})<br />{% if cast.characterName | length %}{{ cast.characterName }}{% else %}Cast Member{% endif %}</p>
-                                {% endif %}
-                            {% endfor %}
-                        {% endfor %}
-                    {% endif %}
-
-                    {% set inCrew = false %}
-                    {% for show in shows %}
-                        {% set season = show.showSeason.one() %}
-                        {% for crew in show.showCrew.all() %}
-                            {% set crewName = crew.crewName.one() %}
-                            {% if crewName.title == entry.title %}
-                                {% set inCrew = true %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
-
-                    {% if inCrew %}
-                        <h2>Strawdog Crew</h2>
-                        {% for show in shows %}
-                            {% set season = show.showSeason.one() %}
-                            {% for crew in show.showCrew.all() %}
-                                {% set crewName = crew.crewName.one() %}
-                                {% if crewName.title == entry.title %}
-                                    <p><a href="{{ show.url }}"><strong>{{ show.title }}</strong></a> (Season {{ season.title }})<br />{{ crew.crewTitle }}</p>
-                                {% endif %}
-                            {% endfor %}
-                        {% endfor %}
-                    {% endif %}
                 </div>
                 <div class="c-company-member__detail__bio">
                     {{ entry.companyBio | typogrify }}
+                    <div class="c-company-member__shows">
+                        <div class="c-company-member__shows__cast">
+                            {% set inCast = false %}
+                            {% for show in shows %}
+                                {% set season = show.showSeason.one() %}
+                                {% for cast in show.showCast.all() %}
+                                    {% set castMember = cast.castMember.one() %}
+                                    {% if castMember.title == entry.title %}
+                                        {% set inCast = true %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                            {% if inCast %}
+                            <h2>Strawdog Cast</h2>
+                                {% for show in shows %}
+                                    {% set season = show.showSeason.one() %}
+                                    {% for cast in show.showCast %}
+                                        {% set castMember = cast.castMember.one() %}
+                                        {% if castMember.title == entry.title %}
+                                            <p><a href="{{ show.url }}"><strong>{{ show.title }}</strong></a> (Season {{ season.title }})<br />{% if cast.characterName | length %}{{ cast.characterName }}{% else %}Cast Member{% endif %}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="c-company-member__shows__crew">
+                            {% set inCrew = false %}
+                            {% for show in shows %}
+                                {% set season = show.showSeason.one() %}
+                                {% for crew in show.showCrew.all() %}
+                                    {% set crewName = crew.crewName.one() %}
+                                    {% if crewName.title == entry.title %}
+                                        {% set inCrew = true %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                            {% if inCrew %}
+                                <h2>Strawdog Crew</h2>
+                                {% for show in shows %}
+                                    {% set season = show.showSeason.one() %}
+                                    {% for crew in show.showCrew.all() %}
+                                        {% set crewName = crew.crewName.one() %}
+                                        {% if crewName.title == entry.title %}
+                                            <p><a href="{{ show.url }}"><strong>{{ show.title }}</strong></a> (Season {{ season.title }})<br />{{ crew.crewTitle }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

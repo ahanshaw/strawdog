@@ -28,14 +28,17 @@
             }
         }
 
-        &__shows {
+        &__side {
             flex: 0 0 30%;
             text-align: center;
             padding-right: 2em;
 
+            @include breakpoint('tablet') {
+                padding-right: 1em;
+            }
+
             @include breakpoint('mobile') {
                 flex: 0 0 100%;
-                order: 2;
             }
 
             img {
@@ -67,7 +70,7 @@
 
         &__bio {
             max-width: 600px;
-            margin-left: 3em;
+            margin-left: 1em;
 
             @include breakpoint('mobile') {
                 flex: 0 0 100%;
@@ -86,6 +89,40 @@
             em {
                 font-style: normal;
                 text-transform: uppercase;
+            }
+        }
+    }
+
+    &__shows {
+        display: flex;
+        margin-top: 2em;
+
+        @include breakpoint('mobile') {
+            flex-wrap: wrap;
+            margin-bottom: 2em;
+        }
+
+        h2 {
+            @include font-size(18);
+        }
+
+        &__cast {
+            flex: 0 0 calc(50% - 1em);
+            margin-right: 1em;
+
+            @include breakpoint('mobile') {
+                flex: 0 0 100%;
+                margin-right: 0;
+            }
+        }
+
+        &__crew {
+            flex: 0 0 calc(50% - 1em);
+            margin-left: 1em;
+
+            @include breakpoint('mobile') {
+                flex: 0 0 100%;
+                margin-left: 0;
             }
         }
     }
