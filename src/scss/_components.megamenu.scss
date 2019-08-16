@@ -30,6 +30,12 @@
             display: block;
             margin-bottom: 1em;
         }
+
+        a {
+            @include font-medium;
+            @include font-size(14);
+            color: $gold;
+        }
     }
 }
 

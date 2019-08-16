@@ -11,6 +11,7 @@
 
         @include breakpoint('mobile') {
             flex-wrap: wrap;
+            padding-top: 0;
         }
     }
 
@@ -19,8 +20,7 @@
 
         @include breakpoint('mobile') {
             flex: 0 0 100%;
-            order: 2;
-            margin-bottom: 1em;
+            margin-bottom: 4em;
         }
 
         a {
@@ -42,6 +42,10 @@
     &__sticky {
         position: sticky;
         top: 2em;
+
+        @include breakpoint('mobile') {
+            position: relative;
+        }
     }
 
     &__details {
@@ -49,7 +53,6 @@
 
         @include breakpoint('mobile') {
             flex: 0 0 100%;
-            order: 1;
             margin-bottom: 2em;
         }
 

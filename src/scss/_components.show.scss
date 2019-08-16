@@ -91,6 +91,7 @@
             @include breakpoint('mobile') {
                 flex: 0 0 100%;
                 margin-top: 2em;
+                margin-left: 0;
             }
 
             p {

@@ -123,6 +123,24 @@
             @include breakpoint('tablet') {
                 overflow: scroll;
             }
+
+            .secondary-nav {
+                display: none;
+
+                @include breakpoint('tablet') {
+                    display: block;
+                }
+
+                ul {
+                    padding: 0;
+                }
+
+                a {
+                    @include font-medium;
+                    @include font-size(13);
+                    text-transform: uppercase;
+                }
+            }
         }
 
         &__ctas {
