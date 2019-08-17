@@ -110,6 +110,10 @@
                 margin-top: .5em;
             }
 
+            &:disabled {
+                background-color: rgba($gold, .5);
+            }
+
             &:hover {
                 background-color: $black-60;
                 cursor: pointer;
