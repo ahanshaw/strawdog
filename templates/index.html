@@ -42,6 +42,10 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="c-home__current__subscribe">
+                {% set entry = entry.homeSubscriptionLink.one() %}
+                <a class="btn btn--gold" href="{{ entry.url }}">Subscribe</a>
+            </div>
         </section>
 
         {% set entries = craft.entries.section('pages').type('specialEvent').all() %}

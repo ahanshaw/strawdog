@@ -157,6 +157,20 @@
                 }
             }
         }
+
+        &__subscribe {
+            padding: 1em 0 3em 0;
+            text-align: center;
+
+            .btn {
+                @include font-size(16);
+
+                &:hover {
+                    text-decoration: none;
+                    background-color: $black-60;
+                }
+            }
+        }
     }
 
     &__events {
@@ -203,6 +217,10 @@
             &:hover {
                 text-decoration: none;
 
+                .learn-more {
+                    text-decoration: underline;
+                }
+
                 img {
                     border-color: $gold;
                 }
@@ -210,7 +228,7 @@
 
             &__image {
                 flex: 0 0 50%;
-                padding: 0 2.25em;
+                padding: 0 2em;
 
                 @include breakpoint('tablet') {
                     flex: 0 0 40%;
@@ -267,10 +285,6 @@
                     color: $gold;
                     margin: 1em 0 0 0;
                     transition: color .3s ease;
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
                 }
             }
         }
