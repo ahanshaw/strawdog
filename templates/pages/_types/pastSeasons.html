@@ -24,7 +24,7 @@
                 {% if entries | length %}
                     <div class="c-past-seasons__main__container">
                         <div class="c-past-seasons__main__season">
-                            <h2>Season {{ season.title }}</h2>
+                            <h2><a href="{{ season.url }}">Season {{ season.title }}</a></h2>
                             {{ season.seasonYears }}
                         </div>
                         <div class="c-past-seasons__main__shows">

@@ -26,7 +26,7 @@
             <div class="c-show__detail__info">
                 <span class="by">{{ entry.showBy }}</span>
                 {% set season = entry.showSeason.one() %}
-                <p class="season">Season {{ season.title }}</p>
+                <p class="season"><a href="{{ season.url }}">Season {{ season.title }}</a></p>
                 {{ entry.showStartDate|date }} &ndash; {{ entry.showEndDate|date }}
 
                 {% set currentDate = "now"|date('Y-m-d') %}
