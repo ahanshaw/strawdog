@@ -1,5 +1,17 @@
 .c-current-season {
 
+    &__intro {
+        @include container(1100);
+        text-align: center;
+
+        p {
+            max-width: 600px;
+            margin: 3em auto 0 auto;
+            padding-bottom: 2em;
+            border-bottom: 2px solid $gold;
+        }
+    }
+
     &__current {
         background-color: $gold;
 

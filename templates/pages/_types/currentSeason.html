@@ -3,11 +3,37 @@
 
     <main id="main" class="c-season">
         {% set seasonsCat = craft.categories().group('seasons').limit(1).all() %}
-        {% include '_partials/page/season-hero' %}
+        {% set slug = craft.app.request.getSegment(2) %}
+
+        <div class="c-hero">
+            <div class="c-hero__container">
+                {% for entry in seasonsCat %}
+                    <div class="c-hero__image">
+                        {% set image = entry.seasonImage.one() %}
+                        {% set imageResizes = [{ width: 1200, height: 400, mode: 'crop', position: image.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                        {% set srcSizes = '(max-width: 640px) 640px, (max-width: 768) 768px, 1100px' %}
+                        {% include '_partials/image' %}
+                    </div>
+                    <div class="c-hero__copy">
+                        <h2>Season {{ entry.title }}{% if entry.seasonTheme | length %}: {{ entry.seasonTheme }}{% endif %}</h2>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% for entry in seasonsCat %}
+            {% if entry.seasonDescription | length %}
+                <div class="c-current-season__intro">
+                    {{ entry.seasonDescription }}
+                </div>
+            {% endif %}
+        {% endfor %}
+
 
         {% set cat = craft.categories().group('seasons').one() %}
         {% set filter = craft.categories.slug(cat.title) %}
         {% set entries = craft.entries.section('shows').relatedTo(filter).all() %}
+
         {% include '_partials/page/show-grid' %}
     </main>
 {% endblock %}
