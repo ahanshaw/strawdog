@@ -14,6 +14,13 @@
                 </div>
             </div>
         </div>
+
+        {% if image.photoCredit | length %}
+            <div class="c-hero__credit">
+                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+            </div>
+        {% endif %}
+        
         <div class="c-contact__container">
             <div class="c-contact__info">
                 {{ entry.contactCopy | typogrify }}

@@ -21,6 +21,12 @@
             </div>
         </div>
 
+        {% if image.photoCredit | length %}
+            <div class="c-hero__credit">
+                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+            </div>
+        {% endif %}
+
         {% for entry in seasonsCat %}
             {% if entry.seasonDescription | length %}
                 <div class="c-current-season__intro">

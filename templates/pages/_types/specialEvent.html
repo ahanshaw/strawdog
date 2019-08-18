@@ -16,9 +16,9 @@
             </div>
         </div>
 
-        {% if entry.specialEventMainImagePhotoCredit | length %}
-            <div class="c-show__hero-credit">
-                <span class="photo-credit">Photo credit: {{ entry.specialEventMainImagePhotoCredit }}</span>
+        {% if image.photoCredit | length %}
+            <div class="c-hero__credit">
+                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
             </div>
         {% endif %}
 

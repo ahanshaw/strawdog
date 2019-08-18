@@ -14,6 +14,13 @@
                 </div>
             </div>
         </div>
+
+        {% if image.photoCredit | length %}
+            <div class="c-hero__credit">
+                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+            </div>
+        {% endif %}
+        
         <div class="c-space__container">
             <div class="c-space__map">
                 <img src="/cms/images/space/map.jpg" />

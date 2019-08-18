@@ -114,6 +114,11 @@
 
             &:disabled {
                 background-color: rgba($gold, .5);
+
+                &:hover {
+                    background-color: rgba($gold, .5);
+                    cursor: default;
+                }
             }
 
             &:hover {
@@ -142,6 +147,7 @@
         }
 
         a {
+            @include font-regular;
             color: $white;
             text-decoration: none;
         }

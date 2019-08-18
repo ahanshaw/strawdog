@@ -15,8 +15,14 @@
             </div>
         </div>
 
+        {% if image.photoCredit | length %}
+            <div class="c-hero__credit">
+                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+            </div>
+        {% endif %}
+
         <div class="c-past-seasons__main">
-            {% set seasons = craft.categories().group('seasons').limit(6) %}
+            {% set seasons = craft.categories().group('seasons').limit(4) %}
             {% paginate seasons as pageInfo, pageEntries %}
             {% for season in pageEntries %}
                 {% set filter = craft.categories.slug(season.title) %}

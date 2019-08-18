@@ -34,7 +34,7 @@
         @include container(1100);
         display: flex;
         margin-top: 2em;
-        padding: 4em 0;
+        padding: 3em 0;
 
         @include breakpoint('mobile') {
             flex-wrap: wrap;
@@ -106,8 +106,7 @@
             }
 
             em {
-                font-style: normal;
-                text-transform: uppercase;
+                margin: 0 .05em 0 -.05em;
             }
         }
     }
@@ -133,7 +132,7 @@
 
             p {
                 @include font-medium;
-                margin: 0 1em;
+                margin: 0 2em;
             }
         }
     }

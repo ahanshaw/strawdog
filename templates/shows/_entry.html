@@ -16,9 +16,9 @@
             </div>
         </div>
 
-        {% if entry.showMainImagePhotoCredit | length %}
+        {% if image.photoCredit | length %}
             <div class="c-show__hero-credit">
-                <span class="photo-credit">Photo credit: {{ entry.showMainImagePhotoCredit }}</span>
+                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
             </div>
         {% endif %}
 

@@ -16,6 +16,12 @@
             </div>
         </div>
 
+        {% if image.photoCredit | length %}
+            <div class="c-hero__credit">
+                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+            </div>
+        {% endif %}
+
         <div class="c-company-member__detail">
             <div class="c-company-member__detail__container">
                 <div class="c-company-member__detail__side">

@@ -20,6 +20,13 @@
                 {{ entry.landingCopy | typogrify }}
             </div>
         </div>
+
+        {% if image.photoCredit | length %}
+            <div class="c-hero__credit">
+                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+            </div>
+        {% endif %}
+        
         {% set entries = entry.children().level(2).all() %}
         {% if entries | length %}
             <div class="c-landing__nav">
