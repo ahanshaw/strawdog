@@ -50,7 +50,7 @@
                                 <h2>Strawdog Cast</h2>
                                 {% for show in shows %}
                                     {% set season = show.showSeason.one() %}
-                                    {% for cast in show.showCast %}
+                                    {% for cast in show.showCast.all() %}
                                         {% set castMember = cast.castMember.one() %}
                                         {% if castMember.title == entry.title %}
                                             <p><a href="{{ show.url }}"><strong>{{ show.title }}</strong></a> (Season&nbsp;{{ season.title }})<br />{% if cast.characterName | length %}{{ cast.characterName }}{% else %}Cast Member{% endif %}</p>
