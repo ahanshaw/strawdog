@@ -15,18 +15,19 @@
                 </div>
             </div>
         </div>
-        <div class="c-landing__copy">
-            <div class="c-landing__copy__container">
-                {{ entry.landingCopy | typogrify }}
-            </div>
-        </div>
 
         {% if image.photoCredit | length %}
             <div class="c-hero__credit">
                 <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
             </div>
         {% endif %}
-        
+
+        <div class="c-landing__copy">
+            <div class="c-landing__copy__container">
+                {{ entry.landingCopy | typogrify }}
+            </div>
+        </div>
+
         {% set entries = entry.children().level(2).all() %}
         {% if entries | length %}
             <div class="c-landing__nav">
