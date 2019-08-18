@@ -1,7 +1,7 @@
 <div class="c-grid">
     <div class="c-grid__container">
         {% for entry in entries %}
-            <a href="{{ entry.url }}" class="c-grid__event">
+            <a title="Learn more about {{ entry.title }}" href="{{ entry.url }}" class="c-grid__event">
                 <div class="c-grid__event__image">
                     {% set image = entry.showMainImage.one() %}
                     {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
@@ -16,7 +16,7 @@
                         <p class="date">Check back for dates!</p>
                     {% endif %}
                     {{ entry.showSummary | typogrify }}
-                    <p class="learn-more">Learn More</p>
+                    <p aria-hidden="true" class="learn-more">Learn More</p>
                 </div>
             </a>
         {% endfor %}

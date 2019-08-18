@@ -40,6 +40,7 @@
             }
 
             h2 {
+                @include font-bold;
                 @include font-size(20);
                 margin-top: -2em;
             }
@@ -76,10 +77,6 @@
                 img {
                     border-color: $gold;
                 }
-
-                h3 {
-                    color: $gold;
-                }
             }
 
             img {
@@ -102,7 +99,7 @@
             h3 {
                 @include font-bold;
                 @include font-size(13);
-                color: $black;
+                color: $gold;
                 margin: 0 1em;
                 transition: color .3s ease;
             }

@@ -34,7 +34,7 @@
                                 <div class="c-home__current__show__summary">
                                     <div>
                                         {{ entry.showSummary | typogrify }}
-                                        <p class="learn-more">Learn More</p>
+                                        <p aria-hidden="true" class="learn-more">Learn More</p>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                 <h2>Special Events</h2>
                 <div class="c-home__events__container">
                     {% for entry in entries %}
-                        <a href="{{ entry.url }}" class="c-home__events__event">
+                        <a title="Learn more about {{ entry.title }}" href="{{ entry.url }}" class="c-home__events__event">
                             <div class="c-home__events__event__image">
                                 {% set image = entry.specialEventMainImage.one() %}
                                 {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
@@ -69,7 +69,7 @@
                                     <p class="date">Date to be announced.</p>
                                 {% endif %}
                                 {{ entry.specialEventSummary | typogrify }}
-                                <p class="learn-more">Learn More</p>
+                                <p aria-hidden="true" class="learn-more">Learn More</p>
                             </div>
                         </a>
                     {% endfor %}
