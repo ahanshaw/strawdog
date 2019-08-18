@@ -8,7 +8,7 @@
         {% set slug = craft.app.request.getSegment(2) %}
         <div class="c-hero">
             <div class="c-hero__container">
-                {% for entry in seasonsCat.all() %}
+                {% for entry in seasonsCat %}
                     <div class="c-hero__image">
                         {% set image = entry.seasonImage.one() %}
                         {% set imageResizes = [{ width: 1200, height: 400, mode: 'crop', position: image.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
@@ -22,11 +22,14 @@
             </div>
         </div>
 
-        {% if image.photoCredit | length %}
-            <div class="c-hero__credit">
-                <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
-            </div>
-        {% endif %}
+        {% for entry in seasonsCat %}
+            {% set image = entry.seasonImage.one() %}
+            {% if image.photoCredit | length %}
+                <div class="c-hero__credit">
+                    <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+                </div>
+            {% endif %}
+        {% endfor %}
 
         {% for entry in seasonsCat.all() %}
             {% if entry.seasonDescription | length %}
