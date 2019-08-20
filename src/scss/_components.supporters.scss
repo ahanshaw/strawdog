@@ -61,6 +61,7 @@
         }
 
         h4 {
+            @include font-medium;
             margin: .5em 0 .25em 0;
         }
 

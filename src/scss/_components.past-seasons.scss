@@ -41,7 +41,7 @@
 
             h2 {
                 @include font-bold;
-                @include font-size(20);
+                @include font-size(18);
                 margin-top: -2em;
             }
         }
@@ -97,7 +97,7 @@
             }
 
             h3 {
-                @include font-bold;
+                @include font-medium;
                 @include font-size(13);
                 color: $gold;
                 margin: 0 1em;
@@ -112,13 +112,16 @@
 
         &__container {
             @include container(1100);
+            @include font-size(12);
 
             a {
+                @include font-regular;
+                text-transform: uppercase;
                 color: $gold;
                 padding: 0 .5em;
 
                 &:hover {
-                    color: $black;
+                    text-decoration: underline;
                 }
             }
 
@@ -136,7 +139,6 @@
 
                 &::after {
                     content: '...';
-                    @include font-size(12);
                     color: $black;
                     margin-right: -1em;
                     margin-left: 1em;
@@ -148,7 +150,6 @@
 
                 &::before {
                     content: '...';
-                    @include font-size(16);
                     color: $black;
                     margin-right: 1em;
                     margin-left: -1em;
