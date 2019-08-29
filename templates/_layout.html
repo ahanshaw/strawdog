@@ -16,10 +16,12 @@
     </head>
     <body>
         <div id="page">
-            <a class="accessibility-only" tabindex="-1" href="#main">Skip to main content</a>
-            {% include '_partials/header' %}
-            {% block content %}
-            {% endblock %}
+            <div>
+                <a class="accessibility-only" tabindex="-1" href="#main">Skip to main content</a>
+                {% include '_partials/header' %}
+                {% block content %}
+                {% endblock %}
+            </div>
             {% include '_partials/footer' %}
         </div>
     </body>

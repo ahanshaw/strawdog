@@ -8,7 +8,7 @@
             <div class="c-home__current__shows">
                 {% set entries = craft.entries.relatedTo(seasonsCat).all() %}
                 {% for entry in entries %}
-                    <div class="c-home__current__show"
+                    <div class="c-home__current__show 
                     {% if entry.showStartDate %}
                         {% if entry.showStartDate | date("m/d/Y")  <= "now" | date("m/d/Y") and entry.showEndDate | date("m/d/Y") >= "now" | date("m/d/Y") %}
                             c-home__current__show--current

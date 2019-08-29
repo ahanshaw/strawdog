@@ -1,0 +1,36 @@
+{% extends "_layout" %}
+{% block content %}
+    <main id="main" class="c-404">
+        <div class="c-404__container">
+            <h1>Sorry, this page wasn&#8217;t found.</h1>
+            <p><a href="/contact-us">Get in touch with us</a>, or check out our current season:</p>
+
+            {% set seasonsCat = craft.categories().group('seasons').limit(1).all() %}
+            <div class="c-404__shows">
+                {% set entries = craft.entries.relatedTo(seasonsCat).all() %}
+                {% for entry in entries %}
+                    <div class="c-404__show">
+                        <a class="c-404__show__main" href="{{ entry.url }}" title="Learn more about {{ entry.title }}">
+                            <div class="c-404__show__title">
+                                <h3>{{ entry.title | typogrify }}</h3>
+                                {% if entry.showStartDate | length %}
+                                    <p class="date">{{ entry.showStartDate | date }}&ndash;{{ entry.showEndDate | date }}</p>
+                                {% else %}
+                                    <p class="date">Check back for dates!</p>
+                                {% endif %}
+                            </div>
+                            <div class="c-404__show__detail">
+                                <div class="c-404__show__image">
+                                    {% set image = entry.showMainImage.one() %}
+                                    {% set imageResizes = [{ width: 350, height: 350, mode: 'crop', position: image.getFocalPoint() }] %}
+                                    {% set srcSizes = '350px' %}
+                                    {% include '_partials/image' %}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
