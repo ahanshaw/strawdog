@@ -15,7 +15,7 @@ mix.setPublicPath('./web/dist')
     .autoload({
         'jquery': ['jQuery', '$'],
     })
-    .js('src/js/home/homeCarousel.js', 'web/dist/js/home.js')
+    .js('src/js/home/home.js', 'web/dist/js/home.js')
     .js('src/js/index.js', 'web/dist/js/index.js')
     .sass('src/scss/styles.scss', 'web/dist/css')
         .options({

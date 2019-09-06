@@ -6,6 +6,7 @@
 
     .c-hero__container {
         border-top: 2px solid $gold;
+        overflow: hidden;
     }
 
     .c-hero__image img {
@@ -15,7 +16,12 @@
     }
 
     .c-hero__copy {
+        right: -100%;
         text-align: left;
+
+        @include breakpoint('tablet') {
+            right: 0;
+        }
 
         @include breakpoint('mobile') {
             background-color: $white;
@@ -58,10 +64,12 @@
             color: $white;
             padding: 2.25em;
             background-color: $black;
+            opacity: 0;
 
             @include breakpoint('tablet') {
                 flex: 0 0 50%;
                 padding: 2.25em;
+                opacity: 1;
             }
 
             @include breakpoint('mobile') {
@@ -177,6 +185,11 @@
         &__subscribe {
             padding: .5em 0 3em 0;
             text-align: center;
+            opacity: 0;
+
+            @include breakpoint('tablet') {
+                opacity: 1;
+            }
 
             .btn {
                 @include font-size(14);
