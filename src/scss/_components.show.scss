@@ -38,6 +38,7 @@
 
         @include breakpoint('mobile') {
             flex-wrap: wrap;
+            padding: 0;
         }
 
         &__info {
@@ -179,7 +180,7 @@
             }
 
             @include breakpoint('mobile') {
-                flex: 0 0 100%;
+                flex: 0 0 250px;
                 padding: 1em 2em;
             }
 

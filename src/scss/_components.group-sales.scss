@@ -26,7 +26,12 @@
     &__sticky {
         position: sticky;
         top: 2em;
-    }    
+
+        @include breakpoint('mobile') {
+            position: relative;
+            top: 0;
+        }
+    }
 
     &__copy {
         margin-left: 4em;

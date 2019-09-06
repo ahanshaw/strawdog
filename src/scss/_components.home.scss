@@ -16,6 +16,17 @@
 
     .c-hero__copy {
         text-align: left;
+
+        @include breakpoint('mobile') {
+            background-color: $white;
+        }
+
+        h2,
+        p {
+            @include breakpoint('mobile') {
+                color: $black;
+            }
+        }
     }
 
     &__current {
@@ -30,6 +41,10 @@
             @include breakpoint('tablet') {
                 flex-wrap: wrap;
                 padding: 1em 0;
+            }
+
+            @include breakpoint('mobile') {
+                padding-top: 2em;
             }
         }
 

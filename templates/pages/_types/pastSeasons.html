@@ -5,9 +5,11 @@
             <div class="c-hero__container">
                 <div class="c-hero__image">
                     {% set image = entry.seasonPastSeasonHero.one() %}
-                    {% set imageResizes = [{ width: 1200, height: 400, mode: 'crop', position: image.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
-                    {% set srcSizes = '(max-width: 640px) 640px, (max-width: 768) 768px, 1100px' %}
-                    {% include '_partials/image' %}
+                    {% if image | length %}
+                        {% set imageResizes = [{ width: 1200, height: 400, mode: 'crop', position: image.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                        {% set srcSizes = '(max-width: 640px) 640px, (max-width: 768) 768px, 1100px' %}
+                        {% include '_partials/image' %}
+                    {% endif %}
                 </div>
                 <div class="c-hero__copy">
                     <h1>{{ entry.title }}</h1>
@@ -37,9 +39,13 @@
                             {% for entry in entries %}
                                 <a href="{{ entry.url }}" class="c-past-seasons__main__show">
                                     {% set image = entry.showMainImage.one() %}
-                                    {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
-                                    {% set srcSizes = '200px' %}
-                                    {% include '_partials/image' %}
+                                    {% if image | length %}
+                                        {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                                        {% set srcSizes = '200px' %}
+                                        {% include '_partials/image' %}
+                                    {% else %}
+                                        <img src="/assets/images/straw-dog.jpg" alt="Strawdog dog" />
+                                    {% endif %}
                                     <h3>{{ entry.title }}</h3>
                                 </a>
                             {% endfor %}
@@ -49,21 +55,62 @@
             {% endfor %}
             <div class="c-past-seasons__pagination">
                 <div class="c-past-seasons__pagination__container">
-                    <a class="first-page" href="{{ pageInfo.firstUrl }}">First Page</a>
-                    {% if pageInfo.prevUrl %}<a class="page-arrow prev" href="{{ pageInfo.prevUrl }}">&#8249;</a>{% endif %}
+                    {% set neighbors = 1 %}
+                    {% set prev = '&#10094;' %}
+                    {% set next = '&#10095;' %}
+                    {% set dots = "&hellip;" %}
 
-                    {% for page, url in pageInfo.getPrevUrls(2) %}
-                        <a href="{{ url }}">{{ page }}</a>
-                    {% endfor %}
+                    {% macro numericLink(url, number, current) %}
+                        <a href="{{url}}" data-number="{{number}}" class="pagination-link {{current ? 'current' : null}}" aria-label="{{current ? 'current page'|t : 'go to page'|t ~ ' ' ~ number}}" {{current ? 'aria-current="page"'}}>{{number}}</a>
+                    {% endmacro %}
 
-                    <span class="current">{{ pageInfo.currentPage }}</span>
+                    {% macro textLink(url, content, aria, number) %}
+                        <a href="{{url}}" data-number="{{number}}" class="pagination-link test" aria-label="{{aria}}">{{content|raw}}</a>
+                    {% endmacro %}
 
-                    {% for page, url in pageInfo.getNextUrls(2) %}
-                        <a href="{{ url }}">{{ page }}</a>
-                    {% endfor %}
+                    {% macro ellipsis(content) %}
+                        <span class="pagination-ellipsis">{{content|raw}}</span>
+                    {% endmacro %}
 
-                    {% if pageInfo.nextUrl %}<a class="page-arrow next" href="{{ pageInfo.nextUrl }}">&#8250;</a>{% endif %}
-                    <a class="last-page" href="{{ pageInfo.lastUrl }}">Last Page</a>
+                    {% if pageInfo is defined and pageInfo.totalPages > 1 %}
+                        {% import _self as self %}
+
+                        {# seomatic #}
+                        {# https://github.com/nystudio107/craft-seomatic#pagination-and-seo #}
+                        {% if seomatic is defined %}
+                            {% do seomatic.helper.paginate(pageInfo) %}
+                        {% endif %}
+
+                        <a href="{{ pageInfo.prevUrl }}" data-number="{{ prev }}" class="pagination-arrow prev{% if pageInfo.prevUrl %} active{% endif %}" aria-label="{{ 'previous page'|t }}">{% include '_partials/icons/arrow-left' %}</a>
+
+                        {% if pageInfo.currentPage - neighbors > 1  %}
+                            {{ self.numericLink(pageInfo.firstUrl, '1') }}
+                        {% endif %}
+
+                        {% if pageInfo.currentPage - neighbors > 2 %}
+                            {{ self.ellipsis(dots) }}
+                        {% endif %}
+
+                        {% for page, url in pageInfo.getPrevUrls(neighbors) %}
+                            {{ self.numericLink(url, page) }}
+                        {% endfor %}
+
+                        <span class="current">{{ pageInfo.currentPage }}</span>
+
+                        {% for page, url in pageInfo.getNextUrls(neighbors) %}
+                            {{ self.numericLink(url, page) }}
+                        {% endfor %}
+
+                        {% if pageInfo.totalPages - pageInfo.currentPage > neighbors + 1 %}
+                            {{ self.ellipsis(dots) }}
+                        {% endif %}
+
+                        {% if pageInfo.currentPage + neighbors < pageInfo.totalPages %}
+                            {{ self.numericLink(pageInfo.lastUrl, pageInfo.totalPages) }}
+                        {% endif %}
+
+                        <a href="{{ pageInfo.nextUrl }}" data-number="{{ next }}" class="pagination-arrow next{% if pageInfo.nextUrl %} active{% endif %}" aria-label="{{ 'next page'|t }}">{% include '_partials/icons/arrow-right' %}</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
