@@ -1,11 +1,20 @@
-import '../vendor/slick.min.js';
+import slickCarousel from 'slick-carousel';
+import isInViewport from 'is-in-viewport';
+import { getCookie } from '../global/getCookie.js';
 
 function homeAnimation() {
     var windowWidth = $(window).width(),
+        heroImage = $('.c-hero__image'),
         heroCopy = $('.c-hero__copy'),
         showItem = $('.c-home__current__show'),
-        subscribeBtn = $('.c-home__current__subscribe'),
+        subscribeBtn = $('.c-home__current__subscribe .btn'),
         numberShows = showItem.length;
+
+    function heroImageAnimation() {
+        heroImage.animate({
+            'top': 0
+        }, 500);
+    }
 
     function heroCopyAnimation() {
         heroCopy.animate({
@@ -15,7 +24,7 @@ function homeAnimation() {
 
     function showAnimate() {
         showItem.each(function(index) {
-            $(this).delay(index * 500).animate({
+            $(this).delay(index * 350).animate({
                 'opacity': 1
             }, 500);
         });
@@ -23,14 +32,25 @@ function homeAnimation() {
 
     function subscribeBtnAnimate() {
         subscribeBtn.animate({
-            'opacity': 1
+            'bottom': '3em'
         }, 500);
     }
 
     if (windowWidth > 768) {
+        setTimeout(heroImageAnimation, 50);
         setTimeout(heroCopyAnimation, 250);
-        setTimeout(showAnimate, 1250);
-        setTimeout(subscribeBtnAnimate, 1250 + (500 * numberShows));
+        setTimeout(showAnimate, 1300);
+        setTimeout(subscribeBtnAnimate, 1300 + (350 * numberShows));
+    }
+}
+
+function eventsAnimate() {
+    var windowWidth = $(window).width();
+
+    if (windowWidth > 768) {
+        $('.c-home__events:in-viewport').animate({
+            'opacity': 1
+        }, 750);
     }
 }
 
@@ -67,8 +87,15 @@ function homeCarousel() {
 }
 
 $(document).ready(function() {
-    homeAnimation();
+    var visitedCookie = getCookie('visited');
+    if (visitedCookie != 'yes') {
+        homeAnimation();
+    }
     homeCarousel();
+
+    $(window).scroll(function() {
+        setTimeout(eventsAnimate, 250);
+    })
 });
 
 

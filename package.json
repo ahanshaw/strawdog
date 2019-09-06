@@ -11,8 +11,10 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "is-in-viewport": "^3.0.4",
         "jquery": "^3.4.1",
-        "object-fit-images": "^3.2.4"
+        "object-fit-images": "^3.2.4",
+        "slick-carousel": "^1.8.1"
     },
     "devDependencies": {
         "browser-sync": "^2.26.7",

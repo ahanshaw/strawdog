@@ -9,15 +9,31 @@
         overflow: hidden;
     }
 
-    .c-hero__image img {
-        @include breakpoint('mobile') {
-            object-position: center;
+    .c-hero__image {
+        top: -100%;
+
+        &--visited {
+            top: 0;
+        }
+
+        @include breakpoint('tablet') {
+            top: 0;
+        }
+
+        img {
+            @include breakpoint('mobile') {
+                object-position: center;
+            }
         }
     }
 
     .c-hero__copy {
         right: -100%;
         text-align: left;
+
+        &--visited {
+            right: 0;
+        }
 
         @include breakpoint('tablet') {
             right: 0;
@@ -37,6 +53,7 @@
 
     &__current {
         background-color: $black;
+        overflow: hidden;
 
         &__shows {
             @include container(1100);
@@ -66,6 +83,10 @@
             background-color: $black;
             opacity: 0;
 
+            &--visited {
+                opacity: 1;
+            }
+
             @include breakpoint('tablet') {
                 flex: 0 0 50%;
                 padding: 2.25em;
@@ -89,7 +110,7 @@
                     height: 0;
                     border-left: 15px solid transparent;
                     border-right: 15px solid transparent;
-                    border-top: 15px solid $white;
+                    border-top: 15px solid $gold;
 
                     @include breakpoint('tablet') {
                         display: none;
@@ -113,6 +134,14 @@
             }
 
             &__title {
+
+                h3 {
+                    color: $gold;
+
+                    @include breakpoint('tablet') {
+                        color: $white;
+                    }
+                }
 
                 p {
                     @include font-size(14);
@@ -163,11 +192,13 @@
                 }
 
                 p {
+                    max-width: 300px;
                     @include font-size(16);
-                    margin: 0;
+                    margin: 0 auto;
                 }
 
                 .learn-more {
+                    max-width: none;
                     @include font-bold;
                     @include font-size(14);
                     text-transform: uppercase;
@@ -183,20 +214,43 @@
         }
 
         &__subscribe {
-            padding: .5em 0 3em 0;
+            position: relative;
+            padding: .5em 0 4em 0;
             text-align: center;
-            opacity: 0;
 
             @include breakpoint('tablet') {
-                opacity: 1;
+                padding-bottom: 3em;
+            }
+
+            @include breakpoint('mobile') {
+                padding-top: 0;
             }
 
             .btn {
+                position: absolute;
+                bottom: -100%;
+                left: 50%;
                 @include font-size(14);
+                transform: translateX(-50%);
+
+                @include breakpoint('tablet') {
+                    position: relative;
+                    bottom: 0;
+                    left: 0;
+                    transform: translateX(0);
+                }
 
                 &:hover {
                     text-decoration: none;
                     background-color: $black-60;
+                }
+            }
+
+            &--visited {
+
+                .btn {
+                    position: absolute;
+                    bottom: 3em;
                 }
             }
         }
@@ -205,9 +259,15 @@
     &__events {
         background-color: $white;
         padding: 3em 0;
+        opacity: 0;
+
+        &--visited {
+            opacity: 1;
+        }
 
         @include breakpoint('tablet') {
             padding: 3em 0 0 0;
+            opacity: 1;
         }
 
         h2 {
@@ -299,6 +359,11 @@
 
                 p {
                     margin: 0;
+
+                    @include breakpoint('mobile') {
+                        max-width: 300px;
+                        margin: 0 auto;
+                    }
                 }
 
                 .date {
@@ -307,6 +372,7 @@
                 }
 
                 .learn-more {
+                    max-width: none;
                     display: block;
                     @include font-bold;
                     @include font-size(13);

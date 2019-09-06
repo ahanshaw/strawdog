@@ -6,15 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
         <meta name="referrer" content="origin-when-cross-origin" />
 
-        <!--<link href="https://fonts.googleapis.com/css?family=Lato:300,700,900&display=swap" rel="stylesheet">-->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ mix('css/styles.css') }}">
         <script src="{{ mix('js/index.js') }}"></script>
 
         <title>Strawdog Theatre</title>
     </head>
     <body>
+        {% set cookieVisited = getCookie('cookieVisited') %}
+        {% set currentUrl = craft.app.request.segments|first %}
+        {% if currentUrl != '' %}
+            {% do 'cookieVisited' | setCookie('yes', now | date_modify("+1 day").timestamp) %}
+        {% endif %}
         <div id="page">
             <div>
                 <a class="accessibility-only" tabindex="-1" href="#main">Skip to main content</a>
