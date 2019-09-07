@@ -5,7 +5,8 @@
         text-align: center;
 
         p {
-            max-width: 600px;
+            max-width: 650px;
+            @include font-size(17);
             margin: 3em auto 0 auto;
             padding-bottom: 2em;
             border-bottom: 2px solid $gold;
