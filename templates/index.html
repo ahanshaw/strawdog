@@ -19,7 +19,7 @@
                         {% for entry in seasonsCat %}
                         <div class="c-hero__copy{% if cookieVisited == 'yes' %} c-hero__copy--visited{% endif %}">
                             <h2>Season {{ entry.title }}{% if entry.seasonTheme | length %}: {{ entry.seasonTheme }}{% endif %}</h2>
-                            {% if entry.seasonSummary | length %}{{ entry.seasonSummary }}{% endif %} <a href="{{ entry.url }}" title="Learn more about season {{ entry.title }}">Learn&nbsp;More</a>
+                            {% if entry.seasonSummary | length %}{{ entry.seasonSummary }}{% endif %} <a href="{{ entry.url }}" alt="Learn more about season {{ entry.title }}">Learn&nbsp;More</a>
                         </div>
                     {% endfor %}
                 </div>
@@ -34,7 +34,7 @@
                         {% endif %}
                     {% endif %}
                     ">
-                        <a class="c-home__current__show__main" href="{{ entry.url }}" title="Learn more about {{ entry.title }}">
+                        <a class="c-home__current__show__main" href="{{ entry.url }}" alt="Learn more about {{ entry.title }}">
                             <div class="c-home__current__show__title">
                                 <h3>{{ entry.title | typogrify }}</h3>
                                 {% if entry.showStartDate | length %}
@@ -73,7 +73,7 @@
                 <h2>Special Events</h2>
                 <div class="c-home__events__container">
                     {% for entry in entries %}
-                        <a title="Learn more about {{ entry.title }}" href="{{ entry.url }}" class="c-home__events__event">
+                        <a alt="Learn more about {{ entry.title }}" href="{{ entry.url }}" class="c-home__events__event">
                             <div class="c-home__events__event__image">
                                 {% set image = entry.specialEventMainImage.one() %}
                                 {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}

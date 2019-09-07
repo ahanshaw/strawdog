@@ -10,7 +10,7 @@
                 {% set entries = craft.entries.relatedTo(seasonsCat).all() %}
                 {% for entry in entries %}
                     <div class="c-404__show">
-                        <a class="c-404__show__main" href="{{ entry.url }}" title="Learn more about {{ entry.title }}">
+                        <a class="c-404__show__main" href="{{ entry.url }}" alt="Learn more about {{ entry.title }}">
                             <div class="c-404__show__title">
                                 <h3>{{ entry.title | typogrify }}</h3>
                                 {% if entry.showStartDate | length %}
