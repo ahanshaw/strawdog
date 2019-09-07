@@ -43,6 +43,7 @@ h2 {
 }
 
 h3 {
+    @include font-bold;
     @include font-size(15);
     letter-spacing: .025em;
     line-height: 1.3;
