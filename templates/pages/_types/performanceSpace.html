@@ -20,10 +20,12 @@
                 <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
             </div>
         {% endif %}
-        
+
         <div class="c-space__container">
             <div class="c-space__map">
-                <img src="/cms/images/space/map.jpg" />
+                <div class="c-space__map__sticky">
+                    <img src="/cms/images/space/map.jpg" />
+                </div>
             </div>
             <div class="c-space__copy">
                 {{ entry.performanceSpaceCopy | typogrify }}

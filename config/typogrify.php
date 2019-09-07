@@ -166,13 +166,13 @@ return [
     "set_dewidow" => true,
 
     // establishes maximum length of a widows that will be protected
-    "set_max_dewidow_length" => 7,
+    "set_max_dewidow_length" => 10,
 
     // establishes the maximum number of words considered for dewidowing.
     "set_dewidow_word_number" => 2,
 
     // establishes maximum length of pulled text to keep widows company
-    "set_max_dewidow_pull" => 7,
+    "set_max_dewidow_pull" => 10,
 
     // enables wrapping at hard hyphens internal to a word with the insertion of a zero-width-space
     "set_wrap_hard_hyphens" => false,
