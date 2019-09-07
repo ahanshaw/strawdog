@@ -71,10 +71,16 @@
             }
         }
 
+        svg {
+            width: 15px;
+            fill: $white;
+        }
+
         button {
             @include font-bold;
             @include font-size(16);
             color: $white;
+            padding: 0;
             background-color: transparent;
             border: 0;
             border-radius: 0;
