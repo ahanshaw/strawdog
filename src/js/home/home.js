@@ -38,9 +38,9 @@ function homeAnimation() {
 
     if (windowWidth > 768) {
         setTimeout(heroImageAnimation, 50);
-        setTimeout(heroCopyAnimation, 250);
-        setTimeout(showAnimate, 1300);
-        setTimeout(subscribeBtnAnimate, 1300 + (350 * numberShows));
+        setTimeout(heroCopyAnimation, 200);
+        setTimeout(showAnimate, 1250);
+        setTimeout(subscribeBtnAnimate, 1250 + (350 * numberShows));
     }
 }
 

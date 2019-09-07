@@ -1,27 +1,43 @@
-@mixin font-head {
-    font-family: 'Crimson Text', serif;
-    font-weight: 700;
+@font-face {
+    font-family: 'robotolight';
+    src: url('/assets/fonts/roboto-light-webfont.woff2') format('woff2'),
+         url('/assets/fonts/roboto-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'robotomedium';
+    src: url('/assets/fonts/roboto-medium-webfont.woff2') format('woff2'),
+         url('/assets/fonts/roboto-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'robotobold';
+    src: url('/assets/fonts/roboto-bold-webfont.woff2') format('woff2'),
+         url('/assets/fonts/roboto-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 @mixin font-regular {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'robotolight', sans-serif;
     font-weight: 300;
-    //font-family: 'Lato', sans-serif;
-    //font-weight: 300;
 }
 
 @mixin font-medium {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'robotomedium', sans-serif;
     font-weight: 500;
-    //font-family: 'Lato', sans-serif;
-    //font-weight: 700;
 }
 
 @mixin font-bold {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'robotobold', sans-serif;
     font-weight: 700;
-    //font-family: 'Lato', sans-serif;
-    //font-weight: 900;
 }
 
 @mixin font-size($sizeValue) {

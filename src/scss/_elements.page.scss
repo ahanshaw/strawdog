@@ -29,7 +29,12 @@ body {
     font-feature-settings: "kern" 1, "liga" 1;
 }
 
+h1 {
+    @include font-bold;
+}
+
 h2 {
+    @include font-bold;
     @include font-size(24);
     letter-spacing: .025em;
     line-height: 1.3;
