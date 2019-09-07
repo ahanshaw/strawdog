@@ -3,7 +3,8 @@
     &__container {
         @include container(1100);
         text-align: center;
-        margin-top: 2em;
+        margin-top: 4em;
+        margin-bottom: 4em; 
 
         p {
             margin-bottom: 4em;
@@ -65,6 +66,10 @@
         }
 
         &__title {
+
+            h3 {
+                color: $gold;
+            }
 
             p {
                 @include font-size(14);
