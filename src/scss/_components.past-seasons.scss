@@ -22,7 +22,7 @@
         }
 
         &__season {
-            flex: 0 0 20%;
+            flex: 0 0 175px;
 
             @include breakpoint('tablet') {
                 flex: 100%;
@@ -47,7 +47,7 @@
         }
 
         &__shows {
-            flex: 0 0 80%;
+            flex: 0 0 calc(100% - 175px);
             display: flex;
             flex-wrap: wrap;
 
@@ -81,14 +81,18 @@
 
             img {
                 display: block;
-                width: calc(100% - 2.5em);
+                width: calc(100% - 3.5em);
                 margin: 0 auto .5em auto;
                 border: 4px solid transparent;
                 border-radius: 50%;
                 transition: border-color .3s ease;
 
+                @include breakpoint('laptop') {
+                    width: calc(100% - 2em);
+                }
+
                 @include breakpoint('tablet') {
-                    width: calc(80% - 2em);
+                    width: calc(100% - 3em);
                 }
 
                 @include breakpoint('tablet') {
