@@ -4,7 +4,13 @@
          url('/assets/fonts/roboto-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'fallbacklight';
+    src: local('Arial');
+    font-weight: 300;
+    font-style: normal;
 }
 
 @font-face {
@@ -13,7 +19,13 @@
          url('/assets/fonts/roboto-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'fallbackmedium';
+    src: local('Arial Black');
+    font-weight: 500;
+    font-style: normal;
 }
 
 @font-face {
@@ -22,22 +34,25 @@
          url('/assets/fonts/roboto-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'fallbackbold';
+    src: local('Arial Black');
+    font-weight: 700;
+    font-style: normal;
 }
 
 @mixin font-regular {
-    font-family: 'robotolight', sans-serif;
-    font-weight: 300;
+    font-family: 'robotolight', 'fallbacklight';
 }
 
 @mixin font-medium {
-    font-family: 'robotomedium', sans-serif;
-    font-weight: 500;
+    font-family: 'robotomedium', 'fallbackmedium';
 }
 
 @mixin font-bold {
-    font-family: 'robotobold', sans-serif;
-    font-weight: 700;
+    font-family: 'robotobold', 'fallbackbold';
 }
 
 @mixin font-size($sizeValue) {
