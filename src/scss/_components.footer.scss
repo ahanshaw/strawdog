@@ -124,13 +124,18 @@
                 margin-top: .5em;
             }
 
-            &:disabled {
-                display: none;
-            }
-
             &:hover {
                 background-color: $black-60;
                 cursor: pointer;
+            }
+        }
+
+        .error  {
+            display: none;
+
+            p {
+                @include font-bold;
+                @include font-size(14);
             }
         }
     }
