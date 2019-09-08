@@ -42,6 +42,8 @@
         }
 
         @include breakpoint('mobile') {
+            width: 100%;
+            max-width: none;
             background-color: $white;
         }
 
@@ -437,6 +439,10 @@
             .slick-prev {
                 left: 20px;
 
+                @include breakpoint('mobile') {
+                    left: 0;
+                }
+
                 &:after {
                     margin-left: 2px;
                 }
@@ -444,6 +450,10 @@
 
             .slick-next {
                 right: 20px;
+
+                @include breakpoint('mobile') {
+                    right: 0;
+                }
 
                 &:after {
                     margin-right: 2px;

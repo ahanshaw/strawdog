@@ -200,7 +200,7 @@
         background-color: $white;
 
         @include breakpoint('mobile') {
-            padding: .5em 0;
+            padding: .5em 0 1em 0;
         }
 
         &__container {
