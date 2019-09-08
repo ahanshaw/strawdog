@@ -251,10 +251,25 @@
             }
 
             &--visited {
+                padding-top: 4em;
+                padding-bottom: 1em;
+
+                @include breakpoint('tablet') {
+                    padding-top: 2em;
+                    padding-bottom: 0;
+                }
+
+                @include breakpoint('mobile') {
+                    padding-top: 1em;
+                }
 
                 .btn {
                     position: absolute;
                     bottom: 3em;
+
+                    @include breakpoint('tablet') {
+                        position: relative;
+                    }
                 }
             }
         }
