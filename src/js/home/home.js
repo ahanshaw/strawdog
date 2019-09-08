@@ -95,7 +95,7 @@ $(document).ready(function() {
 
     $(window).scroll(function() {
         setTimeout(eventsAnimate, 250);
-    })
+    });
 });
 
 

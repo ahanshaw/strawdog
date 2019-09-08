@@ -70,14 +70,18 @@
     }
 
     &__newsletter {
-        flex: 0 0 500px;
-        text-align: center;
+        flex: 0 0 700px;
+        display: flex;
+        justify-content: center;
         color: $white;
+        padding-left: 100px;
 
         @include breakpoint('tablet') {
             flex: 0 0 100%;
             order: 3;
+            text-align: center;
             margin-top: 2em;
+            padding-left: 0;
         }
 
         @include breakpoint('mobile') {
@@ -88,7 +92,11 @@
         .newsletter-copy {
             max-width: 300px;
             @include font-size(15);
-            margin: 0 auto 1em auto;
+            margin: 0 100px 1em 0;
+
+            @include breakpoint('tablet') {
+                margin-right: 0;
+            }
         }
 
         input[type="email"] {
@@ -99,6 +107,10 @@
             margin: 0 .5em 0 0;
             padding: .5em 1em;
             border: 0;
+
+            @include breakpoint('tablet') {
+                margin-bottom: 1em;
+            }
         }
 
         input[type="submit"] {
@@ -113,12 +125,7 @@
             }
 
             &:disabled {
-                background-color: rgba($gold, .5);
-
-                &:hover {
-                    background-color: rgba($gold, .5);
-                    cursor: default;
-                }
+                display: none;
             }
 
             &:hover {
