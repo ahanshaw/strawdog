@@ -216,7 +216,9 @@
             }
 
             @include breakpoint('mobile') {
-                padding-top: 1em;
+                margin-top: -1em;
+                padding-top: 0;
+                padding-bottom: 2em;
             }
 
             .btn {
@@ -446,21 +448,32 @@
 
         .c-hero__copy {
             right: -100%;
+
+            @include breakpoint('tablet') {
+                right: 0;
+            }
         }
 
         .c-home__current__show {
             opacity: 0;
+
+            @include breakpoint('tablet') {
+                opacity: 1;
+            }
         }
 
         .c-home__current__subscribe {
             padding: .5em 0 4em 0;
 
             @include breakpoint('tablet') {
-                padding-bottom: 3em;
+                padding-top: 2em;
+                padding-bottom: 0;
             }
 
             @include breakpoint('mobile') {
+                margin-top: -1em;
                 padding-top: 0;
+                padding-bottom: 2em;
             }
 
             .btn {
@@ -481,6 +494,10 @@
 
         .c-home__events {
             opacity: 0;
+
+            @include breakpoint('tablet') {
+                opacity: 1;
+            }
         }
     }
 }
