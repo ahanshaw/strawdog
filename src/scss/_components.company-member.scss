@@ -2,15 +2,23 @@
 
     .c-hero__copy {
         padding: 2em;
+
+        @include breakpoint('mobile') {
+            background-color: $white;
+        }
+
+        h1 {
+
+            @include breakpoint('mobile') {
+                color: $black;
+            }
+        }
     }
 
     .c-hero__image {
 
-        img {
-
-            @include breakpoint('mobile') {
-                object-position: center;
-            }
+        @include breakpoint('mobile') {
+            display: none;
         }
     }
 
@@ -24,7 +32,7 @@
 
             @include breakpoint('mobile') {
                 flex-wrap: wrap;
-                padding: 3em 0 1em 0;
+                padding: 0 0 1em 0;
             }
         }
 
@@ -108,17 +116,26 @@
         &__list {
             flex: 0 0 calc(50% - 1em);
 
+            @include breakpoint('mobile') {
+                flex: 0 0 100%;
+                margin: 0;
+            }
+
             &:nth-of-type(odd) {
                 margin-right: 1em;
+
+                @include breakpoint('mobile') {
+                    margin-right: 0;
+                }
             }
 
             &:nth-of-type(even) {
                 margin-left: 1em;
-            }
 
-            @include breakpoint('mobile') {
-                flex: 0 0 100%;
-                margin: 0;
+                @include breakpoint('mobile') {
+                    margin-top: 1em;
+                    margin-left: 0;
+                }
             }
         }
     }

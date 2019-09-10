@@ -69,6 +69,10 @@
                  margin-bottom: 0;
             }
 
+            .date {
+                @include font-size(14);
+            }
+
             .times {
                 display: block;
                 margin-bottom: 2.5em;
@@ -98,7 +102,6 @@
 
             p {
                 max-width: 600px;
-                @include font-size(17);
                 line-height: 2;
                 margin: 0 0 1em 2em;
 
@@ -178,7 +181,7 @@
         }
 
         &__member {
-            flex: 0 0 25%;
+            flex: 0 0 20%;
             text-align: center;
             text-decoration: none;
             color: $black;
@@ -199,6 +202,7 @@
 
             .cast-member {
                 @include font-medium;
+                @include font-size(15);
                 text-transform: uppercase;
             }
 

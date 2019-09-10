@@ -10,11 +10,7 @@
     }
 
     .c-hero__image {
-        top: -100%;
-
-        &--visited {
-            top: 0;
-        }
+        top: 0;
 
         @include breakpoint('tablet') {
             top: 0;
@@ -30,12 +26,8 @@
     .c-hero__copy {
         max-width: 50%;
         min-width: 275px;
-        right: -100%;
+        right: 0;
         text-align: left;
-
-        &--visited {
-            right: 0;
-        }
 
         @include breakpoint('tablet') {
             right: 0;
@@ -85,11 +77,6 @@
             color: $white;
             padding: 2.25em;
             background-color: $black;
-            opacity: 0;
-
-            &--visited {
-                opacity: 1;
-            }
 
             @include breakpoint('tablet') {
                 flex: 0 0 50%;
@@ -219,20 +206,22 @@
 
         &__subscribe {
             position: relative;
-            padding: .5em 0 4em 0;
+            padding-top: 4em;
+            padding-bottom: 1em;
             text-align: center;
 
             @include breakpoint('tablet') {
-                padding-bottom: 3em;
+                padding-top: 2em;
+                padding-bottom: 0;
             }
 
             @include breakpoint('mobile') {
-                padding-top: 0;
+                padding-top: 1em;
             }
 
             .btn {
                 position: absolute;
-                bottom: -100%;
+                bottom: 3em;
                 left: 50%;
                 @include font-size(14);
                 transform: translateX(-50%);
@@ -249,40 +238,12 @@
                     background-color: $black-60;
                 }
             }
-
-            &--visited {
-                padding-top: 4em;
-                padding-bottom: 1em;
-
-                @include breakpoint('tablet') {
-                    padding-top: 2em;
-                    padding-bottom: 0;
-                }
-
-                @include breakpoint('mobile') {
-                    padding-top: 1em;
-                }
-
-                .btn {
-                    position: absolute;
-                    bottom: 3em;
-
-                    @include breakpoint('tablet') {
-                        position: relative;
-                    }
-                }
-            }
         }
     }
 
     &__events {
         background-color: $white;
         padding: 3em 0;
-        opacity: 0;
-
-        &--visited {
-            opacity: 1;
-        }
 
         @include breakpoint('tablet') {
             padding: 3em 0 0 0;
@@ -474,6 +435,52 @@
                     margin-right: 2px;
                 }
             }
+        }
+    }
+
+    &--animate {
+
+        .c-hero__image {
+            top: -100%;
+        }
+
+        .c-hero__copy {
+            right: -100%;
+        }
+
+        .c-home__current__show {
+            opacity: 0;
+        }
+
+        .c-home__current__subscribe {
+            padding: .5em 0 4em 0;
+
+            @include breakpoint('tablet') {
+                padding-bottom: 3em;
+            }
+
+            @include breakpoint('mobile') {
+                padding-top: 0;
+            }
+
+            .btn {
+                position: absolute;
+                bottom: -100%;
+                left: 50%;
+                @include font-size(14);
+                transform: translateX(-50%);
+
+                @include breakpoint('tablet') {
+                    position: relative;
+                    bottom: 0;
+                    left: 0;
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        .c-home__events {
+            opacity: 0;
         }
     }
 }
