@@ -93,7 +93,7 @@
 
         {% if entry.showCrew | length %}
             <div class="c-show__crew">
-                <h2>Crew</h2>
+                <h2>Creative Team</h2>
                 <div class="c-show__crew__container">
                     {% for block in entry.showCrew.all() %}
                         {% set crewMember = block.crewName.one() %}
