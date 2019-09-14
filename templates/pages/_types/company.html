@@ -11,12 +11,12 @@
         <div class="c-company__nav">
             <div class="c-company__nav__container">
                 <ul>
-                    <li><a href="#company">Company</a></li>
-                    {% if entry.companyBoard | length %}
-                        <li><a href="#board">Board of Directors</a></li>
-                    {% endif %}
                     {% if entry.companyStaff | length %}
                         <li><a href="#staff">Staff</a></li>
+                    {% endif %}
+                    <li><a href="#company">Ensemble</a></li>
+                    {% if entry.companyBoard | length %}
+                        <li><a href="#board">Board of Directors</a></li>
                     {% endif %}
                     {% if entry.companyArtisticAssociates | length %}
                         <li><a href="#associates">Artistic Associates</a></li>
@@ -27,8 +27,16 @@
                 </ul>
             </div>
         </div>
+
+        <div id="staff" class="c-company__list">
+            <h2>Staff</h2>
+            <div class="c-company__list__container">
+                {{ entry.companyStaff }}
+            </div>
+        </div>
+
         <div id="company" class="c-company__members">
-            <h2>company</h2>
+            <h2>Ensemble</h2>
             <div class="c-company__members__container">
                 {% set entries = craft.entries.section('company').all() %}
                 {% for entry in entries %}
@@ -51,13 +59,6 @@
             <h2>Board of Directors</h2>
             <div class="c-company__list__container">
                 {{ entry.companyBoard }}
-            </div>
-        </div>
-
-        <div id="staff" class="c-company__list">
-            <h2>Staff</h2>
-            <div class="c-company__list__container">
-                {{ entry.companyStaff }}
             </div>
         </div>
 

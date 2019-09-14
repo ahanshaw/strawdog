@@ -16,5 +16,5 @@ function navAnimate() {
 $(document).ready(function() {
     $(window).scroll(function() {
         setTimeout(navAnimate, 250);
-    })
+    });
 });
