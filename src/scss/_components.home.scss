@@ -206,8 +206,8 @@
 
         &__subscribe {
             position: relative;
-            padding-top: 4em;
-            padding-bottom: 1em;
+            padding-top: .5em;
+            padding-bottom: 3em;
             text-align: center;
 
             @include breakpoint('tablet') {
@@ -221,23 +221,16 @@
                 padding-bottom: 2em;
             }
 
-            .btn {
-                position: absolute;
-                bottom: 3em;
-                left: 50%;
-                @include font-size(14);
-                transform: translateX(-50%);
+            &__container {
 
-                @include breakpoint('tablet') {
-                    position: relative;
-                    bottom: 0;
-                    left: 0;
-                    transform: translateX(0);
-                }
+                .btn {
+                    @include font-size(14);
+                    margin: 0 1em;
 
-                &:hover {
-                    text-decoration: none;
-                    background-color: $black-60;
+                    &:hover {
+                        text-decoration: none;
+                        background-color: $black-60;
+                    }
                 }
             }
         }
@@ -464,22 +457,22 @@
             @media screen and (min-width: 769px) {
                 padding: .5em 0 4em 0;
             }
+        }
 
-            .btn {
-                @media screen and (min-width: 769px) {
-                    position: absolute;
-                    bottom: -100%;
-                    left: 50%;
-                    @include font-size(14);
-                    transform: translateX(-50%);
-                }
+        .c-home__current__subscribe__container {
+            @media screen and (min-width: 769px) {
+                position: absolute;
+                bottom: -100%;
+                left: 50%;
+                @include font-size(14);
+                transform: translateX(-50%);
             }
         }
 
         .c-home__events {
             @media screen and (min-width: 769px) {
                 opacity: 0;
-            } 
+            }
         }
     }
 }
