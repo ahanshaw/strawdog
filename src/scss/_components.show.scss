@@ -70,12 +70,12 @@
             }
 
             .date {
-                @include font-size(14);
+                margin: 1em 0 0 0;
             }
 
             .times {
                 display: block;
-                margin-bottom: 2.5em;
+                margin: 0 0 2.5em 0;
             }
 
             .btn {
