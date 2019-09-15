@@ -24,7 +24,7 @@
         {% endif %}
 
         <div class="c-past-seasons__main">
-            {% set seasons = craft.categories().group('seasons').limit(4) %}
+            {% set seasons = craft.categories().group('seasons').limit(5) %}
             {% paginate seasons as pageInfo, pageEntries %}
             {% for season in pageEntries %}
                 {% set filter = craft.categories.slug(season.title) %}
@@ -53,6 +53,7 @@
                     </div>
                 {% endif %}
             {% endfor %}
+
             <div class="c-past-seasons__pagination">
                 <div class="c-past-seasons__pagination__container">
                     {% set neighbors = 1 %}
@@ -110,6 +111,15 @@
                         {% endif %}
 
                         <a href="{{ pageInfo.nextUrl }}" data-number="{{ next }}" class="pagination-arrow next{% if pageInfo.nextUrl %} active{% endif %}" aria-label="{{ 'next page'|t }}">{% include '_partials/icons/arrow-right' %}</a>
+
+                        {% if pageInfo.currentPage == pageInfo.totalPages %}
+                            {% set seasons = craft.categories().group('seasons').inReverse().one() %}
+                            {% if seasons.title != '1' %}
+                                <p style="margin: 1em auto;">More past productions coming soon!</p>
+                            {% endif %}
+                        {% endif %}
+                    {% elseif pageInfo.totalPages == 1 %}
+                        <p style="margin: 1em auto;">More past productions coming soon!</p>
                     {% endif %}
                 </div>
             </div>
