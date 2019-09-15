@@ -7,7 +7,7 @@ function homeAnimation() {
         heroImage = $('.c-hero__image'),
         heroCopy = $('.c-hero__copy'),
         showItem = $('.c-home__current__show'),
-        subscribeBtn = $('.c-home__current__subscribe .btn'),
+        subscribeBtn = $('.c-home__current__subscribe__container'),
         numberShows = showItem.length;
 
     function heroImageAnimation() {

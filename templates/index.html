@@ -62,8 +62,14 @@
                 {% endfor %}
             </div>
             <div class="c-home__current__subscribe">
-                {% set link = entry.homeSubscriptionLink.one() %}
-                <a class="btn btn--gold" href="{{ link.url }}">Subscribe</a>
+                <div class="c-home__current__subscribe__container">
+                    {% set entries = craft.entries.relatedTo(seasonsCat).one() %}
+                    {% if entries.showEndDate | date("m/d/Y") <= "now" %}
+                        {% set link = entry.homeSubscriptionLink.one() %}
+                        <a class="btn btn--gold" href="{{ link.url }}">Subscribe</a>
+                    {% endif %}
+                    <a class="btn btn--white" target="_blank" rel="noopener noreferrer" href="{{ vendorLinks.ticketsLink }}">Buy Tickets</a>
+                </div>
             </div>
         </section>
 
