@@ -120,6 +120,10 @@
                     width: 100%;
                     filter: grayscale(100%);
                 }
+
+                p {
+                    line-height: 1;
+                }
             }
         }
     }
