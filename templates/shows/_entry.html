@@ -63,28 +63,47 @@
                 <div class="c-show__cast__container">
                     {% for block in entry.showCast.all() %}
                         {% set castMember = block.castMember.one() %}
-                        {% if castMember.companyEnsembleMember %}
+                        {% set sectionHandle = castMember.section.handle %}
+                        {% if sectionHandle == 'staff' %}
                             <a class="c-show__cast__member ensemble" href="{{ castMember.url }}">
-                        {% else %}
-                            <div class="c-show__cast__member">
-                        {% endif %}
-                            <div class="c-show__cast__member__image">
-                                {% set castImage = castMember.companyHeadshot.one() %}
-                                {% if castImage | length %}
-                                    {% set image = castMember.companyHeadshot.one() %}
-                                    {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: castImage.getFocalPoint() }] %}
-                                    {% set srcSizes = '200px' %}
-                                    {% include '_partials/image' %}
-                                {% else %}
-                                    <img src="/cms/images/company/user-placeholder.png" />
-                                {% endif %}
-                            </div>
-                            <p class="cast-member {% if castMember.companyEnsembleMember %} strawdog{% endif %}">{{ castMember.title }}{% if castMember.companyEnsembleMember %}<span class="asterisk">*</span>{% endif %}</p>
-                            {% if block.characterName | length %}<p>as {{ block.characterName }}</p>{% endif %}
-                        {% if castMember.companyEnsembleMember %}
+                                <div class="c-show__cast__member__image">
+                                    {% set castImage = castMember.companyHeadshot.one() %}
+                                    {% if castImage | length %}
+                                        {% set image = castMember.companyHeadshot.one() %}
+                                        {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: castImage.getFocalPoint() }] %}
+                                        {% set srcSizes = '200px' %}
+                                        {% include '_partials/image' %}
+                                    {% else %}
+                                        <img src="/cms/images/company/user-placeholder.png" />
+                                    {% endif %}
+                                </div>
+                                <p class="cast-member strawdog">{{ castMember.title }}<span class="asterisk">*</span></p>
+                                {% if block.characterName | length %}<p>as {{ block.characterName }}</p>{% endif %}
                             </a>
                         {% else %}
-                            </div>
+                            {% if castMember.companyEnsembleMember %}
+                                <a class="c-show__cast__member ensemble" href="{{ castMember.url }}">
+                            {% else %}
+                                <div class="c-show__cast__member">
+                            {% endif %}
+                                <div class="c-show__cast__member__image">
+                                    {% set castImage = castMember.companyHeadshot.one() %}
+                                    {% if castImage | length %}
+                                        {% set image = castMember.companyHeadshot.one() %}
+                                        {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: castImage.getFocalPoint() }] %}
+                                        {% set srcSizes = '200px' %}
+                                        {% include '_partials/image' %}
+                                    {% else %}
+                                        <img src="/cms/images/company/user-placeholder.png" />
+                                    {% endif %}
+                                </div>
+                                <p class="cast-member {% if castMember.companyEnsembleMember %} strawdog{% endif %}">{{ castMember.title }}{% if castMember.companyEnsembleMember %}<span class="asterisk">*</span>{% endif %}</p>
+                                {% if block.characterName | length %}<p>as {{ block.characterName }}</p>{% endif %}
+                            {% if castMember.companyEnsembleMember %}
+                                </a>
+                            {% else %}
+                                </div>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -97,8 +116,14 @@
                 <div class="c-show__crew__container">
                     {% for block in entry.showCrew.all() %}
                         {% set crewMember = block.crewName.one() %}
-                        <p><span class="crew-member">{% if crewMember.companyEnsembleMember %}<a href="{{ crewMember.url }}">{% endif %}{{ crewMember.title }}{% if crewMember.companyEnsembleMember %}<span class="asterisk">*</span></a>{% endif %}</span><br />
-                        {{ block.crewTitle }}</p>
+                        {% set sectionHandle = crewMember.section.handle %}
+                        {% if sectionHandle == 'staff' %}
+                            <p><span class="crew-member"><a href="{{ crewMember.url }}">{{ crewMember.title }}<span class="asterisk">*</span></a></span><br />
+                            {{ block.crewTitle }}</p>
+                        {% else %}
+                            <p><span class="crew-member">{% if crewMember.companyEnsembleMember %}<a href="{{ crewMember.url }}">{% endif %}{{ crewMember.title }}{% if crewMember.companyEnsembleMember %}<span class="asterisk">*</span></a>{% endif %}</span><br />
+                            {{ block.crewTitle }}</p>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
