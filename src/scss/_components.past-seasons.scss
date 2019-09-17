@@ -60,6 +60,7 @@
         &__show {
             flex: 0 0 25%;
             text-align: center;
+            margin-bottom: 2em;
 
             @include breakpoint('tablet') {
                 flex: 0 0 33.33%;

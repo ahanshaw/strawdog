@@ -27,7 +27,7 @@
                 <span class="by">{{ entry.showBy }}</span>
                 {% set season = entry.showSeason.one() %}
                 <p class="season"><a href="{{ season.url }}">Season {{ season.title }}</a></p>
-                <p class="date">{{ entry.showStartDate|date }} &ndash; {{ entry.showEndDate|date }}</p>
+                <p class="date">{{ entry.showStartDate|date }}&ndash;{{ entry.showEndDate|date }}</p>
 
                 {% set currentDate = "now"|date('Y-m-d') %}
                 {% set endDate = entry.showEndDate|date('Y-m-d') %}
