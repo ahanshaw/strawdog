@@ -56,10 +56,12 @@
                     {% if entry.companyEnsembleMember %}
                         <a class="c-company__members__member" href="{{ entry.url }}">
                             <div class="c-company__members__member__image">
-                                {% set image = entry.companyHeadshot.one() %}
-                                {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
-                                {% set srcSizes = '200px' %}
-                                {% include '_partials/image' %}
+                                {% if entry.companyHeadshot | length %}
+                                    {% set image = entry.companyHeadshot.one() %}
+                                    {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                                    {% set srcSizes = '200px' %}
+                                    {% include '_partials/image' %}
+                                {% endif %}
                             </div>
                             <p>{{ entry.title }}</p>
                         </a>
@@ -72,14 +74,22 @@
             <h2>Board of Directors</h2>
             <div class="c-company__members__container">
                 {% set entries = craft.entries.section('board').all() %}
+                {% set hasHeadshot = false %}
+                {% for entry in entries %}
+                    {% if entry.companyHeadshot | length %}
+                        {% set hasHeadshot = true %}
+                    {% endif %}
+                {% endfor %}
                 {% for entry in entries %}
                     <a class="c-company__members__member" href="{{ entry.url }}">
-                        <div class="c-company__members__member__image">
-                            {% set image = entry.companyHeadshot.one() %}
-                            {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
-                            {% set srcSizes = '200px' %}
-                            {% include '_partials/image' %}
-                        </div>
+                        {% if hasHeadshot == true %}
+                            <div class="c-company__members__member__image">
+                                {% set image = entry.companyHeadshot.one() %}
+                                {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                                {% set srcSizes = '200px' %}
+                                {% include '_partials/image' %}
+                            </div>
+                        {% endif %}
                         <p>{{ entry.title }}</p>
                     </a>
                 {% endfor %}
