@@ -4,7 +4,7 @@
         <div class="c-hero">
             <div class="c-hero__container">
                 <div class="c-hero__image">
-                    {% set image = entry.joinHeroImage.one() %}
+                    {% set image = entry.ticketsHeroImage.one() %}
                     {% set imageResizes = [{ width: 1200, height: 400, mode: 'crop', position: image.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
                     {% set srcSizes = '(max-width: 640px) 640px, (max-width: 768) 768px, 1100px' %}
                     {% include '_partials/image' %}
@@ -24,8 +24,8 @@
         <div class="c-tickets__container">
             <div class="c-tickets__side">
             </div>
-            <div class="c-tickets__join">
-                {{ entry.copy | typogrify }}
+            <div class="c-tickets__main">
+                {{ entry.ticketsCopy | typogrify }}
             </div>
         </div>
     </main>

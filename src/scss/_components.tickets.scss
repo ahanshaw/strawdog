@@ -22,7 +22,7 @@
         }
     }
 
-    &__join {
+    &__main {
         max-width: 600px;
 
         @include breakpoint('tablet') {
@@ -53,6 +53,10 @@
 
         li {
             margin: 0;
+        }
+
+        strong {
+            @include font-medium;
         }
     }
 }
