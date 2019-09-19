@@ -58,7 +58,7 @@ p {
 a {
     @include font-medium;
     text-decoration: none;
-    color: $gold;
+    color: $dark-gold;
 
     &:hover {
         text-decoration: underline;

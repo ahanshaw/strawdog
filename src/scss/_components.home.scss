@@ -291,7 +291,7 @@
                 }
 
                 img {
-                    border-color: $gold;
+                    border-color: $dark-gold;
                 }
             }
 
@@ -358,7 +358,7 @@
                     @include font-size(13);
                     text-transform: uppercase;
                     text-decoration: none;
-                    color: $gold;
+                    color: $dark-gold;
                     margin: 1em 0 0 0;
                     transition: color .3s ease;
                 }

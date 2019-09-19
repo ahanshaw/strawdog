@@ -76,7 +76,7 @@
                 text-decoration: none;
 
                 img {
-                    border-color: $gold;
+                    border-color: $dark-gold;
                 }
             }
 
@@ -104,7 +104,7 @@
             h3 {
                 @include font-medium;
                 @include font-size(13);
-                color: $gold;
+                color: $dark-gold;
                 margin: 0 1em;
                 transition: color .3s ease;
             }
@@ -116,7 +116,7 @@
         margin-top: 2em;
 
         a {
-            color: $gold;
+            color: $dark-gold;
             padding: 0 .5em;
             text-decoration: none;
 

@@ -9,7 +9,7 @@
             @include font-size(17);
             margin: 3em auto 0 auto;
             padding-bottom: 2em;
-            border-bottom: 2px solid $gold;
+            border-bottom: 2px solid $dark-gold;
         }
     }
 
@@ -93,7 +93,7 @@
                     @include font-size(13);
                     text-decoration: none;
                     text-transform: uppercase;
-                    color: $gold;
+                    color: $dark-gold;
                     padding-left: 1em;
                     transition: color .3s ease;
 
@@ -230,7 +230,7 @@
                     @include font-bold;
                     @include font-size(14);
                     text-transform: uppercase;
-                    color: $gold;
+                    color: $dark-gold;
                     margin: 1em 0 0 0;
                     transition: color .3s ease;
 
@@ -284,7 +284,7 @@
             &:hover {
 
                 img {
-                    border-color: $gold;
+                    border-color: $dark-gold;
                 }
             }
 
@@ -344,7 +344,7 @@
                     @include font-size(13);
                     text-transform: uppercase;
                     text-decoration: none;
-                    color: $gold;
+                    color: $dark-gold;
                     margin: 1em 0 0 0;
                     transition: color .3s ease;
 
