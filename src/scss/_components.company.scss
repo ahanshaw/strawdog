@@ -105,6 +105,13 @@
                 margin: .5em 0 0 0;
             }
 
+            .title {
+                display: block;
+                @include font-regular;
+                text-transform: capitalize;
+                color: $black;
+            }
+
             &__image {
                 margin-bottom: 1em;
                 border: 4px solid $white;

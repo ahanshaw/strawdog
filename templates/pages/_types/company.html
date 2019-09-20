@@ -90,7 +90,7 @@
                                 {% include '_partials/image' %}
                             </div>
                         {% endif %}
-                        <p>{{ entry.title }}</p>
+                        <p>{{ entry.title }}{% if entry.companyTitle | length %} <span class="title">{{ entry.companyTitle }}{% endif %}</span></p>
                     </a>
                 {% endfor %}
             </div>
