@@ -104,7 +104,7 @@
                                         <img src="/cms/images/company/user-placeholder.png" />
                                     {% endif %}
                                 </div>
-                                <p class="cast-member {% if castMember.companyEnsembleMember %} strawdog{% endif %}">{{ castMember.title }}{% if castMember.companyEnsembleMember %}<span class="asterisk">*</span>{% endif %}</p>
+                                <p class="cast-member {% if castMember.companyEnsembleMember %} strawdog{% endif %}">{{ castMember.title }}{% if block.castEnsembleMember %}<span class="asterisk">*</span>{% endif %}</p>
                                 {% if block.characterName | length %}<p>as {{ block.characterName }}</p>{% endif %}
                             {% if castMember.companyEnsembleMember %}
                                 </a>
@@ -128,7 +128,7 @@
                             <p><span class="crew-member"><a href="{{ crewMember.url }}">{{ crewMember.title }}<span class="asterisk">*</span></a></span><br />
                             {{ block.crewTitle }}</p>
                         {% else %}
-                            <p><span class="crew-member">{% if crewMember.companyEnsembleMember %}<a href="{{ crewMember.url }}">{% endif %}{{ crewMember.title }}{% if crewMember.companyEnsembleMember %}<span class="asterisk">*</span></a>{% endif %}</span><br />
+                            <p><span class="crew-member">{% if crewMember.companyEnsembleMember %}<a href="{{ crewMember.url }}">{% endif %}{{ crewMember.title }}{% if block.crewEnsembleMember %}<span class="asterisk">*</span>{% endif %}{% if crewMember.companyEnsembleMember %}</a>{% endif %}</span><br />
                             {{ block.crewTitle }}</p>
                         {% endif %}
                     {% endfor %}
