@@ -99,7 +99,7 @@
                         </a>
                     {% endfor %}
                     {% if entry.homeAnnouncements | length %}
-                        {% for block in entry.homeAnnouncements %}
+                        {% for block in entry.homeAnnouncements.all() %}
                             {% if block.homeAnnouncementLink | length %}
                                 <a href="{{ block.homeAnnouncementLink }}" alt="Learn more about {{ block.homeAnnouncementSubhead }}" class="c-home__events__event">
                             {% else %}
