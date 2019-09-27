@@ -53,6 +53,10 @@
                 {% if entry.showAnnouncement | length and season.title == currentSeason.title %}
                     {{ entry.showAnnouncement }}
                 {% endif %}
+                {% if entry.showAwards | length %}
+                    <h2>Jeff Awards</h2>
+                    {{ entry.showAwards }}
+                {% endif %}
             </div>
         </div>
 
