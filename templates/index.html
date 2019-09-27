@@ -74,9 +74,8 @@
         </section>
 
         {% set entries = craft.entries.section('pages').type('specialEvent').all() %}
-        {% if entries | length %}
+        {% if entries | length or entry.homeAnnouncements | length %}
             <section class="c-home__events">
-                <h2>Special Events</h2>
                 <div class="c-home__events__container">
                     {% for entry in entries %}
                         <a alt="Learn more about {{ entry.title }}" href="{{ entry.url }}" class="c-home__events__event">
@@ -87,6 +86,7 @@
                                 {% include '_partials/image' %}
                             </div>
                             <div class="c-home__events__event__detail">
+                                <h2>Special Event</h2>
                                 <h3>{{ entry.title }}</h3>
                                 {% if entry.specialEventDate | length %}
                                     <p class="date">{{ entry.specialEventDate | date('full') }}</p>
@@ -98,12 +98,43 @@
                             </div>
                         </a>
                     {% endfor %}
+                    {% if entry.homeAnnouncements | length %}
+                        {% for block in entry.homeAnnouncements %}
+                            {% if block.homeAnnouncementLink | length %}
+                                <a href="{{ block.homeAnnouncementLink }}" alt="Learn more about {{ block.homeAnnouncementSubhead }}" class="c-home__events__event">
+                            {% else %}
+                                <div class="c-home__events__event c-home__events__event--no-hover">
+                            {% endif %}
+                                <div class="c-home__events__event__image">
+                                    {% set image = block.homeAnnouncementImage.one() %}
+                                    {% set imageResizes = [{ width: 200, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                                    {% set srcSizes = '200px' %}
+                                    {% include '_partials/image' %}
+                                </div>
+                                <div class="c-home__events__event__detail">
+                                    <h2>{{ block.homeAnnouncementHead }}</h2>
+                                    <h3>{{ block.homeAnnouncementSubhead }}</h3>
+                                    {% if block.homeAnnouncementDate | length %}
+                                        <p class="date">{{ block.homeAnnouncementDate | date('full') }}</p>
+                                    {% endif %}
+                                    {{ block.homeAnnouncementCopy | typogrify }}
+                                    {% if block.homeAnnouncementLink | length %}
+                                        <p aria-hidden="true" class="learn-more">{{ block.homeAnnouncementLinkCopy }}</p>
+                                    {% endif %}
+                                </div>
+                            {% if block.homeAnnouncementLink | length %}
+                                </a>
+                            {% else %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </section>
         {% endif %}
 
         {% if entry.homeCarouselImages | length %}
-            <section class="c-home__carousel">
+            <section class="c-home__carousel{% if not entries | length and not entry.homeAnnouncements | length %} c-home__carousel--padding-top{% endif %}">
                 <div class="c-home__carousel__container">
                     {% for image in entry.homeCarouselImages.all() %}
                         <div>
