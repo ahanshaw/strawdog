@@ -1,12 +1,12 @@
 {
   "require": {
-    "aelvan/imager": "v2.1.10",
-    "craftcms/cms": "3.3.1",
-    "craftcms/redactor": "2.3.3.2",
+    "aelvan/imager": "v2.3.0",
+    "craftcms/cms": "3.3.5",
+    "craftcms/redactor": "2.4.0",
     "doublesecretagency/craft-cpjs": "2.2.0",
     "misterbk/mix": "1.5.2",
     "nystudio107/craft-cookies": "1.1.11",
-    "nystudio107/craft-seomatic": "3.2.23",
+    "nystudio107/craft-seomatic": "3.2.26",
     "nystudio107/craft-typogrify": "1.1.18",
     "putyourlightson/craft-sendgrid": "1.1.1",
     "solspace/craft-express-forms": "1.0.4",

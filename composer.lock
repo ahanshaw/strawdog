@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f900fc9cfacf69dcb9d76d38632125c5",
+    "content-hash": "e151d00ffb33d3afa0c3a52c1754b48a",
     "packages": [
         {
             "name": "aelvan/imager",
-            "version": "v2.1.10",
+            "version": "v2.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aelvan/Imager-Craft/zipball/f7e80a3cd8c3b3a29fd8ca8961bf452727d52a32",
-                "reference": "f7e80a3cd8c3b3a29fd8ca8961bf452727d52a32",
+                "url": "https://api.github.com/repos/aelvan/Imager-Craft/zipball/b9f01d7bfb6e05a6688c676d7bbfcc50a68f5d29",
+                "reference": "b9f01d7bfb6e05a6688c676d7bbfcc50a68f5d29",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,6 @@
                     "aelvan\\imager\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -55,8 +54,8 @@
             ],
             "description": "Image transforms gone wild",
             "keywords": [
-                "Craft",
                 "cms",
+                "craft",
                 "craft-plugin",
                 "craftcms",
                 "image",
@@ -65,15 +64,19 @@
                 "srcset",
                 "transform"
             ],
-            "time": "2019-04-13T19:47:44+00:00"
+            "support": {
+                "docs": "https://github.com/aelvan/Imager-Craft/blob/craft3/README.md",
+                "issues": "https://github.com/aelvan/Imager-Craft/issues"
+            },
+            "time": "2019-09-21T14:25:19+00:00"
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.108.0",
+            "version": "3.112.8",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/df65815065b0195bc374bd17d8cc6884b4870da1",
-                "reference": "df65815065b0195bc374bd17d8cc6884b4870da1",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2a2f2bb0e05c2756573155353648521a9a08f5b3",
+                "reference": "2a2f2bb0e05c2756573155353648521a9a08f5b3",
                 "shasum": ""
             },
             "require": {
@@ -85,20 +88,6 @@
                 "guzzlehttp/psr7": "^1.4.1",
                 "mtdowling/jmespath.php": "~2.2",
                 "php": ">=5.5"
-            },
-            "require-dev": {
-                "andrewsville/php-token-reflection": "^1.4",
-                "aws/aws-php-sns-message-validator": "~1.0",
-                "behat/behat": "~3.0",
-                "doctrine/cache": "~1.4",
-                "ext-dom": "*",
-                "ext-openssl": "*",
-                "ext-pcntl": "*",
-                "ext-sockets": "*",
-                "nette/neon": "^2.3",
-                "phpunit/phpunit": "^4.8.35|^5.4.3",
-                "psr/cache": "^1.0",
-                "psr/simple-cache": "^1.0"
             },
             "suggest": {
                 "aws/aws-php-sns-message-validator": "To validate incoming SNS notifications",
@@ -121,7 +110,6 @@
                     "src/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -143,7 +131,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-07-26T18:22:40+00:00"
+            "time": "2019-09-25T18:23:09+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -427,11 +415,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.3.1",
+            "version": "3.3.5",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/9b44b081e6782314703bdbadbdf9bc0e5041bf3d",
-                "reference": "9b44b081e6782314703bdbadbdf9bc0e5041bf3d",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/6c47e2d298f1b7bda1169d84e9f8ee470a3dec6a",
+                "reference": "6c47e2d298f1b7bda1169d84e9f8ee470a3dec6a",
                 "shasum": ""
             },
             "require": {
@@ -460,7 +448,7 @@
                 "symfony/yaml": "^3.2|^4.0",
                 "true/punycode": "^2.1.0",
                 "twig/twig": "~2.11.0",
-                "voku/stringy": "^5.1.0",
+                "voku/stringy": "~5.1.0",
                 "webonyx/graphql-php": "^0.12.0",
                 "yii2tech/ar-softdelete": "^1.0.2",
                 "yiisoft/yii2": "~2.0.21.0",
@@ -509,7 +497,7 @@
                 "docs": "https://docs.craftcms.com/v3/",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2019-09-06T18:18:00+00:00"
+            "time": "2019-09-25T17:43:00+00:00"
         },
         {
             "name": "craftcms/oauth2-craftid",
@@ -595,15 +583,15 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.3.3.2",
+            "version": "2.4.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/55ee76494f6332ba5709003d2082e51d56ae8b1a",
-                "reference": "55ee76494f6332ba5709003d2082e51d56ae8b1a",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/8fd0daca685309ad8635f28dca8c9ab2b3f228d4",
+                "reference": "8fd0daca685309ad8635f28dca8c9ab2b3f228d4",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.1.0"
+                "craftcms/cms": "^3.2.0"
             },
             "type": "craft-plugin",
             "extra": {
@@ -616,7 +604,6 @@
                     "craft\\redactor\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -628,13 +615,20 @@
             ],
             "description": "Edit rich text content in Craft CMS using Redactor by Imperavi.",
             "keywords": [
-                "Redactor",
                 "cms",
                 "craftcms",
                 "html",
+                "redactor",
                 "yii2"
             ],
-            "time": "2019-04-29T21:39:05+00:00"
+            "support": {
+                "email": "support@craftcms.com",
+                "issues": "https://github.com/craftcms/redactor/issues?state=open",
+                "source": "https://github.com/craftcms/redactor",
+                "docs": "https://github.com/craftcms/redactor/blob/v2/README.md",
+                "rss": "https://github.com/craftcms/redactor/commits/v2.atom"
+            },
+            "time": "2019-09-13T11:02:32+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -699,57 +693,6 @@
                 "yii2"
             ],
             "time": "2015-01-27T10:53:51+00:00"
-        },
-        {
-            "name": "danielstjules/stringy",
-            "version": "3.1.0",
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/df24ab62d2d8213bbbe88cc36fc35a4503b4bd7e",
-                "reference": "df24ab62d2d8213bbbe88cc36fc35a4503b4bd7e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "symfony/polyfill-mbstring": "~1.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Stringy\\": "src/"
-                },
-                "files": [
-                    "src/Create.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel St. Jules",
-                    "email": "danielst.jules@gmail.com",
-                    "homepage": "http://www.danielstjules.com"
-                }
-            ],
-            "description": "A string manipulation library with multibyte support",
-            "homepage": "https://github.com/danielstjules/Stringy",
-            "keywords": [
-                "UTF",
-                "helpers",
-                "manipulation",
-                "methods",
-                "multibyte",
-                "string",
-                "utf-8",
-                "utility",
-                "utils"
-            ],
-            "time": "2017-06-12T01:10:27+00:00"
         },
         {
             "name": "davechild/textstatistics",
@@ -1090,11 +1033,11 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.5.1",
+            "version": "v1.5.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/0f75e20e7392e863f5550ed2c2d3d50af21710fb",
-                "reference": "0f75e20e7392e863f5550ed2c2d3d50af21710fb",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/2ee962e5df3e9427fda859f1b0515d6d62c4afa5",
+                "reference": "2ee962e5df3e9427fda859f1b0515d6d62c4afa5",
                 "shasum": ""
             },
             "require": {
@@ -1105,13 +1048,6 @@
                 "psr/cache": "^1.0",
                 "psr/http-message": "^1.0"
             },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.11",
-                "guzzlehttp/promises": "0.1.1|^1.3",
-                "phpseclib/phpseclib": "^2",
-                "phpunit/phpunit": "^4.8.36|^5.7",
-                "sebastian/comparator": ">=1.2.3"
-            },
             "suggest": {
                 "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings. Please require version ^2."
             },
@@ -1121,7 +1057,6 @@
                     "Google\\Auth\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1132,81 +1067,68 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2019-04-16T18:48:28+00:00"
+            "time": "2019-07-22T21:01:31+00:00"
         },
         {
             "name": "google/cloud",
-            "version": "v0.106.1",
+            "version": "v0.112.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php/zipball/4be7a7ebbc6bdfe885f11d91329d271582fccafd",
-                "reference": "4be7a7ebbc6bdfe885f11d91329d271582fccafd",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php/zipball/68fc365039a0dd702a4b28ca77cbab1b4ecc9327",
+                "reference": "68fc365039a0dd702a4b28ca77cbab1b4ecc9327",
                 "shasum": ""
             },
             "require": {
                 "google/auth": "^1.5.1",
                 "google/common-protos": "^1.0",
                 "google/crc32": "^0.1.0",
-                "google/gax": "^1.0",
+                "google/gax": "^1.1",
                 "guzzlehttp/guzzle": "^5.3|^6.0",
                 "guzzlehttp/psr7": "^1.2",
-                "monolog/monolog": "~1",
+                "monolog/monolog": "^1.1|^2.0",
                 "php": ">=5.5",
                 "psr/http-message": "1.0.*",
                 "ramsey/uuid": "~3",
                 "rize/uri-template": "~0.3"
             },
             "replace": {
-                "google/cloud-asset": "0.3.4",
-                "google/cloud-automl": "0.2.2",
-                "google/cloud-bigquery": "1.8.0",
-                "google/cloud-bigquerydatatransfer": "0.12.1",
-                "google/cloud-bigtable": "0.14.0",
+                "google/cloud-asset": "0.4.0",
+                "google/cloud-automl": "0.5.0",
+                "google/cloud-bigquery": "1.12.0",
+                "google/cloud-bigquerydatatransfer": "0.14.0",
+                "google/cloud-bigtable": "1.1.0",
                 "google/cloud-common-protos": "0.2.0",
-                "google/cloud-container": "0.10.4",
-                "google/cloud-core": "1.30.0",
-                "google/cloud-dataproc": "0.12.0",
-                "google/cloud-datastore": "1.9.5",
-                "google/cloud-debugger": "0.18.5",
-                "google/cloud-dialogflow": "0.9.0",
-                "google/cloud-dlp": "0.21.0",
-                "google/cloud-error-reporting": "0.14.5",
-                "google/cloud-firestore": "1.6.2",
-                "google/cloud-iot": "0.8.0",
-                "google/cloud-kms": "1.5.0",
-                "google/cloud-language": "0.19.4",
-                "google/cloud-logging": "1.16.5",
-                "google/cloud-monitoring": "0.16.5",
-                "google/cloud-oslogin": "0.9.5",
-                "google/cloud-pubsub": "1.14.0",
-                "google/cloud-redis": "0.9.0",
-                "google/cloud-scheduler": "1.0.1",
-                "google/cloud-security-center": "0.1.1",
-                "google/cloud-spanner": "1.16.1",
-                "google/cloud-speech": "0.25.0",
-                "google/cloud-storage": "1.13.0",
-                "google/cloud-talent": "0.4.0",
-                "google/cloud-tasks": "1.2.0",
-                "google/cloud-text-to-speech": "0.4.4",
-                "google/cloud-trace": "0.14.4",
-                "google/cloud-translate": "1.2.9",
-                "google/cloud-videointelligence": "1.6.1",
-                "google/cloud-vision": "0.22.5",
-                "google/cloud-web-risk": "0.1.1",
-                "google/cloud-web-security-scanner": "0.1.0"
-            },
-            "require-dev": {
-                "erusev/parsedown": "^1.6",
-                "google/cloud-tools": "^0.6",
-                "opis/closure": "^3.0",
-                "phpdocumentor/reflection": "^3.0",
-                "phpseclib/phpseclib": "^2",
-                "phpunit/phpunit": "^4.8|^5.0",
-                "squizlabs/php_codesniffer": "2.*",
-                "swaggest/json-schema": "^0.12.0",
-                "symfony/console": "^3.0",
-                "symfony/lock": "3.3.x-dev#1ba6ac9",
-                "vierbergenlars/php-semver": "^3.0"
+                "google/cloud-container": "0.11.0",
+                "google/cloud-core": "1.33.0",
+                "google/cloud-dataproc": "0.13.0",
+                "google/cloud-datastore": "1.10.0",
+                "google/cloud-debugger": "0.19.1",
+                "google/cloud-dialogflow": "0.10.0",
+                "google/cloud-dlp": "0.22.0",
+                "google/cloud-error-reporting": "0.15.0",
+                "google/cloud-firestore": "1.8.0",
+                "google/cloud-iot": "0.9.0",
+                "google/cloud-kms": "1.7.0",
+                "google/cloud-language": "0.20.0",
+                "google/cloud-logging": "1.18.0",
+                "google/cloud-monitoring": "0.18.0",
+                "google/cloud-oslogin": "0.10.0",
+                "google/cloud-pubsub": "1.17.0",
+                "google/cloud-redis": "0.10.0",
+                "google/cloud-scheduler": "1.1.0",
+                "google/cloud-security-center": "0.2.0",
+                "google/cloud-spanner": "1.18.0",
+                "google/cloud-speech": "0.27.0",
+                "google/cloud-storage": "1.14.0",
+                "google/cloud-talent": "0.6.0",
+                "google/cloud-tasks": "1.3.0",
+                "google/cloud-text-to-speech": "0.5.0",
+                "google/cloud-trace": "0.15.0",
+                "google/cloud-translate": "1.4.1",
+                "google/cloud-videointelligence": "1.7.0",
+                "google/cloud-vision": "0.23.0",
+                "google/cloud-web-risk": "0.3.0",
+                "google/cloud-web-security-scanner": "0.2.0"
             },
             "suggest": {
                 "opis/closure": "May be used to serialize closures to process jobs in the batch daemon. Please require version ^3.",
@@ -1305,7 +1227,6 @@
                     "GPBMetadata\\Google\\Spanner\\": "Spanner/metadata"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1349,7 +1270,7 @@
                 "translation",
                 "vision"
             ],
-            "time": "2019-07-26T00:15:30+00:00"
+            "time": "2019-09-16T21:17:30+00:00"
         },
         {
             "name": "google/common-protos",
@@ -1424,11 +1345,11 @@
         },
         {
             "name": "google/gax",
-            "version": "1.0.3",
+            "version": "1.1.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/gax-php/zipball/0877185cbf4bc7648685a25f466fec8e531d0370",
-                "reference": "0877185cbf4bc7648685a25f466fec8e531d0370",
+                "url": "https://api.github.com/repos/googleapis/gax-php/zipball/4389c4103f0469f02c078250c73eaa57bdc91452",
+                "reference": "4389c4103f0469f02c078250c73eaa57bdc91452",
                 "shasum": ""
             },
             "require": {
@@ -1444,11 +1365,6 @@
             "conflict": {
                 "ext-protobuf": "<3.7.0"
             },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.36",
-                "sami/sami": "*",
-                "squizlabs/php_codesniffer": "3.*"
-            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1456,7 +1372,6 @@
                     "GPBMetadata\\Google\\": "metadata"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1465,7 +1380,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-06-25T18:06:46+00:00"
+            "time": "2019-09-06T18:27:35+00:00"
         },
         {
             "name": "google/grpc-gcp",
@@ -1503,18 +1418,15 @@
         },
         {
             "name": "google/protobuf",
-            "version": "v3.9.0",
+            "version": "v3.9.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/7b9ad7d4272ec45779bfa074efffd55586f1965c",
-                "reference": "7b9ad7d4272ec45779bfa074efffd55586f1965c",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/5159d2b6f11fe86ea1b8fca5a5d5c42cb0c93b1e",
+                "reference": "5159d2b6f11fe86ea1b8fca5a5d5c42cb0c93b1e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=4.8.0"
             },
             "suggest": {
                 "ext-bcmath": "Need to support JSON deserialization"
@@ -1526,7 +1438,6 @@
                     "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1535,7 +1446,7 @@
             "keywords": [
                 "proto"
             ],
-            "time": "2019-07-12T00:17:38+00:00"
+            "time": "2019-09-23T17:53:18+00:00"
         },
         {
             "name": "grpc/grpc",
@@ -2371,11 +2282,11 @@
         },
         {
             "name": "mikehaertl/php-shellcommand",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikehaertl/php-shellcommand/zipball/290fc6c330bc84a8820350ef68ed975053e0823c",
-                "reference": "290fc6c330bc84a8820350ef68ed975053e0823c",
+                "url": "https://api.github.com/repos/mikehaertl/php-shellcommand/zipball/6c6f44cee9bef0d5e7670852d04128745de455ac",
+                "reference": "6c6f44cee9bef0d5e7670852d04128745de455ac",
                 "shasum": ""
             },
             "require": {
@@ -2400,7 +2311,7 @@
             "keywords": [
                 "shell"
             ],
-            "time": "2019-08-17T06:39:51+00:00"
+            "time": "2019-09-15T07:36:45+00:00"
         },
         {
             "name": "misterbk/mix",
@@ -2459,11 +2370,11 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.24.0",
+            "version": "1.25.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
-                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
+                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
                 "shasum": ""
             },
             "require": {
@@ -2472,19 +2383,6 @@
             },
             "provide": {
                 "psr/log-implementation": "1.0.0"
-            },
-            "require-dev": {
-                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
-                "doctrine/couchdb": "~1.0@dev",
-                "graylog2/gelf-php": "~1.0",
-                "jakub-onderka/php-parallel-lint": "0.9",
-                "php-amqplib/php-amqplib": "~2.4",
-                "php-console/php-console": "^3.1.3",
-                "phpunit/phpunit": "~4.5",
-                "phpunit/phpunit-mock-objects": "2.3.0",
-                "ruflin/elastica": ">=0.90 <3.0",
-                "sentry/sentry": "^0.13",
-                "swiftmailer/swiftmailer": "^5.3|^6.0"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -2510,7 +2408,6 @@
                     "Monolog\\": "src/Monolog"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2528,7 +2425,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2018-11-05T09:00:11+00:00"
+            "time": "2019-09-06T13:49:17+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -2742,11 +2639,11 @@
         },
         {
             "name": "nystudio107/craft-seomatic",
-            "version": "3.2.23",
+            "version": "3.2.26",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nystudio107/craft-seomatic/zipball/2d07e94af8896129560616a6dc2df64693b93f06",
-                "reference": "2d07e94af8896129560616a6dc2df64693b93f06",
+                "url": "https://api.github.com/repos/nystudio107/craft-seomatic/zipball/de11d1f2a45212d16d61009ac1679059c43b81a7",
+                "reference": "de11d1f2a45212d16d61009ac1679059c43b81a7",
                 "shasum": ""
             },
             "require": {
@@ -2810,7 +2707,7 @@
                 "docs": "https://nystudio107.com/plugins/seomatic/documentation",
                 "issues": "https://nystudio107.com/plugins/seomatic/support"
             },
-            "time": "2019-09-06T18:27:36+00:00"
+            "time": "2019-09-26T19:05:25+00:00"
         },
         {
             "name": "nystudio107/craft-typogrify",
@@ -3046,17 +2943,17 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c",
-                "reference": "bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/b83ff7cfcfee7827e1e78b637a5904fe6a96698e",
+                "reference": "b83ff7cfcfee7827e1e78b637a5904fe6a96698e",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "phpdocumentor/reflection-common": "^1.0.0",
-                "phpdocumentor/type-resolver": "^0.4.0",
+                "phpdocumentor/reflection-common": "^1.0.0 || ^2.0.0",
+                "phpdocumentor/type-resolver": "~0.4 || ^1.0.0",
                 "webmozart/assert": "^1.0"
             },
             "type": "library",
@@ -3082,19 +2979,19 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2019-04-30T17:48:53+00:00"
+            "time": "2019-09-12T14:27:41+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "0.4.0",
+            "version": "0.5.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9c977708995954784726e25d0cd1dddf4e65b0f7",
-                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/cf842904952e64e703800d094cdf34e715a8a3ae",
+                "reference": "cf842904952e64e703800d094cdf34e715a8a3ae",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0",
+                "php": "^7.0",
                 "phpdocumentor/reflection-common": "^1.0"
             },
             "type": "library",
@@ -3105,9 +3002,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src/"
-                    ]
+                    "phpDocumentor\\Reflection\\": "src"
                 }
             },
             "license": [
@@ -3119,7 +3014,7 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2017-07-14T14:27:02+00:00"
+            "time": "2017-12-30T13:23:38+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",
@@ -5164,16 +5059,16 @@
         },
         {
             "name": "voku/anti-xss",
-            "version": "4.1.14",
+            "version": "4.1.15",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/anti-xss/zipball/53c5da8039cf2ed226e3249b86a2be700c415f88",
-                "reference": "53c5da8039cf2ed226e3249b86a2be700c415f88",
+                "url": "https://api.github.com/repos/voku/anti-xss/zipball/14ff3982d58af104f5f38a438d99b9600705151e",
+                "reference": "14ff3982d58af104f5f38a438d99b9600705151e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0",
-                "voku/portable-utf8": "~5.4.1"
+                "voku/portable-utf8": "~5.4.21"
             },
             "type": "library",
             "extra": {
@@ -5208,21 +5103,21 @@
                 "security",
                 "xss"
             ],
-            "time": "2019-06-27T21:40:28+00:00"
+            "time": "2019-09-25T22:40:48+00:00"
         },
         {
             "name": "voku/arrayy",
-            "version": "5.13.2",
+            "version": "5.14.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/Arrayy/zipball/6aa252eaba0b4fa9ab95463c05c49a51881b1251",
-                "reference": "6aa252eaba0b4fa9ab95463c05c49a51881b1251",
+                "url": "https://api.github.com/repos/voku/Arrayy/zipball/2a76c1f5b40ef78d757a137fc7d992a80783d229",
+                "reference": "2a76c1f5b40ef78d757a137fc7d992a80783d229",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=7.0.0",
-                "phpdocumentor/reflection-docblock": "~4.1",
+                "phpdocumentor/reflection-docblock": "~4.3",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "type": "library",
@@ -5240,9 +5135,9 @@
             "authors": [
                 {
                     "name": "Lars Moelleken",
-                    "role": "Maintainer",
                     "email": "lars@moelleken.org",
-                    "homepage": "http://www.moelleken.org/"
+                    "homepage": "http://www.moelleken.org/",
+                    "role": "Maintainer"
                 }
             ],
             "description": "Array manipulation library for PHP, called Arrayy!",
@@ -5255,7 +5150,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2019-08-01T12:49:31+00:00"
+            "time": "2019-09-16T21:25:09+00:00"
         },
         {
             "name": "voku/email-check",
@@ -5302,12 +5197,52 @@
             "time": "2019-01-02T23:08:14+00:00"
         },
         {
-            "name": "voku/portable-utf8",
-            "version": "5.4.18",
+            "name": "voku/portable-ascii",
+            "version": "1.2.3",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/dbbea53aa5bd15a5e9a561802de97650780a4366",
-                "reference": "dbbea53aa5bd15a5e9a561802de97650780a4366",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/d29f78e8ead9cfef6a09208c27716737c1ac56be",
+                "reference": "d29f78e8ead9cfef6a09208c27716737c1ac56be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "suggest": {
+                "ext-intl": "Use Intl for transliterator_transliterate() support"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "voku\\": "src/voku/",
+                    "voku\\tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Moelleken",
+                    "homepage": "http://www.moelleken.org/"
+                }
+            ],
+            "description": "Portable ASCII library - performance optimized (ascii) string functions for php.",
+            "homepage": "https://github.com/voku/portable-ascii",
+            "keywords": [
+                "ascii",
+                "clean",
+                "php"
+            ],
+            "time": "2019-09-10T13:53:07+00:00"
+        },
+        {
+            "name": "voku/portable-utf8",
+            "version": "5.4.21",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/df543931d92b8403e9b5b38e56abdd24851d8cff",
+                "reference": "df543931d92b8403e9b5b38e56abdd24851d8cff",
                 "shasum": ""
             },
             "require": {
@@ -5316,7 +5251,8 @@
                 "symfony/polyfill-intl-grapheme": "~1.0",
                 "symfony/polyfill-intl-normalizer": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0",
-                "symfony/polyfill-php72": "~1.0"
+                "symfony/polyfill-php72": "~1.0",
+                "voku/portable-ascii": "~1.2"
             },
             "suggest": {
                 "ext-ctype": "Use Ctype for e.g. hexadecimal digit detection",
@@ -5363,7 +5299,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2019-08-21T13:10:21+00:00"
+            "time": "2019-09-17T14:53:36+00:00"
         },
         {
             "name": "voku/stop-words",
@@ -5774,11 +5710,11 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.1.8",
+            "version": "2.1.9",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/959bf8206a3ec64f8949f62024a2c58d9a02e78f",
-                "reference": "959bf8206a3ec64f8949f62024a2c58d9a02e78f",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/62679af3183c308c0edffecc69778afc32ae55aa",
+                "reference": "62679af3183c308c0edffecc69778afc32ae55aa",
                 "shasum": ""
             },
             "require": {
@@ -5817,7 +5753,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2019-08-20T15:19:56+00:00"
+            "time": "2019-09-18T10:49:01+00:00"
         },
         {
             "name": "yiisoft/yii2-queue",
