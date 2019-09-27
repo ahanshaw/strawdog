@@ -18,12 +18,6 @@
                     {% if entry.companyBoard | length %}
                         <li><a href="#board">Board of Directors</a></li>
                     {% endif %}
-                    {% if entry.companyArtisticAssociates | length %}
-                        <li><a href="#associates">Artistic Associates</a></li>
-                    {% endif %}
-                    {% if entry.companyEmeritusMembers | length %}
-                        <li><a href="#emeritus">Emeritus Members</a></li>
-                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -93,20 +87,6 @@
                         <p>{{ entry.title }}{% if entry.companyTitle | length %} <span class="title">{{ entry.companyTitle }}{% endif %}</span></p>
                     </a>
                 {% endfor %}
-            </div>
-        </div>
-
-        <div id="associates" class="c-company__list">
-            <h2>Artistic Associates</h2>
-            <div class="c-company__list__container">
-                {{ entry.companyArtisticAssociates }}
-            </div>
-        </div>
-
-        <div id="emeritus" class="c-company__list">
-            <h2>Emeritus Members</h2>
-            <div class="c-company__list__container">
-                {{ entry.companyEmeritusMembers }}
             </div>
         </div>
     </main>

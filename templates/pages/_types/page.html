@@ -1,0 +1,35 @@
+{% extends "_layout" %}
+{% block content %}
+    <main id="main" class="c-page">
+        {% if entry.pageHeroImage | length %}
+            <div class="c-hero">
+                <div class="c-hero__container">
+                    <div class="c-hero__image">
+                        {% set image = entry.pageHeroImage.one() %}
+                        {% set imageResizes = [{ width: 1200, height: 400, mode: 'crop', position: image.getFocalPoint() }, { width: 600, height: 200, mode: 'crop', position: image.getFocalPoint() }] %}
+                        {% set srcSizes = '(max-width: 640px) 640px, (max-width: 768) 768px, 1100px' %}
+                        {% include '_partials/image' %}
+                    </div>
+                    <div class="c-hero__copy">
+                        <h1>{{ entry.title }}</h1>
+                    </div>
+                </div>
+            </div>
+
+            {% if image.photoCredit | length %}
+                <div class="c-hero__credit">
+                    <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="c-page__container">
+            <div class="c-page__sidebar">
+                {{ entry.pageSidebar | typogrify }}
+            </div>
+            <div class="c-page__content">
+                {{ entry.pageCopy | typogrify }}
+            </div>
+        </div>
+    </main>
+{% endblock %}
