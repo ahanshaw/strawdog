@@ -1,6 +1,7 @@
 {% extends "_layout" %}
 {% block content %}
 
+    {% set currentSeason = craft.categories().group('seasons').one() %}
     <main id="main" class="c-show">
         <div class="c-hero">
             <div class="c-hero__container">
@@ -49,6 +50,9 @@
             </div>
             <div class="c-show__detail__description">
                 {{ entry.showDescription | typogrify }}
+                {% if entry.showAnnouncement | length and season.title == currentSeason.title %}
+                    {{ entry.showAnnouncement }}
+                {% endif %}
             </div>
         </div>
 
