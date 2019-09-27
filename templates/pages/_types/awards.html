@@ -32,9 +32,8 @@
                 {% endif %}
                 {% set entries = craft.entries.section('shows').all() %}
                 {% for entry in entries %}
-                    {% set date = entry.showEndDate|date('Y') %}
                     {% if entry.showAwards %}
-                        <h2>{{ date }}</h2>
+                        <h2>{{ entry.showAwardsYear }}</h2>
                         <p>{{ entry.showAwards | striptags }}, <a href="{{ entry.url }}"><em>{{ entry.title | striptags }}</em></a></p>
                     {% endif %}
                 {% endfor %}
