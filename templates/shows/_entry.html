@@ -34,9 +34,16 @@
 
                 {% if currentDate < endDate %}
                     <span class="times">{{ entry.showTimes }}</span>
+                    {% if entry.showLocation %}
+                        <p class="location">{{ entry.showLocation | striptags('<br />, <br>') | raw }}
+                    {% endif %}
                     <p>{{ entry.showTicketPrices }}</p>
                     {% if entry.showTicketsUrl | length %}
                         <a class="btn" target="_blank" rel="noopener noreferrer" href="{{ entry.showTicketsUrl }}">Buy Tickets</a>
+                    {% endif %}
+                {% else %}
+                    {% if entry.showLocation %}
+                        <p class="location-no-tickets">{{ entry.showLocation | striptags('<br />, <br>') | raw }}
                     {% endif %}
                 {% endif %}
             </div>
