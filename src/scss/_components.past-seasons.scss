@@ -19,6 +19,10 @@
                 margin-bottom: 4em;
                 padding: 1em 0;
             }
+
+            @include ie {
+                justify-content: flex-start;
+            }
         }
 
         &__season {
@@ -70,6 +74,11 @@
 
             @include breakpoint('mobile') {
                 flex: 0 0 50%;
+            }
+
+            @include ie {
+                display: block;
+                flex: 0 0 225px;
             }
 
             &:hover {

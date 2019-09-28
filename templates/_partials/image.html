@@ -6,5 +6,5 @@
     {% if craft.imager.serverSupportsWebp() %}
         <source srcset="{{ craft.imager.srcset(transformedImageWebp) }}" type="image/webp">
     {% endif %}
-    <img src="{{ image.url }}" srcset="{{ craft.imager.srcset(transformedImage) }}" sizes="{{ srcSizes }}" alt="{{ image.title }}">
+    <img src="{{ transformedImage[0].url }}" srcset="{{ craft.imager.srcset(transformedImage) }}" sizes="{{ srcSizes }}" alt="{{ image.title }}">
 </picture>

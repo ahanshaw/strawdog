@@ -51,6 +51,10 @@
         background-color: $black;
         overflow: hidden;
 
+        @include ie {
+            height: 900px;
+        }
+
         &__shows {
             @include container(1100);
             display: flex;
@@ -64,6 +68,11 @@
 
             @include breakpoint('mobile') {
                 padding-top: 2em;
+            }
+
+            @include ie {
+                display: block;
+                height: 400px;
             }
         }
 
@@ -87,6 +96,11 @@
             @include breakpoint('mobile') {
                 flex: 0 0 100%;
                 padding: 0 0 3em 0;
+            }
+
+            @include ie {
+                width: 25%;
+                float: left;
             }
 
             &--current {
@@ -158,8 +172,10 @@
 
                 img {
                     border-radius: 50%;
-                }
 
+                    @include ie {
+                    }
+                }
             }
 
             &__summary {

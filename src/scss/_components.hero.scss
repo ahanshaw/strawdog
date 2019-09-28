@@ -35,6 +35,10 @@
             @include breakpoint('mobile') {
                 object-position: center;
             }
+
+            @include ie {
+                @include object-fit(cover, center);
+            }
         }
     }
 
