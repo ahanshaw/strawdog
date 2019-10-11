@@ -1,0 +1,124 @@
+.c-grid {
+    background-color: $white;
+    padding: 4em 0 0 0;
+
+    @include breakpoint('tablet') {
+        padding: 3em 0 0 0;
+    }
+
+    h2 {
+        text-align: center;
+        margin: 0 0 1.5em 0;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        @include container(1100);
+    }
+
+    &__event {
+        flex: 0 0 50%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+        color: $black;
+        margin-bottom: 4em;
+
+        @include breakpoint('tablet') {
+            flex: 0 0 100%;
+            margin-bottom: 2em;
+        }
+
+        @include breakpoint('mobile') {
+            flex-wrap: wrap;
+            margin-bottom: 3em;
+        }
+
+        &:hover {
+            text-decoration: none;
+
+            img {
+                border-color: $dark-gold;
+            }
+        }
+
+        &__image {
+            flex: 0 0 50%;
+            padding: 0 1.5em;
+
+            @include breakpoint('tablet') {
+                flex: 0 0 40%;
+            }
+
+            @include breakpoint('mobile') {
+                flex: 0 0 100%;
+                padding: 0 4em;
+            }
+
+            img {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                border: 4px solid transparent;
+                border-radius: 50%;
+                transition: border-color .3s ease;
+
+                @include ie {
+                    width: 80%;
+                    margin-left: 20%;
+                }
+            }
+        }
+
+        &__detail {
+            flex: 0 0 50%;
+            padding: 0 2.25em 0 0;
+
+            @include breakpoint('tablet') {
+                flex: 0 0 60%;
+            }
+
+            @include breakpoint('mobile') {
+                flex: 0 0 100%;
+                text-align: center;
+                margin-top: 1em;
+                padding: 0;
+            }
+
+            h3 {
+                @include font-bold;
+                margin: 0 0 .5em 0;
+            }
+
+            p {
+                @include font-regular;
+                margin: 0;
+            }
+
+            .date {
+                @include font-medium;
+                @include font-size(15);
+                margin-bottom: .5em;
+            }
+
+            .learn-more {
+                display: block;
+                @include font-bold;
+                @include font-size(13);
+                text-transform: uppercase;
+                text-decoration: none;
+                letter-spacing: .025em;
+                color: $dark-gold;
+                margin: 1em 0 0 0;
+                transition: color .3s ease;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

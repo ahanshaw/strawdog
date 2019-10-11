@@ -19,6 +19,10 @@
     padding: 0;
     margin: 0;
 
+    @include breakpoint('header-small') {
+        margin: 0 -.5em 0 0;
+    }
+
     @include breakpoint('tablet') {
         display: block;
     }
@@ -54,8 +58,12 @@
     white-space: nowrap;
     border: 1px solid transparent;
 
-    @include breakpoint('laptop') {
-        padding: 0.5em .5em;
+    @include breakpoint('header') {
+        padding: .5em;
+    }
+
+    @include breakpoint('header-small') {
+        padding: 0.5em 1em;
     }
 
     @include breakpoint('tablet') {

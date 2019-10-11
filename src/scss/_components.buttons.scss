@@ -30,4 +30,12 @@
             background-color: $gold;
         }
     }
+
+    &--gray {
+        background-color: $black-60;
+
+        &:hover {
+            background-color: $white;
+        }
+    }
 }

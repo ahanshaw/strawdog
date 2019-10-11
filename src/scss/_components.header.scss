@@ -127,8 +127,21 @@
 
         &__container {
 
+            @include breakpoint('header-small') {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
             @include breakpoint('tablet') {
                 overflow: scroll;
+            }
+
+            .main-nav {
+
+                @include breakpoint('header-small') {
+                    flex: 0 0 100%;
+                    order: 2;
+                }
             }
 
             .secondary-nav {
@@ -155,10 +168,11 @@
             margin: 0;
             padding: 0;
 
-            @include breakpoint('laptop') {
+            @include breakpoint('header-small') {
                 flex: 0 0 100%;
                 order: 1;
-                text-align: right;
+                margin-top: .25em;
+                margin-bottom: .215em;
             }
 
             @include breakpoint('tablet') {
@@ -182,6 +196,14 @@
                 list-style: none;
                 margin: 0 0 0 1.5em;
 
+                @include breakpoint('header') {
+                    margin-left: .5em;
+                }
+
+                @include breakpoint('header-small') {
+                    margin-left: 1em;
+                }
+
                 @include breakpoint('tablet') {
                     display: block;
                     margin: 1em 0 0 0;
@@ -190,9 +212,24 @@
 
             .btn {
                 @include font-size(13);
+                border: 1px solid transparent;
+                transition: color .3s ease,
+                            border-color .3s ease,
+                            background-color .3s ease;
+
+                @include breakpoint('header') {
+                    padding: .25em 1em;
+                }
+
+                @include breakpoint('tablet') {
+                    width: 150px;
+                    text-align: center;
+                }
 
                 &:hover {
-                    background-color: $black-60;
+                    color: $white !important;
+                    background-color: $black;
+                    border-color: $white;
                 }
             }
         }
