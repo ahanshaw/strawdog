@@ -1,0 +1,19 @@
+{% extends "_layout" %}
+{% block content %}
+
+    <main id="main" class="c-press-release">
+        <div class="c-press-release__container">
+            <div class="c-press-release__contact">
+                {{ press.pressContact }}
+            </div>
+            <div class="c-press-release__copy">
+                <h1>{{ entry.title }}</h1>
+                {{ entry.pressCopy }}
+                <div class="c-press-release__about">
+                    {{ press.pressAbout	}}
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

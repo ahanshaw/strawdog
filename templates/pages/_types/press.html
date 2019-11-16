@@ -1,0 +1,87 @@
+{% extends "_layout" %}
+{% block content %}
+
+    <main id="main" class="c-press">
+        <div class="c-press__main">
+            <h1>Press</h1>
+            {% set releases = craft.entries().section('press').limit(5) %}
+            {% paginate releases as pageInfo, pageEntries %}
+            {% for entry in pageEntries %}
+                {% if entry | length %}
+                    <div class="c-press__entry">
+                        <h2><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
+                        {{ entry.pressCopy | truncate(300) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if pageInfo.totalPages > 1 %}
+            <div class="c-press__pagination">
+                <div class="c-press__pagination__container">
+                    {% set neighbors = 1 %}
+                    {% set prev = '&#10094;' %}
+                    {% set next = '&#10095;' %}
+                    {% set dots = "&hellip;" %}
+
+                    {% macro numericLink(url, number, current) %}
+                        <a href="{{url}}" data-number="{{number}}" class="pagination-link {{current ? 'current' : null}}" aria-label="{{current ? 'current page'|t : 'go to page'|t ~ ' ' ~ number}}" {{current ? 'aria-current="page"'}}>{{number}}</a>
+                    {% endmacro %}
+
+                    {% macro textLink(url, content, aria, number) %}
+                        <a href="{{url}}" data-number="{{number}}" class="pagination-link test" aria-label="{{aria}}">{{content|raw}}</a>
+                    {% endmacro %}
+
+                    {% macro ellipsis(content) %}
+                        <span class="pagination-ellipsis">{{content|raw}}</span>
+                    {% endmacro %}
+
+                    {% import _self as self %}
+
+                    {# seomatic #}
+                    {# https://github.com/nystudio107/craft-seomatic#pagination-and-seo #}
+                    {% if seomatic is defined %}
+                        {% do seomatic.helper.paginate(pageInfo) %}
+                    {% endif %}
+
+                    <a href="{{ pageInfo.prevUrl }}" data-number="{{ prev }}" class="pagination-arrow prev{% if pageInfo.prevUrl %} active{% endif %}" aria-label="{{ 'previous page'|t }}">{% include '_partials/icons/arrow-left' %}</a>
+
+                    {% if pageInfo.currentPage - neighbors > 1  %}
+                        {{ self.numericLink(pageInfo.firstUrl, '1') }}
+                    {% endif %}
+
+                    {% if pageInfo.currentPage - neighbors > 2 %}
+                        {{ self.ellipsis(dots) }}
+                    {% endif %}
+
+                    {% for page, url in pageInfo.getPrevUrls(neighbors) %}
+                        {{ self.numericLink(url, page) }}
+                    {% endfor %}
+
+                    <span class="current">{{ pageInfo.currentPage }}</span>
+
+                    {% for page, url in pageInfo.getNextUrls(neighbors) %}
+                        {{ self.numericLink(url, page) }}
+                    {% endfor %}
+
+                    {% if pageInfo.totalPages - pageInfo.currentPage > neighbors + 1 %}
+                        {{ self.ellipsis(dots) }}
+                    {% endif %}
+
+                    {% if pageInfo.currentPage + neighbors < pageInfo.totalPages %}
+                        {{ self.numericLink(pageInfo.lastUrl, pageInfo.totalPages) }}
+                    {% endif %}
+
+                    <a href="{{ pageInfo.nextUrl }}" data-number="{{ next }}" class="pagination-arrow next{% if pageInfo.nextUrl %} active{% endif %}" aria-label="{{ 'next page'|t }}">{% include '_partials/icons/arrow-right' %}</a>
+
+                    {% if pageInfo.currentPage == pageInfo.totalPages %}
+                        {% set seasons = craft.categories().group('seasons').inReverse().one() %}
+                        {% if seasons.title != '1' %}
+                            <p style="margin: 1em auto;">More past productions coming soon!</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}
