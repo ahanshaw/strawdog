@@ -96,7 +96,7 @@
                                 {% if block.characterName | length %}<p>as {{ block.characterName }}</p>{% endif %}
                             </a>
                         {% else %}
-                            {% if castMember.companyEnsembleMember %}
+                            {% if castMember.companyBio | length %}
                                 <a class="c-show__cast__member ensemble" href="{{ castMember.url }}">
                             {% else %}
                                 <div class="c-show__cast__member">
@@ -112,9 +112,9 @@
                                         <img src="/cms/images/company/user-placeholder.png" />
                                     {% endif %}
                                 </div>
-                                <p class="cast-member {% if castMember.companyEnsembleMember %} strawdog{% endif %}">{{ castMember.title }}{% if block.castEnsembleMember %}<span class="asterisk">*</span>{% endif %}</p>
+                                <p class="cast-member {% if castMember.companyBio | length %} strawdog{% endif %}">{{ castMember.title }}{% if block.castEnsembleMember %}<span class="asterisk">*</span>{% endif %}</p>
                                 {% if block.characterName | length %}<p>as {{ block.characterName }}</p>{% endif %}
-                            {% if castMember.companyEnsembleMember %}
+                            {% if castMember.companyBio | length %}
                                 </a>
                             {% else %}
                                 </div>

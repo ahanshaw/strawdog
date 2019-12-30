@@ -20,6 +20,11 @@
                         <div class="c-hero__copy">
                             <h2>Season {{ entry.title }}{% if entry.seasonTheme | length %}: {{ entry.seasonTheme }}{% endif %}</h2>
                             {% if entry.seasonSummary | length %}{{ entry.seasonSummary }}{% endif %} <a href="{{ entry.url }}" alt="Learn more about season {{ entry.title }}">Learn&nbsp;More</a>
+                            {% if image.photoCredit | length %}
+                                <div class="c-home__hero-credit">
+                                    <span class="photo-credit">Photo credit: {{ image.photoCredit }}</span>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
