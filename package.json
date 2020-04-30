@@ -13,7 +13,7 @@
     "license": "ISC",
     "dependencies": {
         "is-in-viewport": "^3.0.4",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "object-fit-images": "^3.2.4",
         "slick-carousel": "^1.8.1"
     },
